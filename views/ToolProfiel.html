@@ -49,15 +49,30 @@
         .page-container{
             display: flex;
             flex-direction: row;
+            list-style-type: none;
         }
         .toolfoto{
             border: 2px solid purple;
             width: 520px;
             height: auto;
         }
-        p{
+        h1{
+            margin-left: 72px;
+        }
+        p, ul{
             border: 2px solid thistle;
             width: 296px;
+        }
+        .btn-dark{
+            background-color: #333333;
+        }
+        .btn-terug{
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: 2px solid #CDCDCD;
+            background-color: #FDFCFB;
+            color: #333333;
         }
     </style>
 </head>
@@ -158,18 +173,18 @@
          </div>
         </nav>
     <div class="profiel">
-        <button>⮜</button>
-        <button>Bewerken</button>
+        <button class="btn-terug">🞀</button>
+        <button type="btn-dark" class="btn btn-dark">Bewerken</button>
         <h1>Tool Profiel</h1>
         <div class="toolprofiel-details">
             <img src="/public/img/klauwhamer.jpeg" class="toolfoto" alt="klauwhamer"> 
-            <div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse viverra risus at nisl maximus pretium. Morbi at imperdiet sapien. Sed iaculis at urna dictum dignissim. Ut pharetra ante ut consectetur iaculis. In dolor massa, sollicitudin id dapibus et, imperdiet ut sem. Aliquam imperdiet ante quis tellus ultrices, quis maximus mauris tincidunt.</p>
+            <div>            
             <ul>
                 <li>Gebruikersnaam</li>
                 <li>Locatie</li>
                 <li>Uitgeleend</li>
             </ul>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse viverra risus at nisl maximus pretium. Morbi at imperdiet sapien. Sed iaculis at urna dictum dignissim. Ut pharetra ante ut consectetur iaculis. In dolor massa, sollicitudin id dapibus et, imperdiet ut sem. Aliquam imperdiet ante quis tellus ultrices, quis maximus mauris tincidunt.</p>
             </div>
         </div>
     </div>
