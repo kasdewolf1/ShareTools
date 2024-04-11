@@ -1,0 +1,58 @@
+body{
+    margin: 0;
+    padding: 0;
+    color: #333333;
+}
+.navbar, .navbar-expand-lg, .bg-body-tertiary{
+    margin:0;
+    padding: 0;
+}
+.container-fluid{
+    background-color:#fdfcfb;
+    box-shadow: 0 0 50px #33333350;
+    height: 120px;
+    margin: 0;
+    padding: 0 40px;
+}
+.btn-dark{
+    background-color: #333333;
+    color: #fdfcfb;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 8px 16px;
+    margin-left: 24px;
+    transition: ease-in-out 0.1s;
+}
+.btn-dark:hover{
+    background-color:#424649;
+}
+.btn-outline{
+    background-color:#FDFCFB;
+    color: #333333;
+    font-weight: 600;
+    border: 2px solid #333333;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 8px 16px;
+    margin-left: 24px;
+}
+.cta-tekst{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+h1{
+    font-size: 80px;
+}
+p{
+    font-size: 18px;
+    margin: 24px 0 38px;
+}
+.cta-achtergrond{
+    margin-top: 40px;
+}
