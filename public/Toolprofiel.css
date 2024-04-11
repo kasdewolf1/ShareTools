@@ -1,0 +1,94 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #f3f0f0;
+}
+.navbar-everything{
+    background-color: #fdfcfb;
+    box-shadow: 0px 0px 50px #33333377;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 288px;
+    height: 100vh; 
+}
+.nav-link{
+    color: #333333;
+}
+
+img {
+    width: 150px;
+    margin: 32px 0px;
+}
+.page-container{
+    display: flex;
+    flex-direction: row;
+}
+
+/*Profiel content*/
+.profiel-container{
+    width: 71.4%;
+    height: 1%;
+    background-color: #fdfcfb;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    margin: 80px 104px 0px 40px;
+    padding: 40px;
+}
+
+.btn-dark{
+    background-color: #333333;
+    margin: 0 72px 0;
+}
+
+.btn-terug{
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 2px solid #CDCDCD;
+    background-color: #FDFCFB;
+    color: #333333;
+}
+
+h1{
+    margin-left: 72px;
+}
+
+.details-container{
+    padding: 24px 72px 80px;
+    display: flex;
+    flex-direction: row;
+}
+
+.toolfoto{
+    width: 60%;
+    height: 55%;
+    margin: 0 3.7% 0 0;
+    border-radius: 16px;
+    box-shadow: 0 0 20px #33333323;
+}
+
+.tekst-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+ul{
+    padding: 0;
+}
+
+li{
+    list-style: none;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+}
+.info-logos{
+    padding-top: 0;
+    margin: 0 8px 0 0;
+    width: 24px;
+}
