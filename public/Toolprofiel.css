@@ -2,6 +2,7 @@ body{
     margin: 0;
     padding: 0;
     background-color: #f3f0f0;
+    font-family: "Inter", sans-serif;;
 }
 .navbar-everything{
     background-color: #fdfcfb;
@@ -20,12 +21,16 @@ img {
     width: 150px;
     margin: 32px 0px;
 }
+
 .page-container{
     display: flex;
     flex-direction: row;
 }
 
+
+
 /*Profiel content*/
+
 .profiel-container{
     width: 71.4%;
     height: 1%;
@@ -40,6 +45,7 @@ img {
 .btn-dark{
     background-color: #333333;
     margin: 0 72px 0;
+    font-weight: 500;
 }
 
 .btn-terug{
@@ -53,6 +59,7 @@ img {
 
 h1{
     margin-left: 72px;
+    font-weight: 600;
 }
 
 .details-container{
