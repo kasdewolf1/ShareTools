@@ -36,21 +36,24 @@
         flex-direction: column;
         align-items: center;
         width: 288px;
-        height: 100%;
-        display:flex
-        justify-content:space-between;
+        height: 100vh;
         
-
       }
 
       img {
-        width: 150px;
+        width: 48%;
         margin: 32px 0px;
+      }
+
+      .klauwhamer{
+       width: 420px;
+       height: auto; 
       }
 
       nav {
         display: -webkit-flex;
         display: flex;
+        height: 100vh;
       }
 
       .page-container {
@@ -86,6 +89,16 @@
         text-align: center;
         width: 100%;
         padding: 0.6rem 0;
+
+      }
+
+        .titel{
+        font-size: 20px;  
+        }
+
+      .sub-titles{
+        font-size: 16px;
+      }
 
       }
     </style>
@@ -247,9 +260,8 @@
       <div>
         <div class="row">
           <div class="row-item">
-            <h1>Gereedschap uploaden:</h1>
-            <img src="imgaes/klauwhamer - Sharetools.jpeg" alt="Klauwhamer" />
-            <h1>Afmetingen</h1>
+            <img src="imgaes/klauwhamer - Sharetools.jpeg" alt="Klauwhamer" class="klauwhamer"/> 
+            <h4 class="sub-titles">Afmetingen</h4>
             <div class="form-floating">
               <select
                 class="form-select"
@@ -263,7 +275,7 @@
               <label for="floatingSelect">Works with selects</label>
             </div>
             <div>
-              <h1>Gereedschap status</h1>
+              <h4 class="sub-titles">Gereedschap status</h4>
               <div class="form-floating">
                 <select
                   class="form-select"
@@ -279,7 +291,7 @@
             </div>
           </div>
           <div class="row-item">
-            <h1>Title Tool</h1>
+            <h4 class="sub-titles">Title Tool</h4>
             <div class="form-floating">
               <textarea
                 class="form-control"
@@ -289,7 +301,7 @@
               <label for="floatingTextarea">Titel Tool</label>
             </div>
 
-            <h2>Categorie</h2>
+            <h4 class="sub-titles">Categorie</h4>
             <div class="form-floating">
               <textarea
                 class="form-control"
@@ -299,7 +311,7 @@
               <label for="floatingTextarea">Categorie</label>
             </div>
 
-            <h2>Locatie</h2>
+            <h4 class="sub-titles">Locatie</h4>
             <div class="form-floating">
               <textarea
                 class="form-control"
@@ -309,13 +321,13 @@
               <label for="floatingTextarea">Locatie</label>
             </div>
 
-            <h2>Beschrijving</h2>
+            <h4 class="sub-titles">Beschrijving</h4>
             <div class="form-floating">
               <textarea
                 class="form-control"
                 placeholder="Leave a comment here"
                 id="floatingTextarea2"
-                style="height: 100px"
+                style="height: 400px"
               ></textarea>
               <label for="floatingTextarea2">Beschrijving</label>
             </div>
