@@ -7,4 +7,18 @@ const db = mysql.createConnection({
     database: process.env.DATABASE
 });
 
+exports.addTool = (req, res) => {
+    const { title, beschikbaarheid, afmeting, location, category, description } = req.body;
+
+    db.query('INSERT INTO tools SET ?', {afmeting: afmeting, status: beschikbaarheid, tool_title: title, locatie: location, categorie: category, beschrijving: description}, (err, result) => {
+        if(err) {
+            console.log(err);
+        } else {
+            return res.render('addTool', {
+                message: 'Tool added!'
+            });
+        }
+    });
+}
+
 

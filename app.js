@@ -38,6 +38,7 @@ app.use('/', require('./routes/pages'));
 app.use('/auth', require('./routes/auth'));
 //app.use('/tools', require('./routes/tools'));
 app.use('/user', require('./routes/user'));
+app.use('/tools', require('./routes/tools'));
 
 
 app.listen(5001, () => {
