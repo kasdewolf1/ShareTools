@@ -47,7 +47,9 @@
 
       .klauwhamer{
        width: 420px;
-       height: auto; 
+       height: auto;
+       border-radius: 16px;
+       box-shadow: 0 0 20px #33333351;
       }
 
       nav {
@@ -71,6 +73,12 @@
         gap: 1rem;
         padding: 1rem;
       }
+      .tool-toevoegen-alles{
+        margin: 80px 40px;
+        border-radius: 16px;
+        background-color: #FDFCFB;
+        padding: 40px;
+      }
 
       .col {
         display: flex;
@@ -85,11 +93,9 @@
       .prim-btn {
         background-color: black;
         color: white;
-
         text-align: center;
         width: 100%;
         padding: 0.6rem 0;
-
       }
 
         .titel{
@@ -98,6 +104,18 @@
 
       .sub-titles{
         font-size: 16px;
+      }
+      .btn-terug{
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        border: 2px solid #CDCDCD;
+        background-color: #FDFCFB;
+        color: #333333;
+      }
+
+      .prim-btn{
+        border-radius: 8px;
       }
 
       }
@@ -257,8 +275,11 @@
           </div>
         </div>
       </nav>
-      <div>
+      
+
+      <div class="tool-toevoegen-alles">
         <div class="row">
+          <button class="btn-terug"><</button>
           <div class="row-item">
             <img src="imgaes/klauwhamer - Sharetools.jpeg" alt="Klauwhamer" class="klauwhamer"/> 
             <h4 class="sub-titles">Afmetingen</h4>
@@ -268,12 +289,13 @@
                 id="floatingSelect"
                 aria-label="Floating label select example"
               >
-                <option selected>Klein/Groot</option>
+                <option selected>Kies een grootte</option>
                 <option value="1">Klein</option>
                 <option value="2">Groot</option>
               </select>
               <label for="floatingSelect">Works with selects</label>
             </div>
+            <br>
             <div>
               <h4 class="sub-titles">Gereedschap status</h4>
               <div class="form-floating">
@@ -282,7 +304,7 @@
                   id="floatingSelect"
                   aria-label="Floating label select example"
                 >
-                  <option selected>Huidige status</option>
+                  <option selected>Kies een status</option>
                   <option value="1">Beschikbaar</option>
                   <option value="2">Niet beschikbaar</option>
                 </select>
@@ -291,26 +313,26 @@
             </div>
           </div>
           <div class="row-item">
-            <h4 class="sub-titles">Title Tool</h4>
+            <h4 class="sub-titles">Titel</h4>
             <div class="form-floating">
               <textarea
                 class="form-control"
                 placeholder="Leave a comment here"
                 id="floatingTextarea"
               ></textarea>
-              <label for="floatingTextarea">Titel Tool</label>
+              <label for="floatingTextarea">Kies een titel</label>
             </div>
-
+            <br>
             <h4 class="sub-titles">Categorie</h4>
             <div class="form-floating">
               <textarea
                 class="form-control"
                 placeholder="Leave a comment here"
-                id="floatingTextarea"
+                id="floatingTextarea"x
               ></textarea>
-              <label for="floatingTextarea">Categorie</label>
+              <label for="floatingTextarea">Kies een categorie</label>
             </div>
-
+            <br>
             <h4 class="sub-titles">Locatie</h4>
             <div class="form-floating">
               <textarea
@@ -318,9 +340,9 @@
                 placeholder="Leave a comment here"
                 id="floatingTextarea"
               ></textarea>
-              <label for="floatingTextarea">Locatie</label>
+              <label for="floatingTextarea">Kies de locatie</label>
             </div>
-
+            <br>
             <h4 class="sub-titles">Beschrijving</h4>
             <div class="form-floating">
               <textarea
@@ -329,12 +351,16 @@
                 id="floatingTextarea2"
                 style="height: 400px"
               ></textarea>
-              <label for="floatingTextarea2">Beschrijving</label>
+              <label for="floatingTextarea2">Beschrijf de specificaties van <br>
+                het product
+              </label> 
             </div>
           </div>
         </div>
         <button class="prim-btn">Toevoegen</button>
       </div>
     </div>
+
+  </div>
   </body>
 </html>
