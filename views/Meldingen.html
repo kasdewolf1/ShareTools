@@ -46,11 +46,14 @@
       }
 
       .zwartvlak {
-
-       width: 420px;
+        height: 96px;
        height: auto;
        border-radius: 16px;
+       margin-left: 32px;
        box-shadow: 0 0 20px #33333351;
+      }
+      p{
+        margin: 32px;
       }
 
       nav {
@@ -88,6 +91,7 @@
 
       .row-item {
         width: fit-content;
+
       }
 
       .toevoegen-btn {
@@ -133,7 +137,11 @@
         gap: 40px;
 
       }
-
+      .form-floating{
+        border: 2px solid #CDCDCD;
+        border-radius: 16px;
+        display: flex;
+      }
     </style>
   </head>
   <body>
@@ -296,50 +304,24 @@
         <div class="row">
           <button class="btn-terug"><</button>
           <div class="row-item">
-            <img src="images/Zwartvlak.jpeg" alt="zwartvak" class="zwartvlak"/> 
+            
             <div class="form-floating">
-             
-             </div>
+              <img src="images/Zwartvlak.jpeg" alt="zwartvak" class="zwartvlak"/> 
+             <p>insert here</p>
+            </div>
             <br>
-            <img src="images/Zwartvlak.jpeg" alt="zwartvak" class="zwartvlak"/> 
+            
             <div class="form-floating">
-          
-            <div>
-                <img src="images/Zwartvlak.jpeg" alt="zwartvak" class="zwartvlak"/> 
+              <img src="images/Zwartvlak.jpeg" alt="zwartvak" class="zwartvlak"/> 
+              <p>insert here</p>
+            </div>
+            <br>
+                
             <div class="form-floating">
-
+              <img src="images/Zwartvlak.jpeg" alt="zwartvak" class="zwartvlak"/> 
+              <p>insert here</p>
             </div>
           </div>
-          <div class="row-item">
-            <h4 class="sub-titles">Meldingen</h4>
-            <div class="form-floating">
-              <textarea
-                class="form-control"
-                placeholder="Leave a comment here"
-                id="floatingTextarea"
-              ></textarea>
-              <label for="floatingTextarea">[Insert here] wilt [Insert here] lenen voor [Insert here] dagen.</label>
-            </div>
-            <br>
-            <h4 class="sub-titles">Meldingen</h4>
-            <div class="form-floating">
-              <textarea
-                class="form-control"
-                placeholder="Leave a comment here"
-                id="floatingTextarea"x
-              ></textarea>
-              <label for="floatingTextarea">[Insert here] wilt [Insert here] lenen voor [Insert here] dagen.</label>
-            <br>
-            <h4 class="sub-titles">Meldingen</h4>
-            <div class="form-floating">
-              <textarea
-                class="form-control"
-                placeholder="Leave a comment here"
-                id="floatingTextarea"
-              ></textarea>
-              <label for="floatingTextarea">[Insert here] wilt [Insert here] lenen voor [Insert here] dagen.</label>
-              
-
-  </div>
+        </div>
   </body>
 </html>
