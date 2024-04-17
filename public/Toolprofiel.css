@@ -4,6 +4,8 @@ body{
     background-color: #f3f0f0;
     font-family: "Inter", sans-serif;;
 }
+
+/*Navbar*/
 .navbar-everything{
     background-color: #fdfcfb;
     box-shadow: 0px 0px 50px #33333377;
@@ -13,8 +15,25 @@ body{
     width: 288px;
     height: 100vh; 
 }
+.d-flex{
+    padding: 0;
+    width: 80%;
+}
+.nav, .flex-column, .nav-pills, .me-3{
+    width:100%;
+}
+
+
 .nav-link{
+    width: 100%;
     color: #333333;
+}
+.nav-link:hover{
+    color: #333333
+}
+.nav-link.active{
+    color: #FDFCFB !important;
+    background-color: #333333 !important;
 }
 
 img {
