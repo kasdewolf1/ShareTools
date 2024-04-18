@@ -2,7 +2,7 @@ body{
     margin: 0;
     padding: 0;
     background-color: #f3f0f0;
-    font-family: "Inter", sans-serif;;
+    font-family: "Inter", sans-serif;
 }
 
 /*Navbar*/
@@ -13,32 +13,51 @@ body{
     flex-direction: column;
     align-items: center;
     width: 288px;
-    height: 100vh; 
+    height: 100vh;
+    border: 2px solid teal; 
+    position: fixed;
 }
 .d-flex{
+    display: flex !important;
+    flex-direction: row !important;
     padding: 0;
-    width: 80%;
+    border: 2px solid purple;
 }
 .nav, .flex-column, .nav-pills, .me-3{
-    width:100%;
+    margin: 0;
+    width: 200%;
+    display: flex !important;
+    flex-direction: row !important;
+    border: 2px solid yellow;
 }
 
 
 .nav-link{
     width: 100%;
     color: #333333;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 2px solid green;
 }
 .nav-link:hover{
     color: #333333
 }
 .nav-link.active{
-    color: #FDFCFB !important;
+    font-weight: 600;
+    color: #fdfcfb !important;
     background-color: #333333 !important;
 }
 
-img {
+.logo-normal {
+    display: flex;
     width: 150px;
-    margin: 32px 0px;
+    margin: 32px 0px 72px;
+    border: 2px solid red;
+}
+
+.logo-responsive{
+    display: none;
 }
 
 .page-container{
@@ -46,7 +65,11 @@ img {
     flex-direction: row;
 }
 
-
+.icons{
+    border: 2px solid red;
+    width: 32px;
+    height: 32px;
+}
 
 /*Profiel content*/
 
@@ -57,7 +80,7 @@ img {
     border-radius: 16px;
     display: flex;
     flex-direction: column;
-    margin: 80px 104px 0px 40px;
+    margin: 80px 104px 0px 328px;
     padding: 40px;
 }
 
@@ -100,6 +123,7 @@ h1{
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
+    border: 2px solid red;
 }
 
 ul{
@@ -117,4 +141,78 @@ li{
     padding-top: 0;
     margin: 0 8px 0 0;
     width: 24px;
+}
+
+
+
+@media screen and (max-width: 1200px){
+    .details-container{
+        padding: 24px 72px 80px;
+        display: flex;
+        flex-direction: column;
+    }
+    .toolfoto{
+        width: 100%;
+        min-width: 300px;
+        margin: 0 3.7% 40px 0;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .navbar-everything{
+        width: 104px;
+    }
+    .logo-normal{
+        display: none;
+    }
+    .logo-responsive{
+        display: block;
+        margin: 32px 0 0;
+        width: 40px;
+        height: auto;
+    }
+    .profiel-container{
+        margin: 80px 104px 0px 144px;
+    }
+    .toolfoto{
+        width: 100%;
+        min-width: 100%;
+        margin: 0 3.7% 40px 0;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .page-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .navbar-everything{
+        background-color: #fdfcfb;
+        box-shadow: 0px 0px 50px #33333377;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100vw;
+        height: 80px;
+        border: 2px solid teal; 
+        position: fixed;
+        bottom: 0;
+    }
+    .d-flex{
+        padding: 0;
+        border: 2px solid purple;
+    }
+    .nav, .flex-column, .nav-pills, .me-3{
+        margin: 0;
+        width: 100%;
+        display: flex !important;
+        flex-direction: row !important;
+        border: 2px solid yellow;
+    }
+    .d-flex{
+        display: flex !important;
+        flex-direction: row !important;
+        padding: 0;
+        border: 2px solid purple;
+    }
 }
