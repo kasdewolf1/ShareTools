@@ -140,6 +140,28 @@ li{
 }
 
 
+/*Tool Lenen*/
+input[type=text]{
+    border-radius: 8px;
+    padding: 12px;
+    width: 100%;
+    border: 2px solid #cdcdcd;
+}
+input[type=submit]{
+    width: 100%;
+    background-color: #333333;
+    color: #fdfcfb;
+    font-weight: 600;
+    padding: 10px;
+    border: none;
+    border-radius: 8px
+}
+label{
+    color: #333333;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
 
 @media screen and (max-width: 1200px){
     .details-container{
@@ -177,12 +199,10 @@ li{
         margin: 0 3.7% 40px 0;
     }
     .links{
-        border: 2px solid orange;
         opacity: 0;
         display: none;
     }
     .nav-link{
-        border: 2px solid green;
         width: 100%;
         display: flex;
         align-items: center;
