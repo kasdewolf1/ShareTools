@@ -1,8 +1,13 @@
 const express = require('express');
-const toolsController = require('../controllers/tools');
 const router = express.Router();
 
-router.post('/tools', toolsController.addTool);
-//router.post('/tools/add', toolsController.addTool);
+const toolsController = require('../controllers/tools');
+
+// Define the POST route for adding a tool
+router.post('/addTools', toolsController.addTool);
+router.get('/products', toolsController.getAllProducts);
+router.get('/products/:id', toolsController.getProductById);
 
 module.exports = router;
+
+
