@@ -13,47 +13,48 @@ body{
     flex-direction: column;
     align-items: center;
     width: 288px;
-    height: 100vh;
-    border: 2px solid teal; 
+    height: 100vh; 
     position: fixed;
 }
-.d-flex{
-    display: flex !important;
-    flex-direction: row !important;
-    padding: 0;
-    border: 2px solid purple;
+.d-flex.align-items-start{
+    display: flex;
+    justify-content: center !important;
+    width: 90%;
 }
-.nav, .flex-column, .nav-pills, .me-3{
-    margin: 0;
-    width: 200%;
-    display: flex !important;
-    flex-direction: row !important;
-    border: 2px solid yellow;
+
+.nav.flex-column.nav-pills.me-3{
+    width: 100%;
 }
 
 
 .nav-link{
-    width: 100%;
     color: #333333;
+    width: 100%;
     display: flex;
-    flex-direction: row;
     align-items: center;
-    border: 2px solid green;
 }
 .nav-link:hover{
-    color: #333333
+    color: rgb(51, 51, 51, 80%);
 }
 .nav-link.active{
+    background-color: #f3f0f0 !important;
+    color: #333333 !important;
     font-weight: 600;
-    color: #fdfcfb !important;
-    background-color: #333333 !important;
 }
+.links{
+    margin-left: 16px;
+}
+
+.icons{
+    width: 32px;
+    height: 32px;
+}
+
 
 .logo-normal {
     display: flex;
     width: 150px;
     margin: 32px 0px 72px;
-    border: 2px solid red;
 }
 
 .logo-responsive{
@@ -65,11 +66,6 @@ body{
     flex-direction: row;
 }
 
-.icons{
-    border: 2px solid red;
-    width: 32px;
-    height: 32px;
-}
 
 /*Profiel content*/
 
@@ -88,6 +84,7 @@ body{
     background-color: #333333;
     margin: 0 72px 0;
     font-weight: 500;
+    padding: 8px 0;
 }
 
 .btn-terug{
@@ -123,7 +120,6 @@ h1{
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
-    border: 2px solid red;
 }
 
 ul{
@@ -158,6 +154,7 @@ li{
     }
 }
 
+
 @media screen and (max-width: 900px){
     .navbar-everything{
         width: 104px;
@@ -167,7 +164,7 @@ li{
     }
     .logo-responsive{
         display: block;
-        margin: 32px 0 0;
+        margin: 32px 0px 72px;
         width: 40px;
         height: auto;
     }
@@ -179,12 +176,34 @@ li{
         min-width: 100%;
         margin: 0 3.7% 40px 0;
     }
+    .links{
+        border: 2px solid orange;
+        opacity: 0;
+        display: none;
+    }
+    .nav-link{
+        border: 2px solid green;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
 }
 
+
 @media screen and (max-width: 700px){
+    body{
+        background-color: #fdfcfb;
+    }
     .page-container{
         display: flex;
         flex-direction: column;
+    }
+
+    /*Navbar*/
+    .logo-responsive{
+        display: none;
     }
     .navbar-everything{
         background-color: #fdfcfb;
@@ -194,25 +213,50 @@ li{
         align-items: center;
         width: 100vw;
         height: 80px;
-        border: 2px solid teal; 
         position: fixed;
         bottom: 0;
+    }   
+     .links{
+        display: none;
     }
-    .d-flex{
-        padding: 0;
-        border: 2px solid purple;
-    }
-    .nav, .flex-column, .nav-pills, .me-3{
-        margin: 0;
+    .d-flex.align-items-start{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 100%;
-        display: flex !important;
-        flex-direction: row !important;
-        border: 2px solid yellow;
     }
-    .d-flex{
-        display: flex !important;
+
+    .nav.flex-column.nav-pills.me-3{
+        width: 100%;
+        display: flex;
         flex-direction: row !important;
+        justify-content: space-between;
+    }
+ 
+    .nav-link{
+        width: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /*Profiel*/
+    .profiel-container{
+        width: 100%;
+        margin: 0 0 94px 0;
+        padding: 16px;
+    }
+
+    h1{
+        margin: 40px 0 24px 0px;
+    }
+
+    .details-container{
         padding: 0;
-        border: 2px solid purple;
+        flex-direction: column;
     }
+    .btn-dark{
+        margin: 40px 0 0;
+    }
+
 }
