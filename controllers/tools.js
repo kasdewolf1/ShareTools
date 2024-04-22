@@ -38,7 +38,7 @@ exports.getAllProducts = (req, res) => {
         }
 
         // Render de product view (product.hbs) met de opgehaalde producten
-        res.render('product', { products: results });
+        res.render('indexloggedin', { products: results });
     });
 };
 
