@@ -130,8 +130,15 @@ h1{
 }
 
 
-
-
+/*Account Bewerken*/
+.account-info-change{
+    border: 2px solid rgb(212, 212, 106);
+    width: 100%;
+}
+.form-floating{
+    border: 2px solid pink;
+    width: 100%;
+}
 
 @media screen and (max-width: 1200px){
     .details-container{
