@@ -2,6 +2,7 @@ body{
     margin: 0;
     padding: 0;
     background-color: #f3f0f0;
+    color: #333333;
     font-family: "Inter", sans-serif;
 }
 
@@ -66,6 +67,8 @@ body{
     flex-direction: row;
 }
 
+
+
 /*Mijn Account*/
 .account-container{
     margin: 80px 104px 0px 328px;
@@ -74,39 +77,26 @@ body{
     border-radius: 16px;
     display: flex;
     flex-direction: column;
-    border: 2px solid red;
     padding: 40px;
 }
 
 .details-container{
-    border: 2px solid rgb(47, 198, 47);
     display: flex;
-    
+    margin: 0 72px 163px;
+}
+.buttons-up{
+    display: flex;
 }
 
-.account-info{
-    border: 2px solid yellow;
-}
-
-.info-label{
-    font-size: 14px;
-    margin-bottom: 8px;
-}
-
-.info-actual{
-    font-weight: 600;
-}
-
-.account-photo{
-    width: 184px;
-    height: 184px;
-}
 .btn-dark{
     background-color: #333333;
     color: #FDFCFB;
-    margin: 0 72px 0;
+    margin-left: auto; 
+    margin-right: 0;
+    width: 108px;
     font-weight: 500;
     padding: 8px 0;
+    border-radius: 8px;
 }
 
 .btn-terug{
@@ -118,18 +108,43 @@ body{
     color: #333333;
 }
 
+h1{
+    margin: 0 0 100px 72px;
+    font-weight: 600;
+}
+
+.account-photo{
+    width: 184px;
+    height: 184px;
+    margin-right: 40px;
+}
+
+.info-label{
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.info-actual{
+    font-weight: 600;
+}
+
+
+
 
 
 @media screen and (max-width: 1200px){
     .details-container{
         padding: 24px 72px 80px;
+        margin: 0 72px 80px;
         display: flex;
         flex-direction: column;
+        align-items: center;
+
     }
-    .toolfoto{
-        width: 100%;
-        min-width: 300px;
-        margin: 0 3.7% 40px 0;
+    .account-photo{
+        width: 184px;
+        height: 184px;
+        margin: 0 0 40px 0;
     }
 }
 
@@ -146,15 +161,7 @@ body{
         margin: 32px 0px 72px;
         width: 40px;
         height: auto;
-    }
-    .profiel-container{
-        margin: 80px 104px 0px 144px;
-    }
-    .toolfoto{
-        width: 100%;
-        min-width: 100%;
-        margin: 0 3.7% 40px 0;
-    }
+    }    
     .links{
         opacity: 0;
         display: none;
@@ -166,6 +173,11 @@ body{
         justify-content: center;
     }
 
+
+    .account-container{
+        margin: 80px 104px 0px 144px;
+        width: 71.4%;
+    }
 }
 
 
@@ -217,8 +229,8 @@ body{
         justify-content: center;
     }
 
-    /*Profiel*/
-    .profiel-container{
+    /*Account*/
+    .account-container{
         width: 100%;
         margin: 0 0 94px 0;
         padding: 16px;
@@ -229,11 +241,13 @@ body{
     }
 
     .details-container{
-        padding: 0;
+        margin: 0;
         flex-direction: column;
     }
+
     .btn-dark{
-        margin: 40px 0 0;
+        margin-left: auto; 
+        margin-right: 0;
     }
     .icons{
         width: 24px;
