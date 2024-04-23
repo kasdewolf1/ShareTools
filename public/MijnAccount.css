@@ -117,7 +117,8 @@ h1{
 .account-photo{
     width: 184px;
     height: 184px;
-    margin-right: 40px;
+    margin: 0 40px 24px 0;
+    border-radius: 100px
 }
 
 .info-label{
@@ -132,13 +133,68 @@ h1{
 
 /*Account Bewerken*/
 .account-info-change{
-    border: 2px solid rgb(212, 212, 106);
     width: 100%;
+
 }
 .form-floating{
-    border: 2px solid pink;
-    width: 100%;
+    width: 100%;    
+    margin: 0 0 8px 0;
 }
+
+.account-photo-change{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-right: 40px;
+}
+
+.photo-change{
+    width: 184px;
+    height: 184px;
+    margin-bottom: 40px;
+    border-radius: 100px;
+}
+.upload-btn:hover{
+    background-color: #333333;
+    color: #FDFCFB;
+}
+
+.upload-btn{
+   display: flex;    
+   border-radius: 8px;
+   border: 2px solid #333333;
+   background-color: #FDFCFB;
+   color: #333333;
+   padding: 10px;
+   font-weight: 600;
+   cursor: pointer;
+   transition: ease-in-out 0.3s;
+}
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 72px 0;
+    gap: 40px;
+}
+.opslaan-btn, .verwijder-btn{
+    width: 100%;
+    border-radius: 8px;
+    background-color: #333333;
+    color: #FDFCFB;
+    font-weight: 600;
+    padding: 8px;
+    border: none;
+    transition: ease-in-out 0.3s;
+}
+.verwijder-btn{
+    background-color: #BC3030;
+}
+.opslaan-btn:hover, .verwijder-btn:hover{
+    opacity: 70%;
+}
+
+
 
 @media screen and (max-width: 1200px){
     .details-container{

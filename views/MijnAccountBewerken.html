@@ -83,7 +83,13 @@
       <h1>Mijn account</h1>
 
       <section class="details-container">
-        <img src="/public/img/Mijn account.png" class="account-photo">
+        <section class="account-photo-change">
+          <img src="/public/img/Mijn account.png" id="image" height="200" class="photo-change">
+
+            <button id="chooseFile" class="upload-btn">Choose File</button>
+            <input type="file" id="fileInput" style="display: none;">
+        </section>
+
         <section class="account-info-change">
             <div class="form-floating">
                 <textarea
@@ -123,11 +129,36 @@
   
         </section>
       </section>
-      <input type="submit" value="Opslaan">
-      <input type="submit" value="Verwijderen">
+      <section class="buttons">
+        <input type="submit" value="Opslaan" class="opslaan-btn">
+        <input type="submit" value="Verwijderen" class="verwijder-btn">
+     </section>
     </div>
   </div>
 
 
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', init);
+    function init() {
+      var input = document.querySelector('input');
+      var reader = new FileReader();
+
+      // When the FileReader "load" event fires, update the image.
+      reader.onload = function (e) {
+      document.getElementById("image").src = e.target.result;
+      };
+      
+      document.getElementById('chooseFile').addEventListener('click', function() {
+      fileInput.click(); // Simulate a click on the file input element
+      });
+
+      // Listen for when the input changes.
+      input.addEventListener('change', onInputChange)
+      function onInputChange(e) {
+      reader.readAsDataURL(this.files[0]);
+      }
+    }
+  </script>
 </body>
 </html>
