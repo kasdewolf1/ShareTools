@@ -131,14 +131,15 @@ h1{
 }
 
 
-/*Account Bewerken*/
-.account-info-change{
-    width: 100%;
-
-}
-.form-floating{
+/*Mijn account bewerken*/
+.account-info-change, .form-floating{
     width: 100%;    
     margin: 0 0 8px 0;
+    padding: 0;
+}
+
+.form-control{
+    padding: 0;
 }
 
 .account-photo-change{
@@ -154,6 +155,7 @@ h1{
     margin-bottom: 40px;
     border-radius: 100px;
 }
+
 .upload-btn:hover{
     background-color: #333333;
     color: #FDFCFB;
@@ -183,7 +185,7 @@ h1{
     background-color: #333333;
     color: #FDFCFB;
     font-weight: 600;
-    padding: 8px;
+    padding: 12px;
     border: none;
     transition: ease-in-out 0.3s;
 }
@@ -198,7 +200,7 @@ h1{
 
 @media screen and (max-width: 1200px){
     .details-container{
-        padding: 24px 72px 80px;
+        padding: 24px 0px 80px;
         margin: 0 72px 80px;
         display: flex;
         flex-direction: column;
@@ -208,7 +210,13 @@ h1{
     .account-photo{
         width: 184px;
         height: 184px;
-        margin: 0 0 40px 0;
+    }
+    .account-photo-change{
+        margin-right: 0px;
+    }
+    .account-info-change{
+        width: 100%;
+        margin-top: 32px;
     }
 }
 
