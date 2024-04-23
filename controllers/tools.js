@@ -18,26 +18,26 @@ exports.addTool = (req, res) => {
                 console.log('Fout bij het toevoegen van de tool:', err);
                 return res.status(500).send('Er is een interne serverfout opgetreden bij het toevoegen van de tool');
             }
-
+                
             // Tool succesvol toegevoegd, render de juiste pagina
-            return res.render('Tooltoevoegen', {
+            return res.render('indexloggedin', {
                 message: 'Tool succesvol toegevoegd!'
             });
         }
     );
 };
 
+
 // Functie om alle producten op te halen en te renderen naar de view
 exports.getAllProducts = (req, res) => {
-    const query = 'SELECT tool_title, beschikbaarheid, beschrijving FROM tools';
-
+    const query = 'SELECT tool_title, status, beschrijving FROM tools';
+    console.log(query);
     db.query(query, (error, results) => {
         if (error) {
             console.error('Fout bij het ophalen van producten:', error);
             return res.status(500).send('Er is een interne serverfout opgetreden');
         }
-
-        // Render de product view (product.hbs) met de opgehaalde producten
+        console.log(results);
         res.render('indexloggedin', { products: results });
     });
 };
@@ -45,20 +45,22 @@ exports.getAllProducts = (req, res) => {
 // Functie om een specifiek product op te halen en te renderen naar de details view
 exports.getProductById = (req, res) => {
     const productId = req.params.id;
-    const query = 'SELECT tool_title, beschrijving FROM tools WHERE id = ?';
-
+    const query = 'SELECT tool_title, beschrijving, id FROM tools WHERE id = ?';
+    
     db.query(query, [productId], (error, results) => {
         if (error) {
             console.error('Fout bij het ophalen van het product:', error);
             return res.status(500).send('Er is een interne serverfout opgetreden');
         }
-
+        console.log(req.params.id);
         // Controleer of een product is gevonden
         if (results.length === 0) {
             return res.status(404).send('Product niet gevonden');
         }
-
+        console.log(req.params.id);
         // Render de product details view (productDetails.hbs) met het gevonden product
-        res.render('productDetails', { product: results[0] });
+        res.render('productinfo', { product: results });
+        res.render('indexloggedin', { product: results });
     });
 };
+
