@@ -38,14 +38,14 @@
 
 <div class="grid">
     {{#each products}}
-      <div class="product">
-        <div class="product-image"></div>
-        <div>{{title}}</div>
-        <a href="#" class="btnb">{{beschikbaarheid}}</a>
-        <a href="/products/{{id}}" class="btn">Zie meer</a>
-      </div>
+        <div class="product">
+            <h2>{{this.tool_title}}</h2>
+            <p>Beschikbaarheid: {{this.status}}</p>
+            <p>{{this.beschrijving}}</p>
+            <a href="/productinfo/{{id}}">Meer details</a>
+        </div>
     {{/each}}
-  </div>
+</div>
 
 </body>
 </html>

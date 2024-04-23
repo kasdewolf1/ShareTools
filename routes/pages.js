@@ -17,11 +17,11 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 router.get('/indexloggedin', (req, res) => {
-    res.render('indexloggedin');
+    // Render de indexloggedin view
+    res.render('indexloggedin', { message: 'main page geladen'}, { products: results[0] });
 });
-
 router.get('/productinfo', (req, res) => {
-    res.render('productinfo');
+    res.render('productinfo', { message: 'productinfo geladen'} ,{ product: results[0] });
 });
 
 router.get('/Tooltoevoegen', (req, res) => {
