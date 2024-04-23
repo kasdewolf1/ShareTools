@@ -1,34 +1,27 @@
+<!-- views/productDetails.hbs -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Info</title>
-    <link rel="stylesheet" href="/style3.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productdetails</title>
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <div class="navbar">
-        <div>Share Tools</div>
-        <div>
-          <a href="#">Lenen</a>
-          <a href="#">Help</a>
-          <a href="login.html">Inloggen</a>
-          <a href="sign-up.html">Aanmelden</a>
-        </div>
+  <main class="container">
+    <section class="card">
+      <figure class="image-placeholder"></figure>
+      <figcaption class="info-caption">Informatie</figcaption>
+    </section>
+    <aside class="details">
+      <h1>{{product.title}}</h1>
+      <p>{{product.beschrijving}}</p>
+      <div class="buttons">
+        <button type="button">LEEN</button>
+        <button type="button">BERICHT</button>
       </div>
-      <main class="container">
-        <section class="card">
-          <figure class="image-placeholder"></figure>
-          <figcaption class="info-caption">Informatie</figcaption>
-        </section>
-        <aside class="details">
-          <h1>Boormachine</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <div class="buttons">
-            <button type="button">LEEN</button>
-            <button type="button">BERICHT</button>
-          </div>
-        </aside>
-      </main>
+    </aside>
+  </main>
 </body>
 </html>
