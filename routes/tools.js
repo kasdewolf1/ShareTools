@@ -1,12 +1,12 @@
 const express = require('express');
-const toolsController = require('../controllers/tools');
 const router = express.Router();
+const toolsController = require('../controllers/tools');
 
-router.get('/tools', toolsController.viewTools);
-router.get('/tools/add', toolsController.addToolsForm);
-//router.post('/tools/add', toolsController.addTools);
-router.get('/tools/edit/:id', toolsController.editToolForm);
-//router.post('/tools/edit/:id', toolsController.editTool);
-router.get('/tools/delete/:id', toolsController.deleteTool);
+// Define the POST route for adding a tool
+router.post('/addTool', toolsController.addTool);
+//router.get('/products', toolsController.getAllProducts);
+//router.get('/products/:id', toolsController.getProductById);
 
-//router.post('/tools/add', toolsController.addTool);
+module.exports = router;
+
+

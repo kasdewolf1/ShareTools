@@ -66,22 +66,44 @@ body{
     flex-direction: row;
 }
 
-
-/*Profiel content*/
-
-.profiel-container{
-    width: 71.4%;
-    height: 1%;
-    background-color: #fdfcfb;
+/*Mijn Account*/
+.account-container{
+    margin: 80px 104px 0px 328px;
+    background-color: #FDFCFB;
+    width: 56%;
     border-radius: 16px;
     display: flex;
     flex-direction: column;
-    margin: 80px 104px 0px 328px;
+    border: 2px solid red;
     padding: 40px;
 }
 
+.details-container{
+    border: 2px solid rgb(47, 198, 47);
+    display: flex;
+    
+}
+
+.account-info{
+    border: 2px solid yellow;
+}
+
+.info-label{
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.info-actual{
+    font-weight: 600;
+}
+
+.account-photo{
+    width: 184px;
+    height: 184px;
+}
 .btn-dark{
     background-color: #333333;
+    color: #FDFCFB;
     margin: 0 72px 0;
     font-weight: 500;
     padding: 8px 0;
@@ -96,71 +118,6 @@ body{
     color: #333333;
 }
 
-h1{
-    margin-left: 72px;
-    font-weight: 600;
-}
-
-.details-container{
-    padding: 24px 72px 80px;
-    display: flex;
-    flex-direction: row;
-}
-
-.toolfoto{
-    width: 60%;
-    height: 55%;
-    margin: 0 3.7% 0 0;
-    border-radius: 16px;
-    box-shadow: 0 0 20px #33333323;
-}
-
-.tekst-info{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
-}
-
-ul{
-    padding: 0;
-}
-
-li{
-    list-style: none;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    padding: 4px 0;
-}
-.info-logos{
-    padding-top: 0;
-    margin: 0 8px 0 0;
-    width: 24px;
-}
-
-
-/*Tool Lenen*/
-input[type=text]{
-    border-radius: 8px;
-    padding: 12px;
-    width: 100%;
-    border: 2px solid #cdcdcd;
-}
-input[type=submit]{
-    width: 100%;
-    background-color: #333333;
-    color: #fdfcfb;
-    font-weight: 600;
-    padding: 10px;
-    border: none;
-    border-radius: 8px
-}
-label{
-    color: #333333;
-    font-weight: 600;
-    margin-bottom: 8px;
-}
 
 
 @media screen and (max-width: 1200px){
