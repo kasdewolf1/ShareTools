@@ -38,8 +38,9 @@ app.use('/auth', require('./routes/auth'));
 //app.use('/tools', require('./routes/tools'));
 app.use('/user', require('./routes/user'));
 app.use('/tools', require('./routes/tools'));
+
 //app.get('/tools', productController.getAllProducts);
-//app.get('/tools/:id', productController.getProductById);
+//app.get('/tools/:id', toolsController.getProductById);
 
 app.listen(5001, () => {
     console.log("Server started on Port 5001")

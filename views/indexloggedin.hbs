@@ -38,12 +38,14 @@
 
 <div class="grid">
     {{#each products}}
+    <li>
         <div class="product">
             <h2>{{this.tool_title}}</h2>
             <p>Beschikbaarheid: {{this.status}}</p>
             <p>{{this.beschrijving}}</p>
             <a href="/productinfo/{{id}}">Meer details</a>
         </div>
+    </li>
     {{/each}}
 </div>
 
