@@ -44,7 +44,7 @@ exports.getAllProducts = (req, res) => {
 
 // Functie om een specifiek product op te halen en te renderen naar de details view
 exports.getProductById = (req, res) => {
-    const productId = req.params.id;
+    const productId = req.tools.id;
     const query = 'SELECT tool_title, beschrijving, id FROM tools WHERE id = ?';
     
     db.query(query, [productId], (error, results) => {
@@ -52,12 +52,12 @@ exports.getProductById = (req, res) => {
             console.error('Fout bij het ophalen van het product:', error);
             return res.status(500).send('Er is een interne serverfout opgetreden');
         }
-        console.log(req.params.id);
+        console.log(req.tools.id);
         // Controleer of een product is gevonden
         if (results.length === 0) {
             return res.status(404).send('Product niet gevonden');
         }
-        console.log(req.params.id);
+        console.log(req.tools.id);
         // Render de product details view (productDetails.hbs) met het gevonden product
         res.render('productinfo', { product: results });
         res.render('indexloggedin', { product: results });
