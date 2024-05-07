@@ -7,50 +7,60 @@ const db = mysql.createConnection({
     database: process.env.DATABASE
 });
 
-
-// Controllermethode om alle gereedschappen op te halen
-exports.viewTools = (req, res) => {
-    res.render('tools', { tools }); // Render de toolsweergave met de lijst van gereedschappen
-};
-
-// Controllermethode om het formulier voor het toevoegen van een nieuw gereedschap te tonen
-exports.addToolsForm = (req, res) => {
-    res.render('addTool'); // Render het formulier voor het toevoegen van een nieuw gereedschap
-};
-
-// Controllermethode om een nieuw gereedschap toe te voegen
 exports.addTool = (req, res) => {
-    const { name, description } = req.body;
-    const newTool = { id: tools.length + 1, name, description };
-    tools.push(newTool);
-    res.redirect('/tools'); // Na toevoegen, doorverwijzen naar de toolsweergave
+    const { title, beschikbaarheid, afmeting, location, category, description } = req.body;
+
+    // Voer de databasequery uit om een tool toe te voegen
+    db.query('INSERT INTO tools SET ?',
+        { tool_title: title, status: beschikbaarheid, afmeting: afmeting, locatie: location, categorie: category, beschrijving: description }, 
+        (err, result) => {
+            if (err) {
+                console.log('Fout bij het toevoegen van de tool:', err);
+                return res.status(500).send('Er is een interne serverfout opgetreden bij het toevoegen van de tool');
+            }
+                
+            // Tool succesvol toegevoegd, render de juiste pagina
+            return res.render('indexloggedin', {
+                message: 'Tool succesvol toegevoegd!'
+            });
+        }
+    );
 };
 
-// Controllermethode om het bewerkingsformulier voor een gereedschap te tonen
-exports.editToolForm = (req, res) => {
-    const { id } = req.params;
-    const tool = tools.find(tool => tool.id === parseInt(id));
-    if (!tool) {
-        return res.status(404).send('Gereedschap niet gevonden');
-    }
-    res.render('editTool', { tool }); // Render het bewerkingsformulier met de gegevens van het gereedschap
+
+// Functie om alle producten op te halen en te renderen naar de view
+exports.getAllProducts = (req, res) => {
+    const query = 'SELECT tool_title, status, beschrijving FROM tools';
+    console.log(query);
+    db.query(query, (error, results) => {
+        if (error) {
+            console.error('Fout bij het ophalen van producten:', error);
+            return res.status(500).send('Er is een interne serverfout opgetreden');
+        }
+        console.log(results);
+        res.render('indexloggedin', { products: results });
+    });
 };
 
-// Controllermethode om een gereedschap bij te werken
-exports.editTool = (req, res) => {
-    const { id } = req.params;
-    const { name, description } = req.body;
-    const toolIndex = tools.findIndex(tool => tool.id === parseInt(id));
-    if (toolIndex === -1) {
-        return res.status(404).send('Gereedschap niet gevonden');
-    }
-    tools[toolIndex] = { id: parseInt(id), name, description };
-    res.redirect('/tools'); // Na bewerken, doorverwijzen naar de toolsweergave
+// Functie om een specifiek product op te halen en te renderen naar de details view
+exports.getProductById = (req, res) => {
+    const productId = req.params.id;
+    const query = 'SELECT tool_title, beschrijving, id FROM tools WHERE id = ?';
+    
+    db.query(query, [productId], (error, results) => {
+        if (error) {
+            console.error('Fout bij het ophalen van het product:', error);
+            return res.status(500).send('Er is een interne serverfout opgetreden');
+        }
+        console.log(req.params.id);
+        // Controleer of een product is gevonden
+        if (results.length === 0) {
+            return res.status(404).send('Product niet gevonden');
+        }
+        console.log(req.params.id);
+        // Render de product details view (productDetails.hbs) met het gevonden product
+        res.render('productinfo', { product: results });
+        res.render('indexloggedin', { product: results });
+    });
 };
 
-// Controllermethode om een gereedschap te verwijderen
-exports.deleteTool = (req, res) => {
-    const { id } = req.params;
-    tools = tools.filter(tool => tool.id !== parseInt(id));
-    res.redirect('/tools'); // Na verwijderen, doorverwijzen naar de toolsweergave
-};

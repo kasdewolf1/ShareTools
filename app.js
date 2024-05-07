@@ -22,9 +22,8 @@ app.use(express.urlencoded({ extended: false }));
 //zorg ervoor dat data als json komt
 app.use(express.json());
 
-
 app.set('view engine', 'hbs');
-
+app.set('views', __dirname + '/views');
 db.connect( (error) => {
     if(error) {
         console.log(error)
@@ -36,9 +35,11 @@ db.connect( (error) => {
 //define routes
 app.use('/', require('./routes/pages'));
 app.use('/auth', require('./routes/auth'));
-app.use('/tools', require('./routes/tools'));
+//app.use('/tools', require('./routes/tools'));
 app.use('/user', require('./routes/user'));
-
+app.use('/tools', require('./routes/tools'));
+//app.get('/tools', productController.getAllProducts);
+//app.get('/tools/:id', productController.getProductById);
 
 app.listen(5001, () => {
     console.log("Server started on Port 5001")

@@ -30,21 +30,21 @@
         </div>
         <div class="col-md-4">
             <div class="green-plus">
-                <span>+</span>
+                <span><a href="/Tooltoevoegen">+</a></span>
             </div>
         </div>
     </div>
 </div>
 
-  <div class="grid">
-    <div class="product">
-      <div class="product-image"></div>
-      <div>Product</div>
-      <a href="#" class="btnb">Beschikbaar</a>
-      <a href="/productinfo" class="btn">Zie meer</a>
-    </div>
-    
-  </div>
+<div class="grid">
+    {{#each products}}
+        <div class="product">
+            <h2>{{this.tool_title}}</h2>
+            <p>Beschikbaarheid: {{this.status}}</p>
+            <p>{{this.beschrijving}}</p>
+            <a href="/productinfo/{{id}}">Meer details</a>
+        </div>
+    {{/each}}
 </div>
 
 </body>
