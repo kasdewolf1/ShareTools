@@ -32,3 +32,4 @@ exports.getAllProducts = (req, res) => {
         res.render('indexloggedin', { products: results });
     });
 };
+
