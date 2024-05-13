@@ -44,7 +44,7 @@ exports.getAllProducts = (req, res) => {
 
 // Functie om een specifiek product op te halen en te renderen naar de details view
 exports.getProductById = (req, res) => {
-    const productId = req.tools.id;
+    const productId = req.DATABASE.tools.id;
     const query = 'SELECT tool_title, beschrijving, id FROM tools WHERE id = ?';
     
     db.query(query, [productId], (error, results) => {
