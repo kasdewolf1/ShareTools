@@ -1,0 +1,329 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #f3f0f0;
+    color: #333333;
+    font-family: "Inter", sans-serif;
+}
+
+/*Navbar*/
+.navbar-everything{
+    background-color: #fdfcfb;
+    box-shadow: 0px 0px 50px #33333377;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 288px;
+    height: 100vh; 
+    position: fixed;
+}
+.d-flex.align-items-start{
+    display: flex;
+    justify-content: center !important;
+    width: 90%;
+}
+
+.nav.flex-column.nav-pills.me-3{
+    width: 100%;
+}
+
+
+.nav-link{
+    color: #333333;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.nav-link:hover{
+    color: rgb(51, 51, 51, 80%);
+}
+.nav-link.active{
+    background-color: #f3f0f0 !important;
+    color: #333333 !important;
+    font-weight: 600;
+}
+.links{
+    margin-left: 16px;
+}
+
+.icons{
+    width: 24px;
+    height: 24px;
+}
+
+
+.logo-normal {
+    display: flex;
+    width: 150px;
+    margin: 32px 0px 72px;
+}
+
+.logo-responsive{
+    display: none;
+}
+
+.page-container{
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+/*Mijn Account*/
+.account-container{
+    margin: 80px 104px 0px 328px;
+    background-color: #FDFCFB;
+    width: 56%;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+}
+
+.details-container{
+    display: flex;
+    margin: 0 72px 163px;
+}
+.buttons-up{
+    display: flex;
+}
+
+.btn-dark{
+    background-color: #333333;
+    color: #FDFCFB;
+    margin-left: auto; 
+    margin-right: 0;
+    width: 108px;
+    font-weight: 500;
+    padding: 8px 0;
+    border-radius: 8px;
+}
+
+.btn-terug{
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 2px solid #CDCDCD;
+    background-color: #FDFCFB;
+    color: #333333;
+}
+
+h1{
+    margin: 0 0 100px 72px;
+    font-weight: 600;
+}
+
+.account-photo{
+    width: 184px;
+    height: 184px;
+    margin: 0 40px 24px 0;
+    border-radius: 100px
+}
+
+.info-label{
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.info-actual{
+    font-weight: 600;
+}
+
+
+/*Mijn account bewerken*/
+.account-info-change, .form-floating{
+    width: 100%;    
+    margin: 0 0 8px 0;
+    padding: 0;
+}
+
+.form-control{
+    padding: 0;
+}
+
+.account-photo-change{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-right: 40px;
+}
+
+.photo-change{
+    width: 184px;
+    height: 184px;
+    margin-bottom: 40px;
+    border-radius: 100px;
+}
+
+.upload-btn:hover{
+    background-color: #333333;
+    color: #FDFCFB;
+}
+
+.upload-btn{
+   display: flex;    
+   border-radius: 8px;
+   border: 2px solid #333333;
+   background-color: #FDFCFB;
+   color: #333333;
+   padding: 10px;
+   font-weight: 600;
+   cursor: pointer;
+   transition: ease-in-out 0.3s;
+}
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 72px 0;
+    gap: 40px;
+}
+.opslaan-btn, .verwijder-btn{
+    width: 100%;
+    border-radius: 8px;
+    background-color: #333333;
+    color: #FDFCFB;
+    font-weight: 600;
+    padding: 12px;
+    border: none;
+    transition: ease-in-out 0.3s;
+}
+.verwijder-btn{
+    background-color: #BC3030;
+}
+.opslaan-btn:hover, .verwijder-btn:hover{
+    opacity: 70%;
+}
+
+
+
+@media screen and (max-width: 1200px){
+    .details-container{
+        padding: 24px 0px 80px;
+        margin: 0 72px 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+    .account-photo{
+        width: 184px;
+        height: 184px;
+    }
+    .account-photo-change{
+        margin-right: 0px;
+    }
+    .account-info-change{
+        width: 100%;
+        margin-top: 32px;
+    }
+}
+
+
+@media screen and (max-width: 900px){
+    .navbar-everything{
+        width: 104px;
+    }
+    .logo-normal{
+        display: none;
+    }
+    .logo-responsive{
+        display: block;
+        margin: 32px 0px 72px;
+        width: 40px;
+        height: auto;
+    }    
+    .links{
+        opacity: 0;
+        display: none;
+    }
+    .nav-link{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .account-container{
+        margin: 80px 104px 0px 144px;
+        width: 71.4%;
+    }
+}
+
+
+@media screen and (max-width: 700px){
+    body{
+        background-color: #fdfcfb;
+    }
+    .page-container{
+        display: flex;
+        flex-direction: column;
+    }
+
+    /*Navbar*/
+    .logo-responsive{
+        display: none;
+    }
+    .navbar-everything{
+        background-color: #fdfcfb;
+        box-shadow: 0px 0px 50px #33333377;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100vw;
+        height: 80px;
+        position: fixed;
+        bottom: 0;
+    }   
+     .links{
+        display: none;
+    }
+    .d-flex.align-items-start{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .nav.flex-column.nav-pills.me-3{
+        width: 100%;
+        display: flex;
+        flex-direction: row !important;
+        justify-content: space-around;
+    }
+ 
+    .nav-link{
+        width: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /*Account*/
+    .account-container{
+        width: 100%;
+        margin: 0 0 94px 0;
+        padding: 16px;
+    }
+
+    h1{
+        margin: 40px 0 24px 0px;
+    }
+
+    .details-container{
+        margin: 0;
+        flex-direction: column;
+    }
+
+    .btn-dark{
+        margin-left: auto; 
+        margin-right: 0;
+    }
+    .icons{
+        width: 24px;
+        height: 24px;
+    }
+
+}

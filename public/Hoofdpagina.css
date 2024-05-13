@@ -1,0 +1,154 @@
+body{
+    margin: 0;
+    padding: 0;
+    color: #333333;
+    overflow-x: hidden;
+}
+
+/*Navbar*/
+.navbar, .navbar-expand-lg, .bg-body-tertiary{
+    margin:0;
+    padding: 0;
+}
+.container-fluid{
+    background-color:#fdfcfb;
+    box-shadow: 0 0 50px #33333350;
+    padding: 32px 40px;
+    width: 100vw;
+}
+.btn-dark{
+    background-color: #333333;
+    color: #fdfcfb;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 8px 16px;
+    transition: ease-in-out 0.1s;
+}
+.btn-dark:hover{
+    background-color:#424649;
+}
+.btn-outline{
+    background-color:#FDFCFB;
+    color: #333333;
+    font-weight: 600;
+    border: 2px solid #333333;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 8px 16px;
+    transition: ease-in-out 0.1s;
+}
+.btn-outline:hover{
+    background-color:#F0F3F3;
+}
+.d-flex{
+    gap: 24px;
+}
+
+.page-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*Call To Action*/
+.cta-tekst{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    width: 86.2%;
+    border: 2px solid red;
+}
+
+h1{
+    font-size: 80px;
+}
+
+p{
+    font-size: 18px;
+    margin: 24px 0 38px;
+}
+.cta-achtergrond{
+    margin-top: 40px;
+    width: 100%;
+    height: 25%;
+}
+
+/*Proces*/
+.proces-uitleg{
+    margin: 80px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 86.2%;
+    border: 2px solid red;
+}
+.cards-total{
+    display: flex;
+    justify-content: space-between;    
+    gap: 40px;
+}
+.card{
+    width: 48.4%;
+    min-height: 224px;
+    background-color: #f3f0f0;
+    color: #333333;
+    padding: 40px;
+    box-shadow: 0 0 10px #33333342;
+    border: none;
+}
+h3{
+    font-size: 40px;
+    margin-bottom: 40px;
+}
+
+/*Functie uitleg*/
+.functies-uitleg{
+    display: flex;
+    justify-content: center;
+    margin-top: 120px;
+    width: 86.2%;
+    gap: 3%;
+    border: 2px solid red;
+}
+.beschrijving-achtergrond{
+    width: 65%;
+    height: 15%;
+}
+
+@media screen and (max-width: 1000px) {
+    .functies-uitleg{
+        flex-direction: column;
+    }
+    .beschrijving-achtergrond{
+        width: 100%;
+        height: 100%;
+        margin-bottom: 40px;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .cards-total{
+        flex-direction: column;
+    }
+    .card{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:441px){
+    .container-fluid{
+        padding: 24px;
+    }
+    h1{
+        font-size: 40px;
+    }
+    .card{
+        padding: 16px;
+    }
+}

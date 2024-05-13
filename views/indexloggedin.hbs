@@ -4,13 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gereedschap App</title>
-<script src="script.js" defer></script>
 <link rel="stylesheet" href="/style2.css">
 </head>
 <body>
-  <div class="popup-container" id="reminderPopup">
-    <p>Herinnering: Breng alsjeblieft het geleende item terug!</p>
-</div>
 <div class="navbar">
   <div>Share Tools</div>
   <div>
@@ -30,22 +26,37 @@
         </div>
         <div class="col-md-4">
             <div class="green-plus">
-                <span>+</span>
+                <span><a href="/Tooltoevoegen">+</a></span>
             </div>
         </div>
     </div>
 </div>
 
-  <div class="grid">
-    <div class="product">
-      <div class="product-image"></div>
-      <div>Product</div>
-      <a href="#" class="btnb">Beschikbaar</a>
-      <a href="/productinfo" class="btn">Zie meer</a>
-    </div>
-    
-  </div>
+<div id="successMessage" style="align-items: center; color: white; justify-content: center; display: flex; background-color: green;">
+    {{ message }}
 </div>
 
+<div class="grid">
+    {{#each products}}
+        <div class="product">
+            <h2>{{title}}</h2>
+            <p>Beschikbaarheid: {{status}}</p>
+            <p>{{beschrijving}}</p>
+        </div>
+    {{/each}}
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // JavaScript om bericht na 3 seconden te verbergen
+    $(document).ready(function() {
+        // Verberg het succesbericht na 3 seconden
+        setTimeout(function() {
+            $('#successMessage').fadeOut('slow');
+        }, 3000); // 3000 milliseconden = 3 seconden
+    });
+</script>
+
+<script src="script.js" defer></script>
 </body>
 </html>

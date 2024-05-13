@@ -2,7 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.render('index');
+    res.render('Hoofdpagina');
+});
+
+router.get('/Hoofdpagina', (req, res) => {
+    res.render('Hoofdpagina');
 });
 
 router.get('/register', (req, res) => {
@@ -13,11 +17,20 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 router.get('/indexloggedin', (req, res) => {
-    res.render('indexloggedin');
+    // Render de indexloggedin view
+    res.render('indexloggedin', { message: 'main page geladen'},);
+});
+router.get('/product', (req, res) => {
+    res.render('product', { message: 'productinfo geladen'} ,);
 });
 
-router.get('/productinfo', (req, res) => {
-    res.render('productinfo');
+router.get('/Tooltoevoegen', (req, res) => {
+    res.render('Tooltoevoegen');
 });
+
+router.get('/ToolProfiel', (req, res) => {
+    res.render('ToolProfiel');
+});
+
 
 module.exports = router;

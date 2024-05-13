@@ -142,6 +142,19 @@
         border-radius: 16px;
         display: flex;
       }
+      .custom-btn-green {
+    background-color: #28a745; /* Groene achtergrondkleur */
+    color: #fff; /* Witte tekstkleur */
+    border: none; /* Geen rand */
+    padding: 10px 20px; /* Padding rond de tekst */
+    font-size: 16px; /* Tekstgrootte */
+    border-radius: 5px; /* Afgeronde hoeken */
+    cursor: pointer; /* Wijzig de cursor naar een pointer bij hover */
+}
+
+.custom-btn-green:hover {
+    background-color: #218838; /* Donkerder groene kleur bij hover */
+}
     </style>
   </head>
   <body>
@@ -156,18 +169,9 @@
             role="tablist"
             aria-orientation="vertical"
           >
-            <button
-              class="nav-link active"
-              id="v-pills-home-tab"
-              data-bs-toggle="pill"
-              data-bs-target="#v-pills-home"
-              type="button"
-              role="tab"
-              aria-controls="v-pills-home"
-              aria-selected="true"
-            >
-              Home
-            </button>
+            <button class="nav-link active" type="button">
+    <a href="/indexloggedin">Home</a>
+</button>
             <button
               class="nav-link"
               id="v-pills-profile-tab"
@@ -298,6 +302,7 @@
           </div>
         </div>
       </nav>
+<<<<<<<< HEAD:views/Meldingen.html
       
 
       <div class="tool-toevoegen-alles">
@@ -323,5 +328,66 @@
             </div>
           </div>
         </div>
+========
+    
+      <form action="/tools/addTool" method="POST">
+        <div class="row">
+            <div>
+                <h1>Gereedschap uploaden:</h1>
+                <img src="3.images/klauwhamer.jpeg" alt="Klauwhamer" />
+                <h1>Afmetingen</h1>
+                <div class="form-floating">
+                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="afmetingen">
+                        <option value="Klein/Groot">Klein/Groot</option>
+                        <option value="Klein">Klein</option>
+                        <option value="Groot">Groot</option>
+                    </select>
+                    <label for="floatingSelect">Afmetingen</label>
+                </div>
+            </div>
+
+            <div>
+                <h1>Gereedschap status</h1>
+                <div class="form-floating">
+                    <select class="form-select" id="floatingSelectStatus" aria-label="Floating label select example" name="beschikbaarheid">
+                        <option value="Huidige status">Huidige status</option>
+                        <option value="Beschikbaar">Beschikbaar</option>
+                        <option value="Niet beschikbaar">Niet beschikbaar</option>
+                    </select>
+                    <label for="floatingSelectStatus">Gereedschap status</label>
+                </div>
+
+                <h1>Title Tool</h1>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingInputTitle" name="title" placeholder="Titel Tool">
+                    <label for="floatingInputTitle">Titel Tool</label>
+                </div>
+
+                <h2>Categorie</h2>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingInputCategory" name="category" placeholder="Categorie">
+                    <label for="floatingInputCategory">Categorie</label>
+                </div>
+
+                <h2>Locatie</h2>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingInputLocation" name="location" placeholder="Locatie">
+                    <label for="floatingInputLocation">Locatie</label>
+                </div>
+
+                <h2>Beschrijving</h2>
+                <div class="form-floating">
+                    <textarea class="form-control" id="floatingTextarea" name="description" placeholder="Beschrijving" style="height: 100px"></textarea>
+                    <label for="floatingTextarea">Beschrijving</label>
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" class="btn custom-btn-green">Verzenden</button>
+            </div>
+        </div>
+    </form>
+      </div>
+    </div>
+>>>>>>>> origin/paul:views/Tooltoevoegen.hbs
   </body>
 </html>
