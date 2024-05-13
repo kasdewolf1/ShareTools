@@ -33,3 +33,8 @@ exports.getAllProducts = (req, res) => {
     });
 };
 
+
+
+
+
+    
