@@ -1,7 +1,6 @@
 const express = require('express');
 const mysql = require("mysql");
 const db = require('./db');
-require('dotenv').config()
 const path = require('path');
 const app = express();
 const toolsRouter = require('./routes/tools');
