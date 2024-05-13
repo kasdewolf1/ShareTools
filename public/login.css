@@ -6,33 +6,30 @@ body{
     color: #333333;
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
 }
 
 .login-everything{
     background-color: #FDFCFB;
-    border: 2px solid green;
-    border-radius: 24px; /* Dit zorgt voor ronde randen */
-    height: 120%;
-    width: 86%;
-    padding: 40px;
-    gap: 3.2%;
+    border: 2px solid rgb(137, 165, 137);
+    border-radius: 24px;
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: auto auto;
+    height: 75%;
+    width: 86%;
+    margin: 7% 0 0;
 }
+
 
  /* Stijl voor het formulier */
  form {
-    border: 2px solid red;
-    padding: 0 18% 0 12%;
-    height: 100%;
+    border: 2px solid red;   
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .logo{
-    border-radius: 200;
     height:56px;
     width: auto;
     position: relative;
@@ -40,24 +37,22 @@ body{
 
 h1{
     color: #333333;
-    font-size: 40px;
-    font-weight: 600;
-    margin: 40px 0 0;
     border: 2px solid red;
 }
 
 p{
     color: #898989;
-    margin-bottom: 40px;
     border: 2px solid pink;
 }
 
 label{
     width: 100%;
     color: #333333;
-    font-weight: 600;
     border: 2px solid purple;
-    display: flex;
+}
+
+.filler-photo{
+    border: 2px solid blueviolet;
 }
 
 
@@ -78,7 +73,6 @@ input[type="submit"] {
     background-color: #333333;
     color: #FDFCFB;
     padding: 16px 0;
-    margin: 120px 0 0;
     border: none;
     border-radius: 8px; /* Ook hier kun je ronde randen toevoegen */
     cursor: pointer;
@@ -88,10 +82,7 @@ input[type="submit"] {
 
 
 
-.filler-photo{
-    height: 100%;
-    border: 2px solid green;
-}
+
 
 /* Stijl voor de foutmeldingen */
 .error {
