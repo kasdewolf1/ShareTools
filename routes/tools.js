@@ -7,6 +7,6 @@ router.post('/addTool', toolsController.addTool);
 
 // Define the GET route for retrieving all products
 router.get('/products', toolsController.getAllProducts);
-router.get('/products/:id', toolsController.getProductById);
+//router.get('/products/:id', toolsController.getProductById);
 
 module.exports = router;
