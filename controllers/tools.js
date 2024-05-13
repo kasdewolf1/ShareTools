@@ -12,7 +12,7 @@ exports.addTool = (req, res) => {
             console.error('Fout bij het toevoegen van de tool:', err);
             return res.status(500).send('Er is een interne serverfout opgetreden bij het toevoegen van de tool');
         }
-        
+
         // Stuur een redirect naar /products na succesvol toevoegen
         res.redirect('/products');
     });
@@ -28,29 +28,7 @@ exports.getAllProducts = (req, res) => {
             console.error('Fout bij het ophalen van producten:', error);
             return res.status(500).send('Er is een interne serverfout opgetreden');
         }
-    
-    const productId = req.params.id;
-    console.log('Product ID:', productId); // Debug-uitvoer
 
-    const query = 'SELECT tool_title, beschrijving, id FROM tools WHERE id = ?';
-
-    db.query(query, [productId], (error, results) => {
-        if (error) {
-            console.error('Fout bij het ophalen van het product:', error);
-            return res.status(500).send('Er is een interne serverfout opgetreden');
-        }
-        // Controleer of een product is gevonden
-        if (results.length === 0) {
-            return res.status(404).send('Product niet gevonden');
-        }
-        console.log(results[0]);
-        res.json(results[0]); // Stuur het eerste gevonden product als JSON-reactie
         res.render('indexloggedin', { products: results });
     });
 };
-
-
-
-
-
-    
