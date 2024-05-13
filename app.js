@@ -1,17 +1,11 @@
 const express = require('express');
 const mysql = require("mysql");
-const dotenv = require('dotenv');
+const db = require('./db');
+require('dotenv').config()
 const path = require('path');
 const app = express();
+const toolsRouter = require('./routes/tools');
 
-dotenv.config();
-
-const db = mysql.createConnection({
-    host: process.env.DATABASE_HOST,
-    user: process.env.DATABASE_USER,
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE
-});
 
 const publicDirectory = path.join(__dirname, './public');
 app.use(express.static(publicDirectory));
@@ -36,12 +30,12 @@ db.connect( (error) => {
 app.use('/', require('./routes/pages'));
 app.use('/auth', require('./routes/auth'));
 //app.use('/tools', require('./routes/tools'));
-app.use('/user', require('./routes/user'));
-app.use('/tools', require('./routes/tools'));
+app.use('/tools', toolsRouter);
 
-//app.get('/tools', productController.getAllProducts);
 //app.get('/tools/:id', toolsController.getProductById);
 
 app.listen(5001, () => {
     console.log("Server started on Port 5001")
 });
+
+exports.db = db;

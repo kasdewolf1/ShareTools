@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gereedschap App</title>
-<script src="script.js" defer></script>
+
 <link rel="stylesheet" href="/style2.css">
 </head>
 <body>
   <div class="popup-container" id="reminderPopup">
     <p>Herinnering: Breng alsjeblieft het geleende item terug!</p>
-</div>
+  </div> <!-- Add this line -->
 <div class="navbar">
   <div>Share Tools</div>
   <div>
@@ -31,23 +31,32 @@
         <div class="col-md-4">
             <div class="green-plus">
                 <span><a href="/Tooltoevoegen">+</a></span>
+            
             </div>
         </div>
     </div>
 </div>
 
-<div class="grid">
-    {{#each products}}
-    <li>
-        <div class="product">
-            <h2>{{this.tool_title}}</h2>
-            <p>Beschikbaarheid: {{this.status}}</p>
-            <p>{{this.beschrijving}}</p>
-            <a href="/productinfo/{{id}}">Meer details</a>
-        </div>
-    </li>
-    {{/each}}
-</div>
+ <div  id="reminderPopup" style=" align-items: center; color: white; justify-content: center; display: flex; background-color: green;">
+        {{ message }}
+    </div>
 
+    <div class="grid">
+        {{#each productss}}
+        <li>
+            <div class="product">
+                <h2>{{tool_title}}</h2>
+                <p>Beschikbaarheid: {{status}}</p>
+                <p>{{beschrijving}}</p>
+                <a href="/productinfo/{{id}}">Meer details</a>
+            </div>
+        </li>
+        {{/each}}
+    </div>
+   
+
+
+
+<script src="script.js" defer></script>
 </body>
 </html>

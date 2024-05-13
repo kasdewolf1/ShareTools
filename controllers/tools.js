@@ -1,30 +1,23 @@
-const mysql = require('mysql');
-
-const db = mysql.createConnection({
-    host: process.env.DATABASE_HOST,
-    user: process.env.DATABASE_USER,
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE
-});
+const db = require('../db'); // Pad naar db.js
 
 exports.addTool = (req, res) => {
     const { title, beschikbaarheid, afmeting, location, category, description } = req.body;
 
     // Voer de databasequery uit om een tool toe te voegen
-    db.query('INSERT INTO tools SET ?',
-        { tool_title: title, status: beschikbaarheid, afmeting: afmeting, locatie: location, categorie: category, beschrijving: description }, 
-        (err, result) => {
-            if (err) {
-                console.log('Fout bij het toevoegen van de tool:', err);
-                return res.status(500).send('Er is een interne serverfout opgetreden bij het toevoegen van de tool');
-            }
-                
-            // Tool succesvol toegevoegd, render de juiste pagina
-            return res.render('indexloggedin', {
-                message: 'Tool succesvol toegevoegd!'
-            });
+    const sql = 'INSERT INTO tools (tool_title, status, afmeting, locatie, categorie, beschrijving) VALUES (?, ?, ?, ?, ?, ?)';
+    const values = [title, beschikbaarheid, afmeting, location, category, description];
+
+    db.query(sql, values, (err, result) => {
+        if (err) {
+            console.error('Fout bij het toevoegen van de tool:', err);
+            return res.status(500).send('Er is een interne serverfout opgetreden bij het toevoegen van de tool');
         }
-    );
+        
+        // Tool succesvol toegevoegd, render de juiste pagina
+        return res.render('indexloggedin', {
+            message: 'Tool succesvol toegevoegd!'
+        });
+    });
 };
 
 
@@ -38,9 +31,9 @@ exports.getAllProducts = (req, res) => {
             return res.status(500).send('Er is een interne serverfout opgetreden');
         }
         console.log(results);
-        res.render('indexloggedin', { products: results });
+        res.render('indexloggedin', { productss: results });
     });
-};
+}; 
 
 exports.getProductById = (req, res) => {
     
