@@ -13,10 +13,8 @@ exports.addTool = (req, res) => {
             return res.status(500).send('Er is een interne serverfout opgetreden bij het toevoegen van de tool');
         }
         
-        // Tool succesvol toegevoegd, render de juiste pagina
-        return res.render('indexloggedin', {
-            message: 'Tool succesvol toegevoegd!'
-        });
+        // Stuur een redirect naar /products na succesvol toevoegen
+        res.redirect('/products');
     });
 };
 

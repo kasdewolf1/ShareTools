@@ -49,56 +49,52 @@ exports.login = async (req, res) => {
     console.log(req.body);
     const { name, email, password } = req.body;
 
+    db.query('SELECT * FROM users WHERE name = ? OR email = ?', [name, name], async (error, results) => {
+        if (error) {
+            console.log(error);
+            return res.render('login', {
+                message: 'An error occurred'
+            });
+        }
 
-        db.query('SELECT * FROM users WHERE name = ? OR email = ?', [name, name], async (error, results) => {
-    if (error) {
-        console.log(error);
-        return res.render('login', {
-            message: 'An error occurred'
+        if (results.length === 0) {
+            return res.render('login', {
+                message: 'Invalid name or password'
+            });
+        }
+
+        // Controleer of de gevonden gebruiker het ingevoerde wachtwoord overeenkomt
+        const user = results.find(user => user.name === name || user.email === name); // Zoek naar gebruiker met overeenkomende naam of e-mail
+
+        if (!user) {
+            return res.render('login', {
+                message: 'Invalid name or password'
+            });
+        }
+
+        const isPasswordMatch = await bcrypt.compare(password, user.password);
+
+        if (!isPasswordMatch) {
+            return res.render('login', {
+                message: 'Invalid email or password'
+            });
+        }
+
+        // Genereer JWT-token voor de gebruiker
+        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+            expiresIn: process.env.JWT_EXPIRES_IN
         });
-    }
 
-    if (results.length === 0) {
-        return res.render('login', {
-            message: 'Invalid name or password'
-        });
-    }
+        // Configureer cookie-opties
+        const cookieOptions = {
+            expires: new Date(Date.now() + parseInt(process.env.JWT_EXPIRES_IN) * 24 * 60 * 60 * 1000), // Zorg ervoor dat expiresIn een numerieke waarde is
+            httpOnly: true
+        };
 
-    // Controleer of de gevonden gebruiker het ingevoerde wachtwoord overeenkomt
-    const user = results.find(user => user.name === name || user.email === name); // Zoek naar gebruiker met overeenkomende naam of e-mail
+        // Stel JWT-cookie in
+        res.cookie('jwt', token, cookieOptions);
 
-    if (!user) {
-        return res.render('login', {
-            message: 'Invalid name or password'
-        });
-    }
-
-    const isPasswordMatch = await bcrypt.compare(password, user.password);
-
-    if (!isPasswordMatch) {
-        return res.render('login', {
-            message: 'Invalid email or password'
-        });
-    }
-
-    // Genereer JWT-token voor de gebruiker
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
-        expiresIn: process.env.JWT_EXPIRES_IN
+        // Stuur een redirect naar /products na succesvol inloggen
+        return res.redirect('/products');
     });
-
-    // Configureer cookie-opties
-    const cookieOptions = {
-        expires: new Date(Date.now() + parseInt(process.env.JWT_EXPIRES_IN) * 24 * 60 * 60 * 1000), // Zorg ervoor dat expiresIn een numerieke waarde is
-        httpOnly: true
-    };
-
-    // Stel JWT-cookie in
-    res.cookie('jwt', token, cookieOptions);
-
-    // Render de ingelogde pagina met succesbericht en gebruikersnaam
-    return res.render('indexloggedin', {
-        message: 'Logged in successfully',
-        name: user.name
-    });
-});
-}
+};
