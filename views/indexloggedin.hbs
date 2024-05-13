@@ -4,13 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gereedschap App</title>
-<script src="script.js" defer></script>
 <link rel="stylesheet" href="/style2.css">
 </head>
 <body>
-  <div class="popup-container" id="reminderPopup">
-    <p>Herinnering: Breng alsjeblieft het geleende item terug!</p>
-</div>
 <div class="navbar">
   <div>Share Tools</div>
   <div>
@@ -36,16 +32,31 @@
     </div>
 </div>
 
+<div id="successMessage" style="align-items: center; color: white; justify-content: center; display: flex; background-color: green;">
+    {{ message }}
+</div>
+
 <div class="grid">
     {{#each products}}
         <div class="product">
-            <h2>{{this.tool_title}}</h2>
-            <p>Beschikbaarheid: {{this.status}}</p>
-            <p>{{this.beschrijving}}</p>
-            <a href="/productinfo/{{id}}">Meer details</a>
+            <h2>{{title}}</h2>
+            <p>Beschikbaarheid: {{status}}</p>
+            <p>{{beschrijving}}</p>
         </div>
     {{/each}}
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // JavaScript om bericht na 3 seconden te verbergen
+    $(document).ready(function() {
+        // Verberg het succesbericht na 3 seconden
+        setTimeout(function() {
+            $('#successMessage').fadeOut('slow');
+        }, 3000); // 3000 milliseconden = 3 seconden
+    });
+</script>
+
+<script src="script.js" defer></script>
 </body>
 </html>
