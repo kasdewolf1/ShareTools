@@ -23,7 +23,7 @@ exports.addTool = (req, res) => {
 
 // Functie om alle producten op te halen en te renderen naar de view
 exports.getAllProducts = (req, res) => {
-    const query = 'SELECT tool_title, status, beschrijving FROM tools';
+    const query = 'SELECT tool_title, status, beschrijving, id FROM tools';
     console.log(query);
     db.query(query, (error, results) => {
         if (error) {
@@ -31,7 +31,7 @@ exports.getAllProducts = (req, res) => {
             return res.status(500).send('Er is een interne serverfout opgetreden');
         }
         console.log(results);
-        res.render('indexloggedin', { productss: results });
+        res.render('indexloggedin', { products: results });
     });
 }; 
 

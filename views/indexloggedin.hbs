@@ -37,24 +37,35 @@
     </div>
 </div>
 
- <div  id="reminderPopup" style=" align-items: center; color: white; justify-content: center; display: flex; background-color: green;">
+ <div  id="successMessage" style=" align-items: center; color: white; justify-content: center; display: flex; background-color: green;">
         {{ message }}
     </div>
 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // JavaScript om bericht na 3 seconden te verbergen
+        $(document).ready(function() {
+            // Verberg het succesbericht na 3 seconden
+            setTimeout(function() {
+                $('#successMessage').fadeOut('slow');
+            }, 3000); // 3000 milliseconden = 3 seconden
+        });
+    </script>
+
     <div class="grid">
-        {{#each productss}}
-        <li>
+        {{#each products}}
+        
             <div class="product">
                 <h2>{{tool_title}}</h2>
                 <p>Beschikbaarheid: {{status}}</p>
                 <p>{{beschrijving}}</p>
-                <a href="/productinfo/{{id}}">Meer details</a>
+               
             </div>
-        </li>
+        
         {{/each}}
     </div>
    
-
+ <a href="/productinfo/{{id}}">Meer details</a>
 
 
 <script src="script.js" defer></script>

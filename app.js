@@ -18,14 +18,6 @@ app.use(express.json());
 
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
-db.connect( (error) => {
-    if(error) {
-        console.log(error)
-    } else {
-        console.log("MySQL connected!")
-    }
-});
-
 //define routes
 app.use('/', require('./routes/pages'));
 app.use('/auth', require('./routes/auth'));
