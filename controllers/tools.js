@@ -29,7 +29,7 @@ exports.getAllProducts = (req, res) => {
             return res.status(500).send('Er is een interne serverfout opgetreden');
         }
     
-        res.render('indexloggedin', { products: results });
+        res.render('indexloggedin', { products: results, });
     });
 };
 
