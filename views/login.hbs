@@ -4,24 +4,36 @@
     <link rel="stylesheet" href="/login.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 <title>Ronde Balk in Formulier</title>
 </head>
 <body>
 
+<div class="login-everything">    
+    <form action="/auth/login" method="post">
+        <img class="logo" src="/img/LogoZonderTekst.png">
+        <h1>Inloggen</h1>
+        <p>Welkom terug. Vul de velden in om door te gaan.</p>
 
-<form action="/auth/login" method="post">
-    <img class="plaatje" src="/img/ShareToolsLogo.png">
+        <label for="name">Gebruikersnaam</label>
+          <input type="text" id="name" name="name" placeholder="Vul je gebruikersnaam in" required><br>
+
+        <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Vul je email in" required><br>
+
+        <label for="password">Wachtwoord</label>
+          <input type="password" id="password" name="password" placeholder="Vul je wachtwoord in" required>
+        
+        <input type="submit" value="Inloggen">
+        <div style="background-color: red; color: white; padding: 10px; font-weight: bold;">
+        {{ message }}
+        </div>
+    </form>
     
-    <p style="text-align: center;">Share Tools</p>
-    <p style="text-align: center;">Login</p>
-    <input type="text" id="name" name="name" placeholder="name" required>
-        <input type="email" id="email" name="email" placeholder="E-mailadres" required>
-    <input type="password" id="password" name="password" placeholder="Wachtwoord" required>
-    <input type="submit" value="Inloggen">
- <div style="background-color: red; color: white; padding: 10px; font-weight: bold;">
-    {{ message }}
+    <div>
+        <img src="/img/login.png" class="filler-photo" alt="photo">
+    </div> 
 </div>
-</form>
-
 </body>
 </html>
