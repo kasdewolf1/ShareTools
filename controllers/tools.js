@@ -4,7 +4,7 @@ exports.addTool = (req, res) => {
     const { title, beschikbaarheid, afmeting, location, category, description } = req.body;
 
     // Voer de databasequery uit om een tool toe te voegen
-    const sql = 'INSERT INTO tools (tool_title, status, afmeting, locatie, categorie, beschrijving) VALUES (?, ?, ?, ?, ?, ?)';
+    const sql = 'INSERT INTO tools (title, status, afmeting, locatie, categorie, beschrijving) VALUES (?, ?, ?, ?, ?, ?)';
     const values = [title, beschikbaarheid, afmeting, location, category, description];
 
     db.query(sql, values, (err, result) => {
@@ -13,29 +13,21 @@ exports.addTool = (req, res) => {
             return res.status(500).send('Er is een interne serverfout opgetreden bij het toevoegen van de tool');
         }
         
-        // Tool succesvol toegevoegd, render de juiste pagina
-        return res.render('indexloggedin', {
-            message: 'Tool succesvol toegevoegd!'
-        });
+        // Stuur een redirect naar /products na succesvol toevoegen
+        res.redirect('/products');
     });
 };
 
 
 // Functie om alle producten op te halen en te renderen naar de view
 exports.getAllProducts = (req, res) => {
-    const query = 'SELECT tool_title, status, beschrijving FROM tools';
+    const query = 'SELECT title, status, beschrijving, id FROM tools';
     console.log(query);
     db.query(query, (error, results) => {
         if (error) {
             console.error('Fout bij het ophalen van producten:', error);
             return res.status(500).send('Er is een interne serverfout opgetreden');
         }
-        console.log(results);
-        res.render('indexloggedin', { productss: results });
-    });
-}; 
-
-exports.getProductById = (req, res) => {
     
     const productId = req.params.id;
     console.log('Product ID:', productId); // Debug-uitvoer
@@ -53,7 +45,12 @@ exports.getProductById = (req, res) => {
         }
         console.log(results[0]);
         res.json(results[0]); // Stuur het eerste gevonden product als JSON-reactie
+        res.render('indexloggedin', { products: results });
     });
 };
+
+
+
+
 
     

@@ -7,6 +7,7 @@ const app = express();
 const toolsRouter = require('./routes/tools');
 
 
+
 const publicDirectory = path.join(__dirname, './public');
 app.use(express.static(publicDirectory));
 
@@ -18,18 +19,12 @@ app.use(express.json());
 
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
-db.connect( (error) => {
-    if(error) {
-        console.log(error)
-    } else {
-        console.log("MySQL connected!")
-    }
-});
-
 //define routes
+
 app.use('/', require('./routes/pages'));
 app.use('/auth', require('./routes/auth'));
 //app.use('/tools', require('./routes/tools'));
+app.use('/', toolsRouter);
 app.use('/tools', toolsRouter);
 
 //app.get('/tools/:id', toolsController.getProductById);
