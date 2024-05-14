@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<div class="login-everything">    
+<div class="login-everything">   
     <form action="/auth/login" method="post">
         <img class="logo" src="/img/LogoZonderTekst.png">
         <h1>Inloggen</h1>
@@ -26,9 +26,11 @@
           <input type="password" id="password" name="password" placeholder="Vul je wachtwoord in" required>
         
         <input type="submit" value="Inloggen">
-        <div style="background-color: red; color: white; padding: 10px; font-weight: bold; margin: 0;">
+        
+        <div style="background-color: #BC3030; color: white; padding: 10px; font-weight: bold; margin: 0;">
         {{ message }}
         </div>
+        <p style="margin-bottom: 0;">Heeft u nog geen account. Registreer hier.</p>
     </form>
     
         <img src="/img/login.png" class="filler-photo" alt="photo">
