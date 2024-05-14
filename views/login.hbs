@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="/login.css">
+    <link rel="stylesheet" href="/login-signup.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-<title>Ronde Balk in Formulier</title>
+<title>Share Tools</title>
+<link rel="icon" type="image/x-icon" href="/img/favicon-32x32.png">
 </head>
 <body>
 
-<div class="login-everything">   
+<div class="login-everything">           
+  <img src="/img/login.png" class="filler-photo" alt="photo">
+    
     <form action="/auth/login" method="post">
         <img class="logo" src="/img/LogoZonderTekst.png">
         <h1>Inloggen</h1>
@@ -26,16 +29,14 @@
           <input type="password" id="password" name="password" placeholder="Vul je wachtwoord in" required>
         
         <input type="submit" value="Inloggen">
-        
+
         <div style="background-color: #BC3030; color: white; padding: 10px; font-weight: bold; margin: 0;">
         {{ message }}
         </div>
         <p style="margin-bottom: 0;">Heeft u nog geen account. Registreer hier.</p>
     </form>
     
-        <img src="/img/login.png" class="filler-photo" alt="photo">
+
 </div>
-
-
 </body>
 </html>
