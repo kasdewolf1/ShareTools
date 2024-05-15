@@ -36,16 +36,7 @@
           text-align: center;
           margin: 20px 0;
         }
-        .grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-          gap: 20px;
-        }
-        .product {
-          border: 1px solid #ccc;
-          padding: 20px;
-          text-align: center;
-        }
+     
         .product-image {
           background-color: #000;
           width: 100%;
@@ -88,3 +79,35 @@
           box-shadow: 0 2px 4px rgba(0,0,0,0.1);
           cursor: pointer;
       }
+
+      
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .product {
+        position: relative;
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+
+    .delete-button {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+    }
+
+    .delete-btn {
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .delete-btn:hover {
+        background-color: darkred;
+    }
