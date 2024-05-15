@@ -1,5 +1,4 @@
 const express = require('express');
-const mysql = require("mysql");
 const db = require('./db');
 const path = require('path');
 const app = express();
