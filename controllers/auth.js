@@ -95,6 +95,57 @@ exports.login = async (req, res) => {
         res.cookie('jwt', token, cookieOptions);
 
         // Stuur een redirect naar /products na succesvol inloggen
-        return res.redirect('/products');
+        return res.redirect('/products' , 
+        { name: user.name,
+        email: user.email,
+        woonplaats: user.woonplaats,
+        }
+        );
+
+        name= user.name;
     });
 };
+
+exports.logout = (req, res) => {
+    // Verwijder de JWT-cookie bij uitloggen
+    res.clearCookie('jwt');
+    res.redirect('/login');
+};
+// Compare this snippet from controllers/auth.js:
+
+exports.updateUser = (req, res) => {
+    const { name, email, password, passwordConfirm, woonplaats, birthdate } = req.body;
+
+    db.query('SELECT email FROM users WHERE email = ?', [email], async (error, results) => {
+        if (error) {
+            console.log(error);
+            return res.render('mijnaccountbewerken', {
+                message: 'An error occurred'
+            });
+        }
+
+        if (results.length > 0) {
+            return res.render('mijnaccountbewerken', {
+                message: 'This email is already in use'
+            });
+        } else if (password !== passwordConfirm) {
+            return res.render('mijnaccountbewerken', {
+                message: 'Password Didn\'t Match!'
+            });
+        }
+
+        let hashedPassword = await bcrypt.hash(password, 8);
+
+        console.log(hashedPassword);
+
+        db.query('UPDATE users SET name = ?, email = ?, password = ?, woonplaats = ?, birthdate = ? WHERE id = ?', [name, email, hashedPassword, woonplaats, birthdate, req.user.id], (err, result) => {
+            if (err) {
+                console.log(err);
+            } else {
+                return res.render('mijnaccount', {
+                    message: 'User updated!'
+                });
+            }
+        });
+    });
+}
