@@ -12,7 +12,6 @@
   <div>
     <a href="#">Lenen</a>
     <a href="#">Help</a>
-    <a href="./mijnaccount">profiel</a>
     <a href="./login">{{name}}</a>
   </div>
 </div>
@@ -49,10 +48,12 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+    // JavaScript om bericht na 3 seconden te verbergen
     $(document).ready(function() {
+        // Verberg het succesbericht na 3 seconden
         setTimeout(function() {
             $('#successMessage').fadeOut('slow');
-        }, 3000);
+        }, 3000); // 3000 milliseconden = 3 seconden
     });
 </script>
 
