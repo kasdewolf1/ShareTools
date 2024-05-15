@@ -28,5 +28,8 @@ router.get('/Tooltoevoegen', (req, res) => {
     res.render('Tooltoevoegen');
 });
 
+router.get('/mijnaccount', (req, res) => {
+    res.render('mijnaccount');
+});
 
 module.exports = router;
