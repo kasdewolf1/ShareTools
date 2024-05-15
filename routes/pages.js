@@ -31,5 +31,9 @@ router.get('/Tooltoevoegen', (req, res) => {
 router.get('/mijnaccount', (req, res) => {
     res.render('mijnaccount');
 });
+router.get('/ToolProfiel', (req, res) => {
+    res.render('ToolProfiel');
+});
+
 
 module.exports = router;

@@ -1,19 +1,28 @@
-const mysql = require('mysql');
+const mysql = require('mysql2/promise');
 require('dotenv').config();
 
-const db = mysql.createConnection({
+// Maak een pool van databaseverbindingen
+const pool = mysql.createPool({
     host: process.env.DATABASE_HOST,
+    port: 3307,
     user: process.env.DATABASE_USER,
     password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE
+    database: process.env.DATABASE,
+    waitForConnections: true, // Sta wachten op verbindingen toe als ze op zijn
+    connectionLimit: 10, // Stel het maximale aantal gelijktijdige verbindingen in
+    queueLimit: 0 // Geen limiet voor wachtrijen
 });
 
-db.connect((err) => {
-    if (err) {
-        console.error('Fout bij verbinden met database:', err);
-        throw err; // Gooi een fout als de verbinding niet kan worden gemaakt
+// Test de databaseverbinding
+(async () => {
+    try {
+        const connection = await pool.getConnection();
+        connection.release(); // Geef de verbinding vrij als deze met succes is getest
+        console.log('Verbonden met de database');
+    } catch (error) {
+        console.error('Fout bij verbinden met database:', error);
+        process.exit(1); // Stop het proces bij een fout bij het verbinden met de database
     }
-    console.log('Verbonden met de database');
-});
+})();
 
-module.exports = db;
+module.exports = pool;

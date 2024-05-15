@@ -1,0 +1,121 @@
+body{
+    background-color: #F3F0F0;
+    margin: 0;
+    padding: 4% 0;
+    font-family: "Inter", sans-serif;
+    color: #333333;
+    display: flex;
+    justify-content: center;
+}
+
+.login-everything, .signup-everything{
+    background-color: #FDFCFB;
+    border-radius: 24px;
+    display: grid;
+    grid-template-columns: auto 50%;
+    width: 80%;
+    padding: 40px;
+    gap: 40px;
+    box-shadow: 0 0 50px rgb(55,55,55,8%);
+}
+
+.filler-photo{
+    height: 100%;
+    width: 100%;
+}
+
+
+/* Stijl voor het formulier */
+form {
+    padding: 0 11% 0 17%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo{
+    height:56px;
+    width: auto;
+    position: relative;
+}
+
+h1{
+    color: #333333;
+    font-size: 40px;
+    font-weight: 600;
+    margin: 40px 0 0;
+}
+
+p{
+    color: #898989;
+    margin-bottom: 40px;
+}
+
+label{
+    width: 100%;
+    color: #333333;
+    font-weight: 600;
+    display: flex;
+}
+
+
+/* Stijl voor de invoervelden */
+input[type="text"], input[type="email"], input[type="password"] {
+    font-size: 16px;
+    width: 100%;
+    padding: 16px;
+    margin: 8px 0;
+    border: 1px solid #CDCDCD;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+/* Stijl voor de verzendknop */
+input[type="submit"] {
+    width: 100%;
+    background-color: #333333;
+    color: #FDFCFB;
+    padding: 16px 0;
+    margin-top: 80px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+a{
+    color: #3FA85C;
+    text-decoration: none;
+    font-weight: 600;
+    transition: ease-in-out 0.2s;
+}
+
+a:hover{
+    color:#B2DCBE;
+}
+
+/* Stijl voor de foutmeldingen */
+.error {
+    color: #BC3030;
+}
+
+
+@media screen and (max-width: 900px){
+    .login-everything, .signup-everything{
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: none;
+
+    }
+    .filler-photo{
+        height: 200px;
+        border-radius: 24px;
+    }
+    form {
+        padding: 0 11% 0 11%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
