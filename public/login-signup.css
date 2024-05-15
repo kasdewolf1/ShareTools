@@ -6,7 +6,6 @@ body{
     color: #333333;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .login-everything, .signup-everything{
@@ -83,6 +82,17 @@ input[type="submit"] {
     cursor: pointer;
     font-weight: 600;
     font-size: 16px;
+}
+
+a{
+    color: #3FA85C;
+    text-decoration: none;
+    font-weight: 600;
+    transition: ease-in-out 0.2s;
+}
+
+a:hover{
+    color:#B2DCBE;
 }
 
 /* Stijl voor de foutmeldingen */
