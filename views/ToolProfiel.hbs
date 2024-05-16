@@ -92,10 +92,18 @@
 
           <section class="tekst-info">            
             <ul>
-              {{#each products}}
-                <li>{{locatie}}</li>
-                <li>Uitgeleend</li>
-              {{/each}}
+              <li><img src="img/GebruikersnaamLogo.png" class="info-logos">Gebruikersnaam</li>
+
+
+              {{#if locatie}}
+              <li><img src="img/LocatieLogo.png" class="info-logos">{{locatie}}</li>
+              {{/if}}
+
+              {{#if status}}
+              <li>{{status}}</li>
+              {{else}}
+              <li>Uitgeleend</li>
+              {{/if}}
             </ul>
             <br>
             <br>
@@ -107,6 +115,6 @@
       <button type="btn-dark" class="btn btn-dark">Bewerken</button>
     </div>
   </div>
-
+  
 </body>
 </html>
