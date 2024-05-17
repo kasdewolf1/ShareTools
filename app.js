@@ -1,15 +1,18 @@
 const express = require('express');
 const mysql = require("mysql");
 const db = require('./db');
+const hbs = require('hbs');
 require('dotenv').config()
 const path = require('path');
 const app = express();
 const toolsRouter = require('./routes/tools');
 
 
-
 const publicDirectory = path.join(__dirname, './public');
 app.use(express.static(publicDirectory));
+
+
+hbs.registerPartials(path.join(__dirname, 'views/partials'));
 
 
 //zorgt ervoor dat je data van forms kan pakken
