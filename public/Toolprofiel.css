@@ -68,8 +68,8 @@ body{
 }
 
 
-/*Profiel content*/
 
+/*Profiel content*/
 .profiel-container{
     width: 71.4%;
     height: 1%;
@@ -138,6 +138,12 @@ li{
     padding-top: 0;
     margin: 0 8px 0 0;
     width: 24px;
+}
+.status{
+    background-color: rgb(63, 168, 92, 20%);
+    color: #3FA85C;
+    padding: 2px 8px;
+    border-radius: 4px;
 }
 
 

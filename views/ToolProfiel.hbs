@@ -17,7 +17,7 @@
 
     <div class="profiel-container">
       <button class="btn-terug">🞀</button>
-      <h1>Tool Titel</h1>
+      <h1>{{title}}</h1>
 
       <section class="details-container">
         {{#if img}}
@@ -29,24 +29,22 @@
 
           <section class="tekst-info">            
             <ul>
-              <li><img src="img/GebruikersnaamLogo.png" class="info-logos">Gebruikersnaam</li>
-
+              {{#if user}}
+                <li><img src="img/GebruikersnaamLogo.png" class="info-logos">{{user}}</li>              
+              {{/if}}
 
               {{#if locatie}}
-              <li><img src="img/LocatieLogo.png" class="info-logos">{{locatie}}</li>
+                <li><img src="img/LocatieLogo.png" class="info-logos">{{locatie}}</li>
               {{/if}}
 
               {{#if status}}
-              <li>{{status}}</li>
-              {{else}}
-              <li>Uitgeleend</li>
+                <li><div class="status">{{status}}</div></li>
               {{/if}}
             </ul>
             <br>
             <br>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse viverra risus at nisl maximus pretium. Morbi at imperdiet sapien. Sed iaculis at urna dictum dignissim. Ut pharetra ante ut consectetur iaculis. In dolor massa, sollicitudin id dapibus et, imperdiet ut sem. Aliquam imperdiet ante quis tellus ultrices, quis maximus mauris tincidunt.</p>
+            <p>{{beschrijving}}</p>
           </section>
-
       </section>      
 
       <button type="btn-dark" class="btn btn-dark">Bewerken</button>

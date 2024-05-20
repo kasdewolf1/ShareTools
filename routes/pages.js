@@ -29,7 +29,7 @@ router.get('/Tooltoevoegen', (req, res) => {
 });
 
 router.get('/ToolProfiel', (req, res) => {
-    res.render('ToolProfiel');
+    res.render('ToolProfiel', { title: 'Hamer', user: 'Luca', locatie: 'Kast', status: 'Beschikbaar', beschrijving: 'Een beschrijving over de tool.'});
 });
 
 
