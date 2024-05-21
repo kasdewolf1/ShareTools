@@ -43,21 +43,23 @@
             <h2>{{title}}</h2>
             <p>Beschikbaarheid: {{status}}</p>
             <p>{{beschrijving}}</p>
+            <a href="/product/{{id}}" class="btn">Bekijk</a>
+             <div class="delete-button">
+                <button class="delete-btn" onclick="deleteProduct('{{id}}')">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </div>
         </div>
     {{/each}}
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    // JavaScript om bericht na 3 seconden te verbergen
     $(document).ready(function() {
-        // Verberg het succesbericht na 3 seconden
         setTimeout(function() {
             $('#successMessage').fadeOut('slow');
         }, 3000); // 3000 milliseconden = 3 seconden
     });
-</script>
 
-<script src="script.js" defer></script>
 </body>
 </html>
