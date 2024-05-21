@@ -96,13 +96,8 @@ exports.login = async (req, res) => {
 
         // Stuur een redirect naar /products na succesvol inloggen
         return res.redirect('/products' , 
-        { name: user.name,
-        email: user.email,
-        woonplaats: user.woonplaats,
-        }
+        
         );
-
-        name= user.name;
     });
 };
 
