@@ -45,6 +45,7 @@ exports.register = async (req, res) => {
     });
 };
 
+
 exports.login = async (req, res) => {
     console.log(req.body);
     const { name, email, password } = req.body;
@@ -95,6 +96,30 @@ exports.login = async (req, res) => {
         res.cookie('jwt', token, cookieOptions);
 
         // Stuur een redirect naar /products na succesvol inloggen
-        return res.redirect('/products');
+        return res.redirect('/tools/products');
     });
 };
+
+exports.isLoggedIn = async (req, res, next) => {
+    console.log(req.cookies);
+
+    if (req.cookies.jwt) {
+        jwt.verify(req.cookies.jwt, process.env.JWT_SECRET, (error, decodedToken) => {
+            if (error) {
+                console.error('JWT verification error:', error);
+                return res.redirect('/login');
+            }
+
+            console.log('Decoded JWT token:', decodedToken);
+            next();
+        });
+    } else {
+        res.redirect('/login');
+    }
+};
+
+exports.logout = (req, res) => {
+    res.cookie('jwt', '', { maxAge: 1 });
+    res.redirect('/login');
+};
+

@@ -1,29 +1,45 @@
-<!-- views/productDetails.hbs -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Productdetails</title>
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/toolinfo.css">
+  <!-- Voeg Handlebars.js toe -->
+  <script src="https://cdn.jsdelivr.net/npm/handlebars/dist/handlebars.min.js"></script>
+  
 </head>
 <body>
-  <main class="container">
+  <div class="navbar">
+  <div>Share Tools</div>
+  <div>
+    <a href="#">Lenen</a>
+    <a href="#">Help</a>
+    <a href="./login">{{name}}</a>
+  </div>
+</div>
+  <!-- Voeg een div toe om de gegevens weer te geven -->
+  <div class="container" id="tool-info"></div>
+
+
     <section class="card">
-      <figure class="image-placeholder"></figure>
-      <figcaption class="info-caption">Informatie</figcaption>
+       <img src="{{imageURL}}" alt="Tool Image">
     </section>
     <aside class="details">
-   <div class="product-details">
-    <h2>{{tool_title}}</h2>
-    <p>Beschrijving: {{beschrijving}}</p>
-  </div>
-      <div class="buttons">
-        <button type="button">LEEN</button>
-        <button type="button">BERICHT</button>
-      </div>
+        <div class="product-details">
+            <h2>{{product.title}}</h2>
+            <p>Beschrijving: {{product.beschrijving}}</p>
+            <p>Afmeting: {{product.afmeting}}</p>
+            <p>Locatie: {{product.locatie}}</p>
+            <p>Categorie: {{product.categorie}}</p>
+        </div>
+        <div class="buttons">
+            <button type="button">LEEN</button>
+            <button type="button">BERICHT</button>
+        </div>
     </aside>
-  </main>
+
+
+
 </body>
 </html>

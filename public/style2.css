@@ -1,8 +1,4 @@
-        body {
-          background-color: #f2f2f2;
-          margin: 0;
-          font-family: Arial, sans-serif;
-        }
+
         .popup-container {
         position: fixed;
         top: 70px;
@@ -81,33 +77,51 @@
       }
 
       
-    .grid {
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4; /* Lichtere achtergrondkleur voor de body */
+      }
+      
+      .grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 20px;
-    }
-
-    .product {
-        position: relative;
-        border: 1px solid #ccc;
-        padding: 10px;
-    }
-
-    .delete-button {
-        position: absolute;
-        bottom: 5px;
-        right: 5px;
-    }
-
-    .delete-btn {
-        background-color: red;
-        color: white;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Creëer een grid met automatische kolombreedte van minimaal 300px */
+        gap: 20px; /* Ruimte tussen de grid-items */
+      }
+      
+      .product {
+        border: 1px solid #ccc; /* Rand rond elk product */
+        padding: 20px; /* Ruimte binnen elk product */
+        border-radius: 10px; /* Maak de hoeken van het productblok afgerond */
+        background-color: #e0e0e0; /* Iets donkerdere achtergrondkleur voor de productblokken */
+      }
+      
+      .product h2 {
+        margin-top: 0; /* Verwijder bovenmarge van de titel */
+      }
+      
+      .product p {
+        margin-bottom: 10px; /* Voeg ondermarge toe aan de alinea's */
+      }
+      
+      .product .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+      }
+      
+      .delete-button {
+        text-align: right; /* Plaats de delete-knop aan de rechterkant */
+      }
+      
+      .delete-btn {
+        background-color: transparent;
         border: none;
-        padding: 5px 10px;
-        border-radius: 5px;
         cursor: pointer;
-    }
-
-    .delete-btn:hover {
-        background-color: darkred;
-    }
+      }
+      
+      .delete-btn:hover {
+        color: red; /* Verander de kleur van de knop bij hover */
+      }

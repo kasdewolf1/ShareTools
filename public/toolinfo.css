@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar {
+    background-color: #007bff; /* Blauwe kleur voor de navigatiebalk */
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 20px auto;
+  }
+  
+  .card {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .image-placeholder {
+    width: 100%;
+    height: 200px; /* Aanpassen aan gewenste grootte */
+    background-color: #ddd; /* Grijze achtergrondkleur */
+    border-radius: 5px;
+    display: flex;
+    justify-content: center; /* Plaats het plaatje in het midden */
+    align-items: center; /* Plaats het plaatje in het midden */
+  }
+  
+  .info-caption {
+    margin: 10px 0;
+    font-weight: bold;
+  }
+  
+  .product-details {
+    margin-bottom: 20px;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  button {
+    background-color: #007bff; /* Blauwe kleur voor de knoppen */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #0056b3; /* Donkerder blauwe kleur bij hover */
+  }
+  
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
