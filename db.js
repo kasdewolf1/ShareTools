@@ -2,7 +2,7 @@ const mysql = require('mysql2/promise');
 require('dotenv').config();
 
 // Maak een pool van databaseverbindingen
-const pool = mysql.createPool({
+const db = mysql.createPool({
     host: process.env.DATABASE_HOST,
     port: 3307,
     user: process.env.DATABASE_USER,
@@ -16,7 +16,7 @@ const pool = mysql.createPool({
 // Test de databaseverbinding
 (async () => {
     try {
-        const connection = await pool.getConnection();
+        const connection = await db.getConnection();
         connection.release(); // Geef de verbinding vrij als deze met succes is getest
         console.log('Verbonden met de database');
     } catch (error) {
@@ -25,4 +25,4 @@ const pool = mysql.createPool({
     }
 })();
 
-module.exports = pool;
+module.exports = db;
