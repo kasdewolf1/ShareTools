@@ -125,3 +125,29 @@
       .delete-btn:hover {
         color: red; /* Verander de kleur van de knop bij hover */
       }
+      .product img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+      
+      /* Media query voor schermen kleiner dan 768px (bijvoorbeeld smartphones) */
+      @media (max-width: 767px) {
+        .product img {
+          height: auto; /* Laat de hoogte automatisch schalen voor kleinere schermen */
+        }
+      }
+      
+      /* Media query voor schermen tussen 768px en 1024px (bijvoorbeeld tablets) */
+      @media (min-width: 768px) and (max-width: 1024px) {
+        .product img {
+          width: auto; /* Laat de breedte automatisch schalen voor medium-sized schermen */
+          height: 100%;
+        }
+      }
+      
+      /* Media query voor schermen groter dan 1024px (bijvoorbeeld desktops) */
+      @media (min-width: 1025px) {
+        /* Je kunt hier extra aanpassingen maken indien nodig */
+      }
