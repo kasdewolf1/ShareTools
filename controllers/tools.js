@@ -101,7 +101,7 @@ exports.getToolById = (req, res) => {
       const imageURL = `/uploads/${results[0].image}`;
 
       // Render de HTML met de toolgegevens en de afbeeldings-URL
-      res.render('productinfo', { product: results[0], imageURL: imageURL });
+      res.render('/tools/productinfo', { product: results[0], imageURL: imageURL });
   });
 };
 
