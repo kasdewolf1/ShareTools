@@ -1,4 +1,4 @@
-const mysql = require('mysql');
+
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const db = require('../db');
@@ -44,7 +44,6 @@ exports.register = async (req, res) => {
         });
     });
 };
-
 
 exports.login = async (req, res) => {
     console.log(req.body);
@@ -96,30 +95,52 @@ exports.login = async (req, res) => {
         res.cookie('jwt', token, cookieOptions);
 
         // Stuur een redirect naar /products na succesvol inloggen
-        return res.redirect('/tools/products');
+        return res.redirect('/products' , 
+        
+        );
     });
 };
 
-exports.isLoggedIn = async (req, res, next) => {
-    console.log(req.cookies);
-
-    if (req.cookies.jwt) {
-        jwt.verify(req.cookies.jwt, process.env.JWT_SECRET, (error, decodedToken) => {
-            if (error) {
-                console.error('JWT verification error:', error);
-                return res.redirect('/login');
-            }
-
-            console.log('Decoded JWT token:', decodedToken);
-            next();
-        });
-    } else {
-        res.redirect('/login');
-    }
-};
-
 exports.logout = (req, res) => {
-    res.cookie('jwt', '', { maxAge: 1 });
+    // Verwijder de JWT-cookie bij uitloggen
+    res.clearCookie('jwt');
     res.redirect('/login');
 };
+// Compare this snippet from controllers/auth.js:
 
+exports.updateUser = (req, res) => {
+    const { name, email, password, passwordConfirm, woonplaats, birthdate } = req.body;
+
+    db.query('SELECT email FROM users WHERE email = ?', [email], async (error, results) => {
+        if (error) {
+            console.log(error);
+            return res.render('mijnaccountbewerken', {
+                message: 'An error occurred'
+            });
+        }
+
+        if (results.length > 0) {
+            return res.render('mijnaccountbewerken', {
+                message: 'This email is already in use'
+            });
+        } else if (password !== passwordConfirm) {
+            return res.render('mijnaccountbewerken', {
+                message: 'Password Didn\'t Match!'
+            });
+        }
+
+        let hashedPassword = await bcrypt.hash(password, 8);
+
+        console.log(hashedPassword);
+
+        db.query('UPDATE users SET name = ?, email = ?, password = ?, woonplaats = ?, birthdate = ? WHERE id = ?', [name, email, hashedPassword, woonplaats, birthdate, req.user.id], (err, result) => {
+            if (err) {
+                console.log(err);
+            } else {
+                return res.render('mijnaccount', {
+                    message: 'User updated!'
+                });
+            }
+        });
+    });
+}

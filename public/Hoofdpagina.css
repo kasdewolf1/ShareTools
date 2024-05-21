@@ -16,34 +16,38 @@ body{
     padding: 32px 40px;
     width: 100vw;
 }
-.btn-dark{
-    background-color: #333333;
-    color: #fdfcfb;
+.btn-dark, .btn-outline{
     font-weight: 600;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
     padding: 8px 16px;
-    transition: ease-in-out 0.1s;
-}
-.btn-dark:hover{
-    background-color:#424649;
+    transition: ease-in-out 0.2s;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .btn-outline{
     background-color:#FDFCFB;
     color: #333333;
-    font-weight: 600;
     border: 2px solid #333333;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 8px 16px;
-    transition: ease-in-out 0.1s;
 }
 .btn-outline:hover{
-    background-color:#F0F3F3;
+    background-color:#F3F0F0;
 }
+
+.btn-dark{
+    background-color: #333333;
+    color: #fdfcfb;
+}
+.btn-dark:hover{
+    background-color:#5C5C5C;
+}
+
+
+
 .d-flex{
     gap: 24px;
 }
@@ -61,7 +65,6 @@ body{
     align-items: center;
     margin-top: 40px;
     width: 86.2%;
-    border: 2px solid red;
 }
 
 h1{
@@ -86,7 +89,6 @@ p{
     justify-content: center;
     align-items: center;
     width: 86.2%;
-    border: 2px solid red;
 }
 .cards-total{
     display: flex;
@@ -114,7 +116,6 @@ h3{
     margin-top: 120px;
     width: 86.2%;
     gap: 3%;
-    border: 2px solid red;
 }
 .beschrijving-achtergrond{
     width: 65%;

@@ -28,6 +28,14 @@ router.get('/Tooltoevoegen', (req, res) => {
     res.render('Tooltoevoegen');
 });
 
+router.get('/mijnaccount', (req, res) => {
+    res.render('mijnaccount');
+});
+
+router.get('/mijnaccountbewerken', (req, res) => {
+    res.render('mijnaccountbewerken');
+});
+
 router.get('/ToolProfiel', (req, res) => {
     res.render('ToolProfiel');
 });

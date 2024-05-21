@@ -1,8 +1,12 @@
 const express = require('express');
 const mysql = require("mysql");
-const db = require('./db');
-require('dotenv').config();
+<<<<<<<<< Temporary merge branch 1
 const hbs = require('handlebars');
+const dotenv = require('dotenv');
+=========
+const db = require('./db');
+require('dotenv').config()
+>>>>>>>>> Temporary merge branch 2
 const path = require('path');
 const app = express();
 const toolsRouter = require('./routes/tools');
