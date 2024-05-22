@@ -9,7 +9,7 @@ const toolsRouter = require('./routes/tools');
 const bodyParser = require('body-parser');
 
 const publicDirectory = path.join(__dirname, './public');
-hbs.registerPartials(__dirname + '/views/partials');
+
 app.use(express.static(publicDirectory));
 app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.json());
