@@ -1,5 +1,6 @@
 body {
-  background-color: #f2f2f2;
+  background-color: #F3F0F0;
+  padding: 0;
   margin: 0;
   font-family: "Inter", sans-serif;
 }
@@ -13,7 +14,7 @@ body {
   border: 1px solid #000000;
   padding: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  display: none;
+
 }
 
 .navbar {
@@ -34,8 +35,20 @@ body {
   
 .container {
     padding: 20px;
+    margin: 0 !important;
+    border: 2px solid red;
 }
   
+.everything{
+  width: 71.4%;
+  height: 1%;
+  background-color: #fdfcfb;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  margin: 80px 104px 0px 328px;
+  padding: 40px;
+}
 .header {
   text-align: center;
   margin: 20px 0;
@@ -98,4 +111,67 @@ body {
   border-radius: 50%;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   cursor: pointer;
+}
+
+
+.navbar-everything{
+  background-color: #fdfcfb;
+  box-shadow: 0px 0px 50px #33333377;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 288px;
+  height: 100vh; 
+  position: fixed;
+  top: 0;
+}
+.d-flex.align-items-start{
+  display: flex;
+  justify-content: center !important;
+  width: 90%;
+}
+
+.nav.flex-column.nav-pills.me-3{
+  width: 100%;
+}
+
+
+.nav-link{
+  color: #333333;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.nav-link:hover{
+  color: rgb(51, 51, 51, 80%);
+}
+.nav-link.active{
+  background-color: #f3f0f0 !important;
+  color: #333333 !important;
+  font-weight: 600;
+}
+.links{
+  margin-left: 16px;
+}
+
+.icons{
+  width: 24px;
+  height: 24px;
+}
+
+
+.logo-normal {
+  display: flex;
+  width: 150px;
+  margin: 32px 0px 72px;
+}
+
+.logo-responsive{
+  display: none;
+}
+
+.page-container{
+  display: flex;
+  flex-direction: row;
 }
