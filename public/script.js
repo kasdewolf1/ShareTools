@@ -19,3 +19,40 @@
         });
     });
 
+    function highlightProduct(element) {
+        element.style.backgroundColor = "lightgray";
+    }
+    
+    function removeHighlight(element) {
+        element.style.backgroundColor = "";
+    }
+
+    function goToProductPage(id) {
+        window.location.href = "/tools/product/" + id;
+    }
+
+    // Voeg klikgebeurtenis toe aan elk product in de grid
+    document.querySelectorAll('.product').forEach(item => {
+        item.addEventListener('click', function() {
+            // Haal het ID van het product op uit de data-attribuut
+            let productId = this.getAttribute('data-product-id');
+            // Navigeer naar de productpagina
+            goToProductPage(productId);
+        });
+    });
+
+    function filterTools() {
+        const searchValue = document.getElementById('searchInput').value.toLowerCase();
+        const products = document.querySelectorAll('.product');
+
+        products.forEach(product => {
+            const title = product.querySelector('h2').innerText.toLowerCase();
+            const description = product.querySelector('p:nth-of-type(2)').innerText.toLowerCase();
+
+            if (title.includes(searchValue) || description.includes(searchValue)) {
+                product.style.display = 'block';
+            } else {
+                product.style.display = 'none';
+            }
+        });
+    }

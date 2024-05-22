@@ -101,7 +101,7 @@ exports.getToolById = (req, res) => {
       const imageURL = `/uploads/${results[0].image}`;
 
       // Render de HTML met de toolgegevens en de afbeeldings-URL
-      res.render('/tools/productinfo', { product: results[0], imageURL: imageURL });
+      res.render('productinfo', { product: results[0], imageURL: imageURL });
   });
 };
 
@@ -121,5 +121,31 @@ exports.deleteTool = (req, res) => {
       }
 
       res.status(200).send({ message: 'Product succesvol verwijderd' });
+  });
+};
+
+exports.searchProducts = (req, res) => {
+  const searchQuery = req.query.q ? req.query.q.toLowerCase() : '';
+
+  const query = 'SELECT title, status, beschrijving, id, image FROM tools';
+  db.query(query, (error, results) => {
+      if (error) {
+          console.error('Fout bij het ophalen van producten:', error);
+          return res.status(500).send('Er is een interne serverfout opgetreden');
+      }
+
+      // Filter results based on search query
+      const filteredResults = results.filter(product => {
+          return product.title.toLowerCase().includes(searchQuery) ||
+                 product.beschrijving.toLowerCase().includes(searchQuery);
+      });
+
+      // Map results to include image URL
+      const products = filteredResults.map(product => ({
+          ...product,
+          imageURL: `/uploads/${product.image}`
+      }));
+
+      res.render('indexloggedin', { products });
   });
 };
