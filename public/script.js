@@ -19,3 +19,18 @@
         });
     });
 
+    function deleteProduct(id) {
+        if (confirm('Weet je zeker dat je dit product wilt verwijderen?')) {
+            $.ajax({
+                url: /tools/${id},
+                type: 'DELETE',
+                success: function(result) {
+                    alert(result.message);
+                    location.reload();
+                },
+                error: function(xhr, status, error) {
+                    alert(xhr.responseText);
+                }
+            });
+        }           
+    }

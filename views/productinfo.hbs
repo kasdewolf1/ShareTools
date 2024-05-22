@@ -1,29 +1,61 @@
-<!-- views/productDetails.hbs -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Productdetails</title>
-  <link rel="stylesheet" href="/Toolprofiel.css">
+  <link rel="stylesheet" href="/toolinfo.css">
+  <!-- Voeg Handlebars.js toe -->
+  <script src="https://cdn.jsdelivr.net/npm/handlebars/dist/handlebars.min.js"></script>
+
 </head>
 <body>
-  <main class="container">
+  <div class="navbar">
+  <div>Share Tools</div>
+  <div>
+    <a href="#">Lenen</a>
+    <a href="#">Help</a>
+    <a href="./login">{{name}}</a>
+  </div>
+</div>
+  <!-- Voeg een div toe om de gegevens weer te geven -->
+  <div class="container" id="tool-info"></div>
+
+  <script id="tool-template" type="text/x-handlebars-template">
     <section class="card">
-      <figure class="image-placeholder"></figure>
-      <figcaption class="info-caption">Informatie</figcaption>
+       <img src="{{product.imageURL}}" alt="Tool Image">
     </section>
     <aside class="details">
-   <div class="product-details">
-    <h2>{{tool_title}}</h2>
-    <p>Beschrijving: {{beschrijving}}</p>
-  </div>
-      <div class="buttons">
-        <button type="button">LEEN</button>
-        <button type="button">BERICHT</button>
-      </div>
+        <div class="product-details">
+            <h2>{{product.title}}</h2>
+            <p>Beschrijving: {{product.beschrijving}}</p>
+            <p>Afmeting: {{product.afmeting}}</p>
+            <p>Locatie: {{product.locatie}}</p>
+            <p>Categorie: {{product.categorie}}</p>
+        </div>
+        <div class="buttons">
+            <button type="button">LEEN</button>
+            <button type="button">BERICHT</button>
+        </div>
     </aside>
-  </main>
+</script>
+
+  <script>
+    // Haal de toolgegevens op uit de database (bijvoorbeeld via een API)
+    const toolData = {
+      title: "{{tool_title}}",
+      beschrijving: "{{beschrijving}}",
+      afmeting: "{{afmeting}}",
+      locatie: "{{locatie}}",
+      categorie: "{{categorie}}",
+      imageURL: "{{imageURL}}"
+    };
+
+    // Compileer het Handlebars-sjabloon
+    const toolTemplate = Handlebars.compile(document.getElementById("tool-template").innerHTML);
+
+    // Voeg de toolgegevens toe aan de HTML
+    document.getElementById("tool-info").innerHTML = toolTemplate(toolData);
+  </script>
 </body>
 </html>

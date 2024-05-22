@@ -45,9 +45,7 @@
             <p>{{beschrijving}}</p>
             <a href="/product/{{id}}" class="btn">Bekijk</a>
              <div class="delete-button">
-                <button class="delete-btn" onclick="deleteProduct('{{id}}')">
-                    <i class="fas fa-trash-alt"></i>
-                </button>
+                <a href="/delete/{{id}}">Verwijder</a>
             </div>
         </div>
     {{/each}}
@@ -61,5 +59,8 @@
         }, 3000); // 3000 milliseconden = 3 seconden
     });
 
+
+</script>
+<script src="/script.js"></script>
 </body>
 </html>
