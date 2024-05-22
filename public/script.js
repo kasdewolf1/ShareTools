@@ -22,7 +22,7 @@
     function deleteProduct(id) {
         if (confirm('Weet je zeker dat je dit product wilt verwijderen?')) {
             $.ajax({
-                url: /tools/${id},
+                url: `/tools/${id}`,
                 type: 'DELETE',
                 success: function(result) {
                     alert(result.message);

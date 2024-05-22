@@ -72,11 +72,12 @@
           margin: 10px 0;
         }
 
-        .delete-button{
-          text-decoration: none;
-          background-color: #ff0000;
+        .eddit-button{
+          display: block;
+          background-color: #d50000;
           color: white;
           padding: 10px;
+          text-decoration: none;
           margin: 10px 0;
         }
 
