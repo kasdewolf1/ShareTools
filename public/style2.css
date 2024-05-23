@@ -35,10 +35,34 @@ body {
   
 .container {
     padding: 0;
-    margin: 0 !important;
-    border: 2px solid red;
+    margin: 0 0 40px !important;
 }
-  
+
+.header-text {
+  margin-bottom: 40px;
+}
+
+.green-plus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;  
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 12px 0;
+  width: 210px;
+  font-weight: 600;
+  color: #FDFCFB;
+  background-color: #333333;
+  transition: ease-in-out 0.3s;
+}  
+.green-plus:hover{
+  background-color: #5C5C5C;
+}
+
+
 .everything{
   width: 71.4%;
   height: 1%;
@@ -48,11 +72,6 @@ body {
   flex-direction: column;
   margin: 80px 104px 0px 328px;
   padding: 80px 112px;
-}
-
-.header {
-  text-align: center;
-  margin: 20px 0;
 }
         
 .grid {
@@ -96,33 +115,7 @@ body {
   margin: 10px 0;
 }
 
-.header-text {
-  margin-bottom: 20px;
-}
- 
-.row{
-  border: 2px solid aqua;
-}
-.col-md-8{
-  border: 2px solid royalblue;
-}
-.col-md-4{
-  border: 2px solid pink;
-}
 
-.green-plus {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;  
-  cursor: pointer;
-  border: none;
-  font-size: 16px;
-  border-radius: 8px;
-  padding: 16px 0;
-  color: #FDFCFB;
-  background-color: #333333;
-}
 
 
 .navbar-everything{

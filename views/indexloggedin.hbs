@@ -17,16 +17,13 @@
 
 <div class="everything">
 <div class="container mt-5">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="header-text">
-                <h1>Gereedschap</h1>
-                <p>"Bekijk nu verschillende soorten gereedschappen bij u in de buurt"</p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <a class="green-plus" href="/Tooltoevoegen">Nieuwe tool toevoegen</a>
-        </div>
+    <div class="header-text">
+        <h1>Gereedschap</h1>
+        <p>"Bekijk nu verschillende soorten gereedschappen bij u in de buurt"</p>
+    </div>
+
+    <div class="col-md-4">
+        <a class="green-plus" href="/Tooltoevoegen">Nieuwe tool toevoegen</a>
     </div>
 </div>
 
@@ -40,6 +37,9 @@
             <h2>{{title}}</h2>
             <p>Beschikbaarheid: {{status}}</p>
             <p>{{beschrijving}}</p>
+            <a href="/product/{{id}}" class="btn">Bekijk</a>
+
+            <a href="/eddit/{{id}}" class="eddit-button">bewerk</a>
         </div>
     {{/each}}
 </div>
