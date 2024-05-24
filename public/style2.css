@@ -42,6 +42,11 @@ body {
   margin-bottom: 40px;
 }
 
+.col-md-4{
+  display: flex;
+  width: 100%;
+}
+
 .green-plus {
   display: flex;
   align-items: center;
@@ -140,7 +145,6 @@ body {
   .edit-button:hover{
     background-color: #E6E6E6;
 }
-
 
 
 
