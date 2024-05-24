@@ -34,12 +34,12 @@
 <div class="grid">
     {{#each products}}
         <div class="product">
-            <h2>{{title}}</h2>
-            <p>Beschikbaarheid: {{status}}</p>
+            <h2 class="product-title">{{title}}</h2>
+            <p class="product-status">{{status}}</p>
             <p>{{beschrijving}}</p>
-            <a href="/product/{{id}}" class="btn">Bekijk</a>
+            <a href="/product/{{id}}" class="btn-bekijk">Bekijk</a>
 
-            <a href="/eddit/{{id}}" class="eddit-button">bewerk</a>
+            <a href="/eddit/{{id}}" class="edit-button">Bewerk</a>
         </div>
     {{/each}}
 </div>
