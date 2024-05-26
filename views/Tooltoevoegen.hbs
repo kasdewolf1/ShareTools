@@ -13,12 +13,14 @@
 </head>
 
 <body>
+ <div class="page-container">    
+
     {{> header}}
 
- <div class="page-container">
+    <div class="row">
     <form action="/tools/addTool" method="POST">
-        <div>
-          <label for="floatingSelect">Afmetingen</label>
+        <div class="part">
+          <label for="floatingSelect" style="font-weight: 600">Afmetingen</label>
           <div class="form-floating">
                     <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="afmetingen">
                         <option value="Klein/Groot">Klein/Groot</option>
@@ -29,8 +31,8 @@
           </div>
         </div>
 
-        <div>
-            <label for="floatingSelectStatus">Status</label>
+        <div class="u">
+            <label for="floatingSelectStatus" style="font-weight: 600">Status</label>
                 <div class="form-floating">
                     <select class="form-select" id="floatingSelectStatus" aria-label="Floating label select example" name="beschikbaarheid">
                         <option value="Huidige status">Huidige status</option>
@@ -40,34 +42,35 @@
                     <label for="floatingSelectStatus">Gereedschap status</label>
                 </div>
 
-            <label for="floatingInputTitle">Titel</label>
+            <label for="floatingInputTitle" style="font-weight: 600">Titel</label>
                 <div class="form-floating">
                     <input type="text" class="form-control" id="floatingInputTitle" name="title" placeholder="Titel Tool">
                     <label for="floatingInputTitle">Titel Tool</label>
                 </div>
 
-            <label for="floatingfloatingInputCategory">Categorie</label>
+            <label for="floatingfloatingInputCategory" style="font-weight: 600">Categorie</label>
                 <div class="form-floating">
                     <input type="text" class="form-control" id="floatingInputCategory" name="category" placeholder="Categorie">
                     <label for="floatingInputCategory">Categorie</label>
                 </div>
 
-            <label for="floatingInputLocation">Locatie</label>
+            <label for="floatingInputLocation" style="font-weight: 600">Locatie</label>
                 <div class="form-floating">
                     <input type="text" class="form-control" id="floatingInputLocation" name="location" placeholder="Locatie">
                     <label for="floatingInputLocation">Locatie</label>
                 </div>
 
-            <label for="floatingTextarea">Beschrijving</label>
+            <label for="floatingTextarea" style="font-weight: 600">Beschrijving</label>
                 <div class="form-floating">
                     <textarea class="form-control" id="floatingTextarea" name="description" placeholder="Beschrijving" style="height: 100px"></textarea>
                     <label for="floatingTextarea">Beschrijving</label>
                 </div>
 
             <!-- Submit button -->
-            <button type="submit" class="btn custom-btn-green">Verzenden</button>
+            <button type="submit" class="btn custom-btn-green">Toevoegen</button>
         </div>
     </form>
+    </div>
   </div>
   </body>
 </html>
