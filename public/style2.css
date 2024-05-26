@@ -40,6 +40,17 @@ body {
 
 .header-text {
   margin-bottom: 40px;
+  }
+
+  h1{
+    color: #333333;
+    font-size: 40px;
+    font-weight: 600;
+  }
+
+  p{
+    color: #898989;
+    margin-bottom: 40px;
 }
 
 .col-md-4{

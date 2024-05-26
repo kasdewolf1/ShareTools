@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,30 +10,27 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <title>Share Tools</title>
     <link rel="icon" type="image/x-icon" href="/img/favicon-32x32.png">
-  </head>
+</head>
 
-  <body>
+<body>
     {{> header}}
 
-  <div class="page-container">
-      <form action="/tools/addTool" method="POST">
-        <div class="row">
-            <div>
-                <h1>Gereedschap uploaden:</h1>
-                <img src="3.images/klauwhamer.jpeg" alt="Klauwhamer" />
-                <h1>Afmetingen</h1>
-                <div class="form-floating">
+ <div class="page-container">
+    <form action="/tools/addTool" method="POST">
+        <div>
+          <label for="floatingSelect">Afmetingen</label>
+          <div class="form-floating">
                     <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="afmetingen">
                         <option value="Klein/Groot">Klein/Groot</option>
                         <option value="Klein">Klein</option>
                         <option value="Groot">Groot</option>
                     </select>
                     <label for="floatingSelect">Afmetingen</label>
-                </div>
-            </div>
+          </div>
+        </div>
 
-            <div>
-                <h1>Gereedschap status</h1>
+        <div>
+            <label for="floatingSelectStatus">Status</label>
                 <div class="form-floating">
                     <select class="form-select" id="floatingSelectStatus" aria-label="Floating label select example" name="beschikbaarheid">
                         <option value="Huidige status">Huidige status</option>
@@ -43,36 +40,34 @@
                     <label for="floatingSelectStatus">Gereedschap status</label>
                 </div>
 
-                <h1>Title Tool</h1>
+            <label for="floatingInputTitle">Titel</label>
                 <div class="form-floating">
                     <input type="text" class="form-control" id="floatingInputTitle" name="title" placeholder="Titel Tool">
                     <label for="floatingInputTitle">Titel Tool</label>
                 </div>
 
-                <h2>Categorie</h2>
+            <label for="floatingfloatingInputCategory">Categorie</label>
                 <div class="form-floating">
                     <input type="text" class="form-control" id="floatingInputCategory" name="category" placeholder="Categorie">
                     <label for="floatingInputCategory">Categorie</label>
                 </div>
 
-                <h2>Locatie</h2>
+            <label for="floatingInputLocation">Locatie</label>
                 <div class="form-floating">
                     <input type="text" class="form-control" id="floatingInputLocation" name="location" placeholder="Locatie">
                     <label for="floatingInputLocation">Locatie</label>
                 </div>
 
-                <h2>Beschrijving</h2>
+            <label for="floatingTextarea">Beschrijving</label>
                 <div class="form-floating">
                     <textarea class="form-control" id="floatingTextarea" name="description" placeholder="Beschrijving" style="height: 100px"></textarea>
                     <label for="floatingTextarea">Beschrijving</label>
                 </div>
 
-                <!-- Submit button -->
-                <button type="submit" class="btn custom-btn-green">Verzenden</button>
-            </div>
+            <!-- Submit button -->
+            <button type="submit" class="btn custom-btn-green">Verzenden</button>
         </div>
-      </form>
+    </form>
   </div>
-    </div>
   </body>
 </html>

@@ -2,6 +2,7 @@ body {
     background-color: #f3f0f0;
 }
 
+/*Navbar*/
 .navbar-everything{
   background-color: #fdfcfb;
   box-shadow: 0px 0px 50px rgb(55,55,55,24%);
@@ -60,26 +61,24 @@ body {
 display: none;
 }
   
-.page-container{
-  display: flex;
-  flex-direction: row;
-}
   
-
+/*Tool Toevoegen*/
 .page-container {
   width: 71.4%;
   height: 1%;
   background-color: #fdfcfb;
   border-radius: 16px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin: 80px 104px 80px 328px;
   padding: 40px;
+  bordeR: 2px solid green;
 }
 
 .row {
   display: flex;
-  flex-direction: row;
+  margin: 0;
+  border: 2px solid red;
 }
   
 .custom-btn-green {
