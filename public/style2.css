@@ -39,12 +39,14 @@
         .grid {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-          gap: 20px;
+          gap: 50px;
+          
+          
         }
         .product {
           border: 1px solid #ccc;
           padding: 20px;
-          text-align: center;
+          text-align: left;
         }
         .product-image {
           background-color: #000;
