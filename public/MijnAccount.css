@@ -90,9 +90,13 @@ body{
 }
 
 .btn-dark{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
     background-color: #333333;
     color: #FDFCFB;
-    margin-left: auto; 
+    margin-left: auto;
     margin-right: 0;
     width: 108px;
     font-weight: 500;
