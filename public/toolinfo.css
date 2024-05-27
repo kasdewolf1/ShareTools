@@ -11,12 +11,12 @@ body {
     display: flex;
     justify-content: space-between;
   }
-
+  
   .container {
     max-width: 800px;
     margin: 20px auto;
   }
-
+  
   .card {
     background-color: #f9f9f9;
     border: 1px solid #ccc;

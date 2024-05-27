@@ -1,8 +1,4 @@
-        body {
-          background-color: #f2f2f2;
-          margin: 0;
-          font-family: Arial, sans-serif;
-        }
+
         .popup-container {
         position: fixed;
         top: 70px;
@@ -36,16 +32,7 @@
           text-align: center;
           margin: 20px 0;
         }
-        .grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-          gap: 20px;
-        }
-        .product {
-          border: 1px solid #ccc;
-          padding: 20px;
-          text-align: center;
-        }
+     
         .product-image {
           background-color: #000;
           width: 100%;
@@ -96,4 +83,80 @@
           border-radius: 50%;
           box-shadow: 0 2px 4px rgba(0,0,0,0.1);
           cursor: pointer;
+      }
+
+      
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4; /* Lichtere achtergrondkleur voor de body */
+      }
+      
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Creëer een grid met automatische kolombreedte van minimaal 300px */
+        gap: 20px; /* Ruimte tussen de grid-items */
+      }
+      
+      .product {
+        border: 1px solid #ccc; /* Rand rond elk product */
+        padding: 20px; /* Ruimte binnen elk product */
+        border-radius: 10px; /* Maak de hoeken van het productblok afgerond */
+        background-color: #e0e0e0; /* Iets donkerdere achtergrondkleur voor de productblokken */
+      }
+      
+      .product h2 {
+        margin-top: 0; /* Verwijder bovenmarge van de titel */
+      }
+      
+      .product p {
+        margin-bottom: 10px; /* Voeg ondermarge toe aan de alinea's */
+      }
+      
+      .product .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+      }
+      
+      .delete-button {
+        text-align: right; /* Plaats de delete-knop aan de rechterkant */
+      }
+      
+      .delete-btn {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+      }
+      
+      .delete-btn:hover {
+        color: red; /* Verander de kleur van de knop bij hover */
+      }
+      .product img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+      
+      /* Media query voor schermen kleiner dan 768px (bijvoorbeeld smartphones) */
+      @media (max-width: 767px) {
+        .product img {
+          height: auto; /* Laat de hoogte automatisch schalen voor kleinere schermen */
+        }
+      }
+      
+      /* Media query voor schermen tussen 768px en 1024px (bijvoorbeeld tablets) */
+      @media (min-width: 768px) and (max-width: 1024px) {
+        .product img {
+          width: auto; /* Laat de breedte automatisch schalen voor medium-sized schermen */
+          height: 100%;
+        }
+      }
+      
+      /* Media query voor schermen groter dan 1024px (bijvoorbeeld desktops) */
+      @media (min-width: 1025px) {
+        /* Je kunt hier extra aanpassingen maken indien nodig */
       }

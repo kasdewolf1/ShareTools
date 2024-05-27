@@ -20,8 +20,8 @@ router.get('/indexloggedin', (req, res) => {
     // Render de indexloggedin view
     res.render('indexloggedin', { message: 'main page geladen'},);
 });
-router.get('/product', (req, res) => {
-    res.render('product', { message: 'productinfo geladen'} ,);
+router.get('/productinfo', (req, res) => {
+    res.render('productinfo', { message: 'productinfo geladen'} ,);
 });
 
 router.get('/Tooltoevoegen', (req, res) => {

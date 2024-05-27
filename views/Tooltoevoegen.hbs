@@ -212,63 +212,62 @@
         </div>
       </nav>
     
-      <form action="/tools/addTool" method="POST">
-        <div class="row">
-            <div>
-                <h1>Gereedschap uploaden:</h1>
-                <img src="3.images/klauwhamer.jpeg" alt="Klauwhamer" />
-                <h1>Afmetingen</h1>
-                <div class="form-floating">
-                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="afmetingen">
-                        <option value="Klein/Groot">Klein/Groot</option>
-                        <option value="Klein">Klein</option>
-                        <option value="Groot">Groot</option>
-                    </select>
-                    <label for="floatingSelect">Afmetingen</label>
-                </div>
-            </div>
-
-            <div>
-                <h1>Gereedschap status</h1>
-                <div class="form-floating">
-                    <select class="form-select" id="floatingSelectStatus" aria-label="Floating label select example" name="beschikbaarheid">
-                        <option value="Huidige status">Huidige status</option>
-                        <option value="Beschikbaar">Beschikbaar</option>
-                        <option value="Niet beschikbaar">Niet beschikbaar</option>
-                    </select>
-                    <label for="floatingSelectStatus">Gereedschap status</label>
-                </div>
-
-                <h1>Title Tool</h1>
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputTitle" name="title" placeholder="Titel Tool">
-                    <label for="floatingInputTitle">Titel Tool</label>
-                </div>
-
-                <h2>Categorie</h2>
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputCategory" name="category" placeholder="Categorie">
-                    <label for="floatingInputCategory">Categorie</label>
-                </div>
-
-                <h2>Locatie</h2>
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInputLocation" name="location" placeholder="Locatie">
-                    <label for="floatingInputLocation">Locatie</label>
-                </div>
-
-                <h2>Beschrijving</h2>
-                <div class="form-floating">
-                    <textarea class="form-control" id="floatingTextarea" name="description" placeholder="Beschrijving" style="height: 100px"></textarea>
-                    <label for="floatingTextarea">Beschrijving</label>
-                </div>
-
-                <!-- Submit button -->
-                <button type="submit" class="btn custom-btn-green">Verzenden</button>
+      <form action="/tools/addTool" method="POST" enctype="multipart/form-data">
+    <div class="row">
+        <div>
+            <h1>Gereedschap uploaden:</h1>
+            <img src="3.images/klauwhamer.jpeg" alt="Klauwhamer" />
+            <h1>Afmetingen</h1>
+            <div class="form-floating">
+                <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="afmeting">
+                    <option value="Klein/Groot">Klein/Groot</option>
+                    <option value="Klein">Klein</option>
+                    <option value="Groot">Groot</option>
+                </select>
+                <label for="floatingSelect">Afmetingen</label>
             </div>
         </div>
-    </form>
-      </div>
+
+        <div>
+            <h1>Gereedschap status</h1>
+            <div class="form-floating">
+                <select class="form-select" id="floatingSelectStatus" aria-label="Floating label select example" name="beschikbaarheid">
+                    <option value="Huidige status">Huidige status</option>
+                    <option value="Beschikbaar">Beschikbaar</option>
+                    <option value="Niet beschikbaar">Niet beschikbaar</option>
+                </select>
+                <label for="floatingSelectStatus">Gereedschap status</label>
+            </div>
+
+            <h1>Title Tool</h1>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="floatingInputTitle" name="title" placeholder="Titel Tool">
+                <label for="floatingInputTitle">Titel Tool</label>
+            </div>
+
+            <h2>Categorie</h2>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="floatingInputCategory" name="category" placeholder="Categorie">
+                <label for="floatingInputCategory">Categorie</label>
+            </div>
+
+            <h2>Locatie</h2>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="floatingInputLocation" name="location" placeholder="Locatie">
+                <label for="floatingInputLocation">Locatie</label>
+            </div>
+
+            <h2>Beschrijving</h2>
+            <div class="form-floating">
+                <textarea class="form-control" id="floatingTextarea" name="description" placeholder="Beschrijving" style="height: 100px"></textarea>
+                <label for="floatingTextarea">Beschrijving</label>
+            </div>
+        </div>
+    </div>
+    <input type="file" name="image" accept="image/*">
+    <!-- Submit button -->
+    <button type="submit" class="btn custom-btn-green">Verzenden</button>
+</form>      </div>
     </div>
   </body>
 </html>
