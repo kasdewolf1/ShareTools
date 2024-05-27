@@ -69,27 +69,50 @@ display: none;
 
 
 /*Tool Toevoegen*/
-.row {
+.toevoegen-container {
   width: 71.4%;
   height: 1%;
   background-color: #fdfcfb;
   border-radius: 16px;
-  display: flex;
   margin: 80px 104px 80px 328px;
   padding: 40px;
-  border: 2px solid green;
+  box-shadow: 0 0 50px rgb(55,55,55,8%);
+}
+
+.btn-terug{
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 2px solid #CDCDCD;
+  background-color: #FDFCFB;
+  color: #333333;
+}
+
+form{
+  padding: 0 72px 40px;
+  display: flex;
+  width: 100%;
+  gap: 40px;
 }
   
-.part{
-  border: 2px solid orange;
+.left{
+  width: 60%;
 }
-.u{
-  border: 2px solid purple;
+
+.toevoegen-image{
+  width: 100%;
+  height: 408px;
+  margin-bottom: 16px;
+}
+
+.right{
+  width: 40%;
 }
 
 label{
   color: #333333;
 }
+
 input[type="text"], .form-select{
   font-size: 16px;
   width: 100%;
@@ -100,15 +123,18 @@ input[type="text"], .form-select{
   box-sizing: border-box;
 }
 
+
 .custom-btn-green {
   background-color: #333333;
   color: #fff;
   font-weight: 600;
   border: none;
-  padding: 10px 20px;
+  padding: 16px 0;
   font-size: 16px;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
+  width: 100%;
+  margin-top: 40px;
 }
 
 .custom-btn-green:hover {

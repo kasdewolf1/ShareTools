@@ -48,7 +48,7 @@ body {
     font-weight: 600;
   }
 
-  p{
+  p, .product-beschijving{
     color: #898989;
     margin-bottom: 40px;
 }
@@ -88,6 +88,7 @@ body {
   flex-direction: column;
   margin: 80px 104px 80px 328px;
   padding: 80px 112px;
+  box-shadow: 0 0 50px rgb(55,55,55,8%);
 }
         
 .grid {
@@ -118,10 +119,7 @@ body {
     margin-bottom: 8px;
   }
   
-  .product-status{   
-    
-    background-color: rgb(63, 168, 92, 20%);
-    color: #3FA85C;
+  .product-status{
     padding: 2px 8px;
     border-radius: 4px;
     margin-bottom: 8px;
