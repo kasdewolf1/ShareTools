@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="/login.css">
+    <link rel="stylesheet" href="/login-register.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-<title>Ronde Balk in Formulier</title>
+<title>Share Tools</title>
+<link rel="icon" type="image/x-icon" href="/img/favicon-32x32.png">
 </head>
 <body>
 
-<div class="login-everything">    
+<div class="login-everything">           
+  <img src="/img/login.png" class="filler-photo" alt="photo">
+    
     <form action="/auth/login" method="post">
         <img class="logo" src="/img/LogoZonderTekst.png">
         <h1>Inloggen</h1>
         <p>Welkom terug. Vul de velden in om door te gaan.</p>
 
         <label for="name">Gebruikersnaam</label>
-          <input type="text" id="name" name="name" placeholder="Vul je gebruikersnaam in" required><br>
+          <input type="text" id="name" name="name" placeholder="Vul uw gebruikersnaam in" required><br>
 
         <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="Vul je email in" required><br>
+          <input type="email" id="email" name="email" placeholder="Vul uw email in" required><br>
 
         <label for="password">Wachtwoord</label>
-          <input type="password" id="password" name="password" placeholder="Vul je wachtwoord in" required>
+          <input type="password" id="password" name="password" placeholder="Vul uw wachtwoord in" required>
         
         <input type="submit" value="Inloggen">
-        <div style="background-color: red; color: white; padding: 10px; font-weight: bold;">
-        {{ message }}
-        </div>
+
+        <p style="margin-bottom: 0;">Heeft u nog geen account. <a href="./register">Registreer hier.</a></p>
     </form>
     
-    <div>
-        <img src="/img/login.png" class="filler-photo" alt="photo">
-    </div> 
+
 </div>
 </body>
 </html>
