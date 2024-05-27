@@ -22,7 +22,7 @@ exports.addTool = (req, res) => {
 // Functie om alle producten op te halen en te renderen naar de view
 exports.getAllProducts = (req, res) => {
     const query = 'SELECT title, status, beschrijving, id FROM tools';
-    console.log(query);
+    console.log("sql: ", query);
     db.query(query, (error, results) => {
         if (error) {
             console.error('Fout bij het ophalen van producten:', error);
