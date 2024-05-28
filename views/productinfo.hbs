@@ -34,6 +34,8 @@
             <p>Categorie: {{product.categorie}}</p>
         </div>
         <div class="buttons">
+          <button class="delete-btn" onclick="deleteProduct('{{id}}')">
+                <i class="fas fa-trash-alt"></i>
             <button type="button">LEEN</button>
             <button type="button">BERICHT</button>
         </div>
@@ -57,5 +59,6 @@
     // Voeg de toolgegevens toe aan de HTML
     document.getElementById("tool-info").innerHTML = toolTemplate(toolData);
   </script>
+<script src="/script.js"></script>
 </body>
 </html>
