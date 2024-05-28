@@ -56,6 +56,7 @@
             }
         });
     }
+<<<<<<< HEAD
 
     function filterTools() {
         const searchValue = document.getElementById('searchInput').value.toLowerCase();
@@ -101,3 +102,5 @@
     };
 
         
+=======
+>>>>>>> parent of 99a6794 (GOEDE VERSIE NOOIT WEGHALEN)

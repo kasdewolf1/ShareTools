@@ -67,22 +67,26 @@ exports.addTool = (req, res) => {
   });
 };
 
-exports.getAllProducts = (callback) => {
-  const query = 'SELECT title, status, beschrijving, id, image FROM tools';
-  db.query(query, (error, results) => {
-      if (error) {
-          console.error('Fout bij het ophalen van producten:', error);
-          return callback(error, null);
-      }
-      
-      const products = results.map(product => ({
-          ...product,
-          imageURL: `/uploads/${product.image}`
-      }));
-      
-      callback(null, products);
-  });
-};
+exports.getAllProducts = (req, res) => {
+    const query = 'SELECT title, status, beschrijving, id, image FROM tools';
+    db.query(query, (error, results) => {
+        if (error) {
+            console.error('Fout bij het ophalen van producten:', error);
+            return res.status(500).send('Er is een interne serverfout opgetreden');
+        }
+        
+        // Loop door elk resultaat en bouw de afbeeldings-URL op
+        const products = results.map(product => {
+            return {
+                ...product,
+                imageURL: `/uploads/${product.image}`
+            };
+        });
+        
+        // Render de HTML met de productgegevens inclusief afbeeldings-URL's
+        res.render('indexloggedin', { products: products });
+    });
+  };
 
 exports.getToolById = (req, res) => {
   const { id } = req.params;
