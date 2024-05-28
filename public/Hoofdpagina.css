@@ -3,6 +3,7 @@ body{
     padding: 0;
     color: #333333;
     overflow-x: hidden;
+    background-color:#FDFCFB;
 }
 
 /*Navbar*/
@@ -133,10 +134,30 @@ h3{
     width: 86.2%;
     gap: 3%;
 }
-.beschrijving-achtergrond{
-    width: 65%;
-    height: 15%;
+.functie-foto{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border: 10px solid #FDFCFB;
 }
+.beschrijving-achtergrond{
+    width: 100%;
+    height: 100%;
+}
+.functie-white{
+    background-color: white;
+    border-radius: 0 16px 0 16px;
+    width: 73%;
+    height: 86%;
+    position: absolute;
+    bottom: 0;
+    box-shadow: 10px 0 16px rgb(55,55,55,24%);
+    outline: 0 0 2px 2px solid rgb(63, 168, 92, 20%);
+    outline-offset: -2px;
+}
+
+
 
 @media screen and (max-width: 1000px) {
     .functies-uitleg{
