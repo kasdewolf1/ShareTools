@@ -18,6 +18,15 @@ body{
     width: 100vw;
 }
 
+.navbar-nav, .ms-auto, .mb-2, .mb-lg-0{
+    margin-right: 40px;
+   }
+   .nav-item{
+    padding: 0 40px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
 .btn-dark, .btn-outline{
     display: flex;
     justify-content: center;
@@ -33,6 +42,10 @@ body{
     font-weight: 600;
     transition: ease-in-out 0.3s;
 }
+.btn-dark:hover{
+    background-color:#5C5C5C;
+}
+
 .btn-outline{
     background-color:#FDFCFB;
     color: #333333;
@@ -43,9 +56,6 @@ body{
     background-color: #E6E6E6;
 }
 
-.btn-dark:hover{
-    background-color:#5C5C5C;
-}
 
 .d-flex{
     gap: 24px;
@@ -58,6 +68,7 @@ body{
 }
 
 
+/*Footer*/
 .footer{
     background-color: #333333;
     color: #FDFCFB;
@@ -70,6 +81,7 @@ body{
     padding: 40px;
     margin-top: 160px;
 }
+
 
 /*Call To Action*/
 .cta-tekst{
@@ -105,10 +117,11 @@ p{
     background-color: white;
     border-radius: 16px;
     width: 71%;
-    height: 747px;
+    height: 82%;
     position: absolute;
     box-shadow: 0 0 16px rgb(55,55,55,24%);
 }
+
 
 /*Proces*/
 .proces-uitleg{
@@ -133,10 +146,15 @@ p{
     box-shadow: 0 0 10px #33333342;
     border: none;
 }
+.card-body{
+    display: flex;
+    gap: 32px;
+}
 h3{
     font-size: 40px;
     margin-bottom: 40px;
 }
+
 
 /*Functie uitleg*/
 .functies-uitleg{
@@ -171,6 +189,7 @@ h3{
 .end-break{
     height: 160px;
 }
+
 
 
 @media screen and (max-width: 1000px) {
