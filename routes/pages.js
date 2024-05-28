@@ -5,8 +5,8 @@ router.get('/', (req, res) => {
     res.render('Hoofdpagina');
 });
 
-router.get('/Hoofdpagina', (req, res) => {
-    res.render('Hoofdpagina');
+router.get('/hoofdpagina', (req, res) => {
+    res.render('hoofdpagina');
 });
 
 router.get('/register', (req, res) => {

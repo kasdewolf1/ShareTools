@@ -61,11 +61,14 @@ body{
 .footer{
     background-color: #333333;
     color: #FDFCFB;
-    font-weight: 600;
+    font-weight: 600;    
+    font-size: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100vw;
+    padding: 40px;
+    margin-top: 160px;
 }
 
 /*Call To Action*/
