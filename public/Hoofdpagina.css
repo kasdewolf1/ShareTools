@@ -3,11 +3,12 @@ body{
     padding: 0;
     color: #333333;
     overflow-x: hidden;
+    background-color:#FDFCFB;
 }
 
 /*Navbar*/
 .navbar, .navbar-expand-lg, .bg-body-tertiary{
-    margin:0;
+    margin: 0;
     padding: 0;
 }
 .container-fluid{
@@ -16,32 +17,32 @@ body{
     padding: 32px 40px;
     width: 100vw;
 }
+
 .btn-dark, .btn-outline{
-    font-weight: 600;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 8px 16px;
-    transition: ease-in-out 0.2s;
-    text-decoration: none;
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    background-color: #333333;
+    color: #FDFCFB;
+    font-size: 16px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin: 8px 0;
+    font-weight: 600;
+    transition: ease-in-out 0.3s;
 }
 .btn-outline{
     background-color:#FDFCFB;
     color: #333333;
-    border: 2px solid #333333;
+    outline: 1px solid #E6E6E6;
+    outline-offset: -1px;
 }
 .btn-outline:hover{
-    background-color:#F3F0F0;
+    background-color: #E6E6E6;
 }
 
-.btn-dark{
-    background-color: #333333;
-    color: #fdfcfb;
-}
 .btn-dark:hover{
     background-color:#5C5C5C;
 }
@@ -75,10 +76,26 @@ p{
     font-size: 18px;
     margin: 24px 0 38px;
 }
+
+.cta-hoofd{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
 .cta-achtergrond{
     margin-top: 40px;
     width: 100%;
     height: 25%;
+}
+.white-part{
+    background-color: white;
+    border-radius: 16px;
+    width: 71%;
+    height: 747px;
+    position: absolute;
+    box-shadow: 0 0 16px rgb(55,55,55,24%);
 }
 
 /*Proces*/
@@ -117,10 +134,30 @@ h3{
     width: 86.2%;
     gap: 3%;
 }
-.beschrijving-achtergrond{
-    width: 65%;
-    height: 15%;
+.functie-foto{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border: 10px solid #FDFCFB;
 }
+.beschrijving-achtergrond{
+    width: 100%;
+    height: 100%;
+}
+.functie-white{
+    background-color: white;
+    border-radius: 0 16px 0 16px;
+    width: 73%;
+    height: 86%;
+    position: absolute;
+    bottom: 0;
+    box-shadow: 10px 0 16px rgb(55,55,55,24%);
+    outline: 0 0 2px 2px solid rgb(63, 168, 92, 20%);
+    outline-offset: -2px;
+}
+
+
 
 @media screen and (max-width: 1000px) {
     .functies-uitleg{

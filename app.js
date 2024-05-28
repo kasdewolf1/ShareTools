@@ -3,17 +3,23 @@ const mysql = require("mysql");
 const hbs = require('handlebars');
 const dotenv = require('dotenv');
 const db = require('./db');
+const hbs = require('hbs');
 require('dotenv').config()
 const path = require('path');
 const app = express();
 const toolsRouter = require('./routes/tools');
-const bodyParser = require('body-parser');
+
 
 const publicDirectory = path.join(__dirname, './public');
 app.use(express.static(publicDirectory));
-app.use('/uploads', express.static('uploads'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+
+
+hbs.registerPartials(path.join(__dirname, 'views/partials'));
+
+
+//zorgt ervoor dat je data van forms kan pakken
+app.use(express.urlencoded({ extended: false }));
+//zorg ervoor dat data als json komt
 app.use(express.json());
 
 app.set('view engine', 'hbs');
