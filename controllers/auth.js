@@ -95,11 +95,11 @@ exports.login = async (req, res) => {
         res.cookie('jwt', token, cookieOptions);
 
         // Stuur een redirect naar /products na succesvol inloggen
-        return res.redirect('/tools/products' , 
+        return res.redirect('/indexloggedin'); 
         
-        );
-    });
-};
+        });
+    };
+
 
 exports.logout = (req, res) => {
     // Verwijder de JWT-cookie bij uitloggen

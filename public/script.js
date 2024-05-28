@@ -56,3 +56,19 @@
             }
         });
     }
+
+    function filterTools() {
+        const searchValue = document.getElementById('searchInput').value.toLowerCase();
+        const products = document.querySelectorAll('.product');
+
+        products.forEach(product => {
+            const title = product.querySelector('h2').innerText.toLowerCase();
+            const description = product.querySelector('p:nth-of-type(2)').innerText.toLowerCase();
+
+            if (title.includes(searchValue) || description.includes(searchValue)) {
+                product.style.display = 'block';
+            } else {
+                product.style.display = 'none';
+            }
+        });
+    }

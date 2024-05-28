@@ -1,38 +1,33 @@
 const express = require('express');
-const mysql = require("mysql");
-const hbs = require('handlebars');
-const dotenv = require('dotenv');
-const db = require('./db');
-const hbs = require('hbs');
-require('dotenv').config()
 const path = require('path');
+const hbs = require('hbs');
+const multer = require('multer');
+const db = require('./db');
+
 const app = express();
+const port = process.env.PORT || 5001;
+
+const pagesRouter = require('./routes/pages');
+const authRouter = require('./routes/auth');
 const toolsRouter = require('./routes/tools');
 
-
-const publicDirectory = path.join(__dirname, './public');
-app.use(express.static(publicDirectory));
-
-
+// Middleware configuratie
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(multer({ dest: './uploads/' }).single('image'));
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
 hbs.registerPartials(path.join(__dirname, 'views/partials'));
 
-
-//zorgt ervoor dat je data van forms kan pakken
-app.use(express.urlencoded({ extended: false }));
-//zorg ervoor dat data als json komt
-app.use(express.json());
-
-app.set('view engine', 'hbs');
-app.set('views', __dirname + '/views');
-
-// Define routes
-app.use('/', require('./routes/pages'));
-app.use('/auth', require('./routes/auth'));
+// Routes
+app.use('/', pagesRouter); // Zorg ervoor dat dit voor '/tools' komt
+app.use('/auth', authRouter);
 app.use('/tools', toolsRouter);
-app.use('/api/images', toolsRouter);
 
-app.listen(5001, () => {
-  console.log("Server started on Port 5001");
+app.listen(port, () => {
+  console.log(`Server started on Port ${port}`);
 });
 
 exports.db = db;

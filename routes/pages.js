@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const toolsController = require('../controllers/tools');
 
+// Define routes
 router.get('/', (req, res) => {
     res.render('Hoofdpagina');
 });
@@ -16,12 +18,19 @@ router.get('/register', (req, res) => {
 router.get('/login', (req, res) => {
     res.render('login');
 });
+
 router.get('/indexloggedin', (req, res) => {
-    // Render de indexloggedin view
-    res.render('indexloggedin', { message: 'main page geladen'},);
+    toolsController.getAllProducts((error, products) => {
+        if (error) {
+            console.error('Fout bij het ophalen van producten:', error);
+            return res.status(500).send('Er is een interne serverfout opgetreden');
+        }
+        res.render('indexloggedin', { products: products });
+    });
 });
+
 router.get('/productinfo', (req, res) => {
-    res.render('productinfo', { message: 'productinfo geladen'} ,);
+    res.render('productinfo', { message: 'productinfo geladen' });
 });
 
 router.get('/Tooltoevoegen', (req, res) => {
@@ -37,8 +46,17 @@ router.get('/mijnaccountbewerken', (req, res) => {
 });
 
 router.get('/ToolProfiel', (req, res) => {
-    res.render('ToolProfiel', { title: 'Hamer', user: 'Luca', locatie: 'Kast', status: 'Beschikbaar', beschrijving: 'Een beschrijving over de tool.'});
+    res.render('ToolProfiel', { 
+        title: 'Hamer', 
+        user: 'Luca', 
+        locatie: 'Kast', 
+        status: 'Beschikbaar', 
+        beschrijving: 'Een beschrijving over de tool.'
+    });
 });
 
+router.get('/meldingen', (req, res) => {
+    res.render('meldingen');
+});
 
 module.exports = router;
