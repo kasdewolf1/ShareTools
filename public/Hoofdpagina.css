@@ -47,8 +47,6 @@ body{
     background-color:#5C5C5C;
 }
 
-
-
 .d-flex{
     gap: 24px;
 }
@@ -57,6 +55,17 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+
+.footer{
+    background-color: #333333;
+    color: #FDFCFB;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
 }
 
 /*Call To Action*/
@@ -147,16 +156,18 @@ h3{
 }
 .functie-white{
     background-color: white;
-    border-radius: 0 16px 0 16px;
+    border-radius: 0 16px 0 14px;
     width: 73%;
     height: 86%;
     position: absolute;
     bottom: 0;
-    box-shadow: 10px 0 16px rgb(55,55,55,24%);
-    outline: 0 0 2px 2px solid rgb(63, 168, 92, 20%);
-    outline-offset: -2px;
+    box-shadow: 10px -10px 16px 1px rgb(55,55,55,8%);
+    margin: 0 0 2px 2px;
 }
 
+.end-break{
+    height: 160px;
+}
 
 
 @media screen and (max-width: 1000px) {
