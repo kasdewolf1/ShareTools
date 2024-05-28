@@ -68,7 +68,12 @@ exports.addTool = (req, res) => {
 };
 
 exports.getAllProducts = (req, res) => {
+<<<<<<< HEAD
     const query = 'SELECT title, status, beschrijving, id, image FROM tools';
+=======
+    const query = 'SELECT title, status, beschrijving, id FROM tools';
+    console.log(query);
+>>>>>>> parent of 5a4bf0b (Update tools.js)
     db.query(query, (error, results) => {
         if (error) {
             console.error('Fout bij het ophalen van producten:', error);
