@@ -72,3 +72,32 @@
             }
         });
     }
+
+    document.getElementById('imageUpload').onchange = function(e) {
+        const file = e.target.files[0];
+        const imagePreview = document.getElementById('imagePreview');
+        const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+    
+        // Controleer of een bestand is geselecteerd
+        if (file) {
+            // Maak een FileReader-object aan om de afbeelding te lezen
+            const reader = new FileReader();
+    
+            // Wanneer het lezen van het bestand is voltooid
+            reader.onload = function(e) {
+                // Update de src van de <img> tag met de geüploade afbeelding
+                imagePreview.src = e.target.result;
+                // Toon de voorbeeldweergave van de afbeelding
+                imagePreview.style.display = 'block';
+            }
+    
+            // Lees het geselecteerde bestand als een data-URL
+            reader.readAsDataURL(file);
+        } else {
+            // Verberg de voorbeeldweergave als er geen bestand is geselecteerd
+            imagePreview.src = "#";
+            imagePreview.style.display = 'none';
+        }
+    };
+
+        

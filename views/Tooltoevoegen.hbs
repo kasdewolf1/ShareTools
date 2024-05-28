@@ -18,113 +18,60 @@
     {{> header}}
 
   <div class="toevoegen-container">
-    <a href="/products"><button class="btn-terug">🞀</button></a>
-    FIX DIT PAUL
+    <a href="/indexloggedin"><button class="btn-terug">🞀</button></a>
+ 
       <form action="/tools/addTool" method="POST" enctype="multipart/form-data">
-    <div class="row">
-        <div>
-            <h1>Gereedschap uploaden:</h1>
-            <img src="3.images/klauwhamer.jpeg" alt="Klauwhamer" />
-            <h1>Afmetingen</h1>
-            <div class="form-floating">
-                <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="afmeting">
-    <form action="/tools/addTool" method="POST">
-        <div class="left">
-            <img src="/img/GereedschapToevoegenAchtergrond.png" class="toevoegen-image">
-          <label for="floatingSelect" style="font-weight: 600">Afmetingen</label>
-          <div class="form-floating">
-                <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="afmetingen">
-                    <option value="Klein/Groot">Klein/Groot</option>
-                    <option value="Klein">Klein</option>
-                    <option value="Groot">Groot</option>
-                </select>
-                <label for="floatingSelect">Afmetingen</label>
-            <label for="floatingSelect">Kies een afmeting</label>
-          </div>          
-          
-          <label for="floatingSelectStatus" style="font-weight: 600">Status</label>
-            <div class="form-floating">
-                <select class="form-select" id="floatingSelectStatus" aria-label="Floating label select example" name="beschikbaarheid">
-                    <option value="Huidige status">Huidige status</option>
-                    <option value="Beschikbaar">Beschikbaar</option>
-                    <option value="Niet beschikbaar">Niet beschikbaar</option>
-                </select>
-             <label for="floatingSelectStatus">Kies een status</label>
-            </div>
-        </div>
-
-        <div class="right">
-          <label for="floatingInputTitle" style="font-weight: 600">Titel</label>
-            <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInputTitle" name="title" placeholder="Titel Tool">
-                <label for="floatingInputTitle">Voer een titel voor het gereedschap in</label>
-            </div>
-
-          <label for="floatingfloatingInputCategory" style="font-weight: 600">Categorie</label>
-            <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInputCategory" name="category" placeholder="Categorie">
-                <label for="floatingInputCategory">Voer een categorie in</label>
-            </div>
-
-          <label for="floatingInputLocation" style="font-weight: 600">Locatie</label>
-            <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInputLocation" name="location" placeholder="Locatie">
-                <label for="floatingInputLocation">Voer een locatie in</label>
-            </div>
-
-          <label for="floatingTextarea" style="font-weight: 600">Beschrijving</label>
-            <div class="form-floating">
-                <textarea class="form-control" id="floatingTextarea" name="description" placeholder="Beschrijving" style="height: 198px"></textarea>
-                <label for="floatingTextarea">Beschrijf de specificaties van het product</label>
-            </div>
-
-            <!-- Submit button -->
-            <button type="submit" class="btn custom-btn-green">Toevoegen</button>
-        </div>
-
-        <div>
-            <h1>Gereedschap status</h1>
-            <div class="form-floating">
-                <select class="form-select" id="floatingSelectStatus" aria-label="Floating label select example" name="beschikbaarheid">
-                    <option value="Huidige status">Huidige status</option>
-                    <option value="Beschikbaar">Beschikbaar</option>
-                    <option value="Niet beschikbaar">Niet beschikbaar</option>
-                </select>
-                <label for="floatingSelectStatus">Gereedschap status</label>
-            </div>
-
-            <h1>Title Tool</h1>
-            <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInputTitle" name="title" placeholder="Titel Tool">
-                <label for="floatingInputTitle">Titel Tool</label>
-            </div>
-
-            <h2>Categorie</h2>
-            <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInputCategory" name="category" placeholder="Categorie">
-                <label for="floatingInputCategory">Categorie</label>
-            </div>
-
-            <h2>Locatie</h2>
-            <div class="form-floating">
-                <input type="text" class="form-control" id="floatingInputLocation" name="location" placeholder="Locatie">
-                <label for="floatingInputLocation">Locatie</label>
-            </div>
-
-            <h2>Beschrijving</h2>
-            <div class="form-floating">
-                <textarea class="form-control" id="floatingTextarea" name="description" placeholder="Beschrijving" style="height: 100px"></textarea>
-                <label for="floatingTextarea">Beschrijving</label>
-            </div>
+      <div class="left">
+        <img src="/img/GereedschapToevoegenAchtergrond.png" class="toevoegen-image">
+      <label for="floatingSelect" style="font-weight: 600">Afmetingen</label>
+      <div class="form-floating">
+            <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="afmetingen">
+                <option value="Klein/Groot">Klein/Groot</option>
+                <option value="Klein">Klein</option>
+                <option value="Groot">Groot</option>
+            </select>
+        <label for="floatingSelect">Kies een afmeting</label>
+      </div>          
+      
+      <label for="floatingSelectStatus" style="font-weight: 600">Status</label>
+        <div class="form-floating">
+            <select class="form-select" id="floatingSelectStatus" aria-label="Floating label select example" name="beschikbaarheid">
+                <option value="Huidige status">Huidige status</option>
+                <option value="Beschikbaar">Beschikbaar</option>
+                <option value="Niet beschikbaar">Niet beschikbaar</option>
+            </select>
+         <label for="floatingSelectStatus">Kies een status</label>
         </div>
     </div>
-    <input type="file" name="image" accept="image/*">
-    <!-- Submit button -->
-    <button type="submit" class="btn custom-btn-green">Verzenden</button>
-</form>      </div>
+
+    <div class="right">
+      <label for="floatingInputTitle" style="font-weight: 600">Titel</label>
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInputTitle" name="title" placeholder="Titel Tool">
+            <label for="floatingInputTitle">Voer een titel voor het gereedschap in</label>
+        </div>
+
+      <label for="floatingfloatingInputCategory" style="font-weight: 600">Categorie</label>
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInputCategory" name="category" placeholder="Categorie">
+            <label for="floatingInputCategory">Voer een categorie in</label>
+        </div>
+
+      <label for="floatingInputLocation" style="font-weight: 600">Locatie</label>
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInputLocation" name="location" placeholder="Locatie">
+            <label for="floatingInputLocation">Voer een locatie in</label>
+        </div>
+
+      <label for="floatingTextarea" style="font-weight: 600">Beschrijving</label>
+        <div class="form-floating">
+            <textarea class="form-control" id="floatingTextarea" name="description" placeholder="Beschrijving" style="height: 198px"></textarea>
+            <label for="floatingTextarea">Beschrijf de specificaties van het product</label>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn custom-btn-green">Toevoegen</button>
     </div>
-    </form>
-  </div>
- </div>
+</form>
   </body>
 </html>
