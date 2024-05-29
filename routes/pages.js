@@ -32,5 +32,10 @@ router.get('/ToolProfiel', (req, res) => {
     res.render('ToolProfiel', { title: 'Hamer', user: 'Luca', locatie: 'Kast', status: 'Beschikbaar', beschrijving: 'Een beschrijving over de tool.'});
 });
 
+router.get('/Meldingen', (req, res) => {
+    res.render('Meldingen');
+});
+
+
 
 module.exports = router;
