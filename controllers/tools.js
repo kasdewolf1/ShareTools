@@ -68,12 +68,7 @@ exports.addTool = (req, res) => {
 };
 
 exports.getAllProducts = (req, res) => {
-<<<<<<< Updated upstream
-    const query = 'SELECT title, status, beschrijving, id FROM tools';
-    console.log(query);
-=======
     const query = 'SELECT title, status, beschrijving, id, image FROM tools';
->>>>>>> Stashed changes
     db.query(query, (error, results) => {
         if (error) {
             console.error('Fout bij het ophalen van producten:', error);

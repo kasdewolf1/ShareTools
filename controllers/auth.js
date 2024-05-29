@@ -45,26 +45,10 @@ exports.register = async (req, res) => {
 };
 
 exports.login = async (req, res) => {
-<<<<<<< Updated upstream
     try {
         const { email, password } = req.body;
 
-        // Basic validation
-        if (!email || !password) {
-            return res.render('login', { message: 'Please provide email and password' });
-=======
-    console.log(req.body);
-    const {email, password } = req.body;
-
-    db.query('SELECT * FROM users WHERE name = ? OR email = ?', [email,email], async (error, results) => {
-        if (error) {
-            console.log(error);
-            return res.render('login', {
-                message: 'An error occurred'
-            });
->>>>>>> Stashed changes
-        }
-
+        // Voer één enkele query uit om de gebruiker op te halen
         db.query('SELECT * FROM users WHERE email = ?', [email], async (error, results) => {
             if (error) {
                 console.error(error);
@@ -86,15 +70,10 @@ exports.login = async (req, res) => {
                 expiresIn: process.env.JWT_EXPIRES_IN
             });
 
-<<<<<<< Updated upstream
             const cookieOptions = {
                 expires: new Date(Date.now() + parseInt(process.env.JWT_EXPIRES_IN) * 24 * 60 * 60 * 1000),
                 httpOnly: true
             };
-=======
-        // Controleer of de gevonden gebruiker het ingevoerde wachtwoord overeenkomt
-        const user = results.find( user.email === email); // Zoek naar gebruiker met overeenkomende naam of e-mail
->>>>>>> Stashed changes
 
             res.cookie('jwt', token, cookieOptions);
             return res.redirect('/tools/products');
