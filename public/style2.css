@@ -182,12 +182,9 @@ body {
 
 
 .nav-link{
-  color: #333333;
-  width: 100%;
   display: flex;
   align-items: center;
   margin-bottom: 16px;
-  font-weight: 600;
 }
 .nav-link:hover{
   background-color: #F3F0F0;
@@ -196,10 +193,17 @@ body {
 .nav-link.active{
   background-color: #f3f0f0 !important;
   color: #333333 !important;
-  font-weight: 800;
+  font-weigh t: 800;
 }
 .links{
   margin-left: 16px;
+  color: #333333;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  text-decoration: none;
+
 }
 .icons{
   width: 32px;
