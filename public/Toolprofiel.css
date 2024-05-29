@@ -2,7 +2,6 @@ body{
     margin: 0;
     padding: 0;
     background-color: #f3f0f0;
-    color: #333333;
     font-family: "Inter", sans-serif;
 }
 
@@ -70,38 +69,23 @@ body{
 
 
 
-/*Mijn Account*/
-.account-container{
-    margin: 80px 104px 0px 328px;
-    background-color: #FDFCFB;
-    width: 56%;
+/*Profiel content*/
+.profiel-container{
+    width: 71.4%;
+    height: 1%;
+    background-color: #fdfcfb;
     border-radius: 16px;
     display: flex;
     flex-direction: column;
+    margin: 80px 104px 0px 328px;
     padding: 40px;
 }
 
-.details-container{
-    display: flex;
-    margin: 0 72px 163px;
-}
-.buttons-up{
-    display: flex;
-}
-
 .btn-dark{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
     background-color: #333333;
-    color: #FDFCFB;
-    margin-left: auto;
-    margin-right: 0;
-    width: 108px;
+    margin: 0 72px 0;
     font-weight: 500;
     padding: 8px 0;
-    border-radius: 8px;
 }
 
 .btn-terug{
@@ -114,113 +98,88 @@ body{
 }
 
 h1{
-    margin: 0 0 100px 72px;
+    margin-left: 72px;
     font-weight: 600;
 }
 
-.account-photo{
-    width: 184px;
-    height: 184px;
-    margin: 0 40px 24px 0;
-    border-radius: 100px
+.details-container{
+    padding: 24px 72px 80px;
+    display: flex;
+    flex-direction: row;
 }
 
-.info-label{
-    font-size: 14px;
+.toolfoto{
+    width: 60%;
+    height: 55%;
+    margin: 0 3.7% 0 0;
+    border-radius: 16px;
+    box-shadow: 0 0 20px #33333323;
+}
+
+.tekst-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+ul{
+    padding: 0;
+}
+
+li{
+    list-style: none;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+}
+.info-logos{
+    padding-top: 0;
+    margin: 0 8px 0 0;
+    width: 24px;
+}
+.status{
+    background-color: rgb(63, 168, 92, 20%);
+    color: #3FA85C;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+
+/*Tool Lenen*/
+input[type=text]{
+    border-radius: 8px;
+    padding: 12px;
+    width: 100%;
+    border: 2px solid #cdcdcd;
+}
+input[type=submit]{
+    width: 100%;
+    background-color: #333333;
+    color: #fdfcfb;
+    font-weight: 600;
+    padding: 10px;
+    border: none;
+    border-radius: 8px
+}
+label{
+    color: #333333;
+    font-weight: 600;
     margin-bottom: 8px;
 }
-
-.info-actual{
-    font-weight: 600;
-}
-
-
-/*Mijn account bewerken*/
-.account-info-change, .form-floating{
-    width: 100%;    
-    margin: 0 0 8px 0;
-    padding: 0;
-}
-
-.form-control{
-    padding: 0;
-}
-
-.account-photo-change{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-right: 40px;
-}
-
-.photo-change{
-    width: 184px;
-    height: 184px;
-    margin-bottom: 40px;
-    border-radius: 100px;
-}
-
-.upload-btn:hover{
-    background-color: #333333;
-    color: #FDFCFB;
-}
-
-.upload-btn{
-   display: flex;    
-   border-radius: 8px;
-   border: 2px solid #333333;
-   background-color: #FDFCFB;
-   color: #333333;
-   padding: 10px;
-   font-weight: 600;
-   cursor: pointer;
-   transition: ease-in-out 0.3s;
-}
-.buttons{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 72px 0;
-    gap: 40px;
-}
-.opslaan-btn, .verwijder-btn{
-    width: 100%;
-    border-radius: 8px;
-    background-color: #333333;
-    color: #FDFCFB;
-    font-weight: 600;
-    padding: 12px;
-    border: none;
-    transition: ease-in-out 0.3s;
-}
-.verwijder-btn{
-    background-color: #BC3030;
-}
-.opslaan-btn:hover, .verwijder-btn:hover{
-    opacity: 70%;
-}
-
 
 
 @media screen and (max-width: 1200px){
     .details-container{
-        padding: 24px 0px 80px;
-        margin: 0 72px 80px;
+        padding: 24px 72px 80px;
         display: flex;
         flex-direction: column;
-        align-items: center;
-
     }
-    .account-photo{
-        width: 184px;
-        height: 184px;
-    }
-    .account-photo-change{
-        margin-right: 0px;
-    }
-    .account-info-change{
+    .toolfoto{
         width: 100%;
-        margin-top: 32px;
+        min-width: 300px;
+        margin: 0 3.7% 40px 0;
     }
 }
 
@@ -237,7 +196,15 @@ h1{
         margin: 32px 0px 72px;
         width: 40px;
         height: auto;
-    }    
+    }
+    .profiel-container{
+        margin: 80px 104px 0px 144px;
+    }
+    .toolfoto{
+        width: 100%;
+        min-width: 100%;
+        margin: 0 3.7% 40px 0;
+    }
     .links{
         opacity: 0;
         display: none;
@@ -249,11 +216,6 @@ h1{
         justify-content: center;
     }
 
-
-    .account-container{
-        margin: 80px 104px 0px 144px;
-        width: 71.4%;
-    }
 }
 
 
@@ -305,8 +267,8 @@ h1{
         justify-content: center;
     }
 
-    /*Account*/
-    .account-container{
+    /*Profiel*/
+    .profiel-container{
         width: 100%;
         margin: 0 0 94px 0;
         padding: 16px;
@@ -317,13 +279,11 @@ h1{
     }
 
     .details-container{
-        margin: 0;
+        padding: 0;
         flex-direction: column;
     }
-
     .btn-dark{
-        margin-left: auto; 
-        margin-right: 0;
+        margin: 40px 0 0;
     }
     .icons{
         width: 24px;
