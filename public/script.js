@@ -32,7 +32,9 @@
                     alert(xhr.responseText);
                 }
             });
-        }           
+        }
+    }
+    
     function highlightProduct(element) {
         element.style.backgroundColor = "lightgray";
     }
@@ -40,18 +42,27 @@
     function removeHighlight(element) {
         element.style.backgroundColor = "";
     }
-
+    
     function goToProductPage(id) {
         window.location.href = "/tools/product/" + id;
     }
-
+    
     // Voeg klikgebeurtenis toe aan elk product in de grid
     document.querySelectorAll('.product').forEach(item => {
         item.addEventListener('click', function() {
-            // Haal het ID van het product op uit de data-attribuut
+            // Haal het ID van het product op uit het data-attribuut
             let productId = this.getAttribute('data-product-id');
             // Navigeer naar de productpagina
             goToProductPage(productId);
+        });
+    
+        // Voeg mouseover en mouseout events toe voor highlight
+        item.addEventListener('mouseover', function() {
+            highlightProduct(this);
+        });
+    
+        item.addEventListener('mouseout', function() {
+            removeHighlight(this);
         });
     });
 
