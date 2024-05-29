@@ -16,6 +16,11 @@ router.get('/register', (req, res) => {
 router.get('/login', (req, res) => {
     res.render('login');
 });
+
+router.get('/wachtwoordvergeten', (req, res) => {
+    res.render('wachtwoordvergeten');
+});
+
 router.get('/indexloggedin', (req, res) => {
     // Render de indexloggedin view
     res.render('indexloggedin', { message: 'main page geladen'},);
