@@ -10,7 +10,11 @@
   <title>Share Tools</title>
   <link rel="icon" type="image/x-icon" href="/img/favicon-32x32.png">
   <link rel="stylesheet" href="/style2.css">
-
+  <style>
+    .hide{
+        display: none;
+    }
+  </style>
 </head>
 <body>
 {{> header}}
@@ -23,6 +27,10 @@
     </div>
 
 <div class="col-md-4">
+    <div class="search-bar">
+      <img src="img/ICON - Zoeken.svg" class="search-icon">
+      <input type="text" id="search" data-search placeholder="Zoeken in jouw inventaris">
+    </div>
         <a class="green-plus" href="/Tooltoevoegen">Nieuwe tool toevoegen</a>
 </div>
 </div>
@@ -38,7 +46,6 @@
             <p class="product-status">{{status}}</p>
             <p class="product-beschrijving" style="color: #333333">{{beschrijving}}</p>
             <a href="/product/{{id}}" class="btn-bekijk">Bekijk</a>
-
             <a href="/eddit/{{id}}" class="edit-button">Bewerk</a>
         </div>
     {{/each}}
@@ -88,6 +95,22 @@
             });
         });
 
+const searchInput = document.getElementById("search");
+
+searchInput.addEventListener("input", e => {
+   const value = e.target.value.toLowerCase();
+   const productCards = document.querySelectorAll(".product");
+
+   productCards.forEach(card => {
+      const name = card.querySelector(".product-title").textContent.toLowerCase();
+      const isVisible = name.includes(value);
+      card.classList.toggle("hide", !isVisible); // Corrected to hide cards that do not match
+   });
+});
+
+
+
+    
 </script>
 
 <script src="script.js" defer></script>
