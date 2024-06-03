@@ -10,103 +10,48 @@
   <link rel="stylesheet" href="/style2.css">
   <link rel="stylesheet" href="/header.css">
   <link rel="icon" type="image/x-icon" href="/img/favicon-32x32.png">
-    <title>Share Tools</title>
+  <title>Share Tools</title>
   <style>
-    .hide{
-        display: none;
+    .hide {
+      display: none;
     }
   </style>
 </head>
-
 <body>
-{{> header}}
+  {{> header}}
 
-<div class="everything">
-<div class="container mt-5">
-    <div class="header-text">
+  <div class="everything">
+    <div class="container mt-5">
+      <div class="header-text">
         <h1>Mijn tools</h1>
         <p>Bekijk nu verschillende soorten gereedschappen in uw inventaris.</p>
-    </div>
+      </div>
 
-<div class="col-md-4">
-    <div class="search-bar">
-      <img src="img/ICON - Zoeken.svg" class="search-icon">
-      <input type="text" id="search" data-search placeholder="Zoeken in jouw inventaris">
-    </div>
-        <a class="green-plus" href="/Tooltoevoegen">Nieuwe tool toevoegen</a>
-</div>
-</div>
-        <div style="margin-bottom: 20px;"></div>
-
-       <div class="grid" id="productGrid">
-    {{#each products}}
-        <div class="product">
-            <h2 class="product-title">{{title}}</h2>
-            <p class="product-status">{{status}}</p>
-            <p class="product-beschrijving" style="color: #333333">{{beschrijving}}</p>
-            <a href="/product/{{id}}" class="btn-bekijk">Bekijk</a>
-            <a href="/eddit/{{id}}" class="edit-button">Bewerk</a>
+      <div class="col-md-4">
+        <div class="search-bar">
+          <img src="img/ICON - Zoeken.svg" class="search-icon">
+          <input type="text" id="search" data-search placeholder="Zoeken in jouw inventaris">
         </div>
+        <a class="green-plus" href="/Tooltoevoegen">Nieuwe tool toevoegen</a>
+      </div>
+      
+      <div style="margin-bottom: 20px;"></div>
+
+      <div class="grid" id="productGrid">
+        {{#each products}}
+        <div class="product" data-product-id="{{id}}">
+          <h2 class="product-title">{{title}}</h2>
+          <p class="product-status">{{status}}</p>
+          <p class="product-beschrijving" style="color: #333333">{{beschrijving}}</p>
+          <img src="{{imageURL}}" alt="{{title}} afbeelding" class="product-image"> <!-- Hier wordt de afbeelding weergegeven -->
+          <a href="{{id}}" class="edit-button">Bewerk</a>
+        </div>
+        {{/each}}
+      </div>
     </div>
-    {{/each}}
-</div>
-</div>
+  </div>
 
-
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function() {
-        setTimeout(function() {
-            $('#successMessage').fadeOut('slow');
-        }, 3000); // 3000 milliseconden = 3 seconden
-    });
-
-
-    document.addEventListener("DOMContentLoaded", function() {
-        // Select all elements with the class 'product-status'
-        let status = document.querySelectorAll('.product-status');
-
-        // Iterate over each element and change the color based on the content
-        status.forEach(function(element) {
-                var statusText = element.textContent.trim();
-
-            // Apply different colors based on the status text
-            switch (statusText) {
-                case 'Beschikbaar':
-                    element.style.color = '#3FA85C';
-                    element.style.backgroundColor = 'rgb(63, 168, 92, 20%)';
-                    break;
-                case 'Niet beschikbaar':
-                    element.style.color = '#5980BC';
-                    element.style.backgroundColor = 'rgb(89, 128, 188, 20%)';
-                    break;
-                case 'Huidige status':
-                    element.style.color = '#613FA8';
-                    element.style.backgroundColor = 'rgb(97, 63, 168, 20%)';
-                    break;
-                default:
-                    element.style.color = '#333333';
-                    element.style.backgroundColor = 'rgb(55, 55, 55, 20%)';
-                    break;
-                }
-            });
-        });
-        
-    const searchInput = document.getElementById("search");
-    
-    searchInput.addEventListener("input", e => {
-        const value = e.target.value.toLowerCase();
-        const productCards = document.querySelectorAll(".product");
-
-        productCards.forEach(card => {
-            const name = card.querySelector(".product-title").textContent.toLowerCase();
-            const isVisible = name.includes(value);
-            card.classList.toggle("hide", !isVisible); // Corrected to hide cards that do not match
-        });
-    });
-</script>
-<script src="/script.js"></script>
-
-  </body>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/script.js"></script>
+</body>
 </html>

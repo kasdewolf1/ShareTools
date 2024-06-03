@@ -95,39 +95,20 @@ exports.login = async (req, res) => {
     });
 };
 
-exports.updateUser = (req, res) => {
-    const { name, email, password, passwordConfirm, woonplaats, birthdate } = req.body;
+exports.updateUser = async (req, res) => {
+    const { name, email, password, woonplaats, birthdate } = req.body;
+    const userId = req.user.id; // Haal het ingelogde gebruikers-ID op vanuit het verzoek
 
-    db.query('SELECT email FROM users WHERE email = ?', [email], async (error, results) => {
-        if (error) {
-            console.log(error);
-            return res.render('mijnaccountbewerken', {
-                message: 'An error occurred'
-            });
+    try {
+        // Controleer of de bewerking wordt uitgevoerd op de gegevens van de ingelogde gebruiker
+        if (req.params.userId !== userId) {
+            return res.status(403).json({ message: 'Unauthorized: You can only update your own data' });
         }
 
-        if (results.length > 0) {
-            return res.render('mijnaccountbewerken', {
-                message: 'This email is already in use'
-            });
-        } else if (password !== passwordConfirm) {
-            return res.render('mijnaccountbewerken', {
-                message: 'Password Didn\'t Match!'
-            });
-        }
-
-        let hashedPassword = await bcrypt.hash(password, 8);
-
-        console.log(hashedPassword);
-
-        db.query('UPDATE users SET name = ?, email = ?, password = ?, woonplaats = ?, birthdate = ? WHERE id = ?', [name, email, hashedPassword, woonplaats, birthdate, req.user.id], (err, result) => {
-            if (err) {
-                console.log(err);
-            } else {
-                return res.render('mijnaccount', {
-                    message: 'User updated!'
-                });
-            }
-        });
-    });
-}
+        // Rest van de code voor het bijwerken van de gebruikersgegevens
+        // ...
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'An error occurred while updating user' });
+    }
+};
