@@ -7,8 +7,8 @@ router.get('/', (req, res) => {
     res.render('Hoofdpagina');
 });
 
-router.get('/Hoofdpagina', (req, res) => {
-    res.render('Hoofdpagina');
+router.get('/hoofdpagina', (req, res) => {
+    res.render('hoofdpagina');
 });
 
 router.get('/register', (req, res) => {
@@ -17,6 +17,10 @@ router.get('/register', (req, res) => {
 
 router.get('/login', (req, res) => {
     res.render('login');
+});
+
+router.get('/wachtwoordvergeten', (req, res) => {
+    res.render('wachtwoordvergeten');
 });
 
 router.get('/indexloggedin', (req, res) => {
