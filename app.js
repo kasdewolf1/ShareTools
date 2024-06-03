@@ -1,6 +1,6 @@
 const express = require('express');
 const mysql = require("mysql");
-const hbs = require('handlebars');
+
 const dotenv = require('dotenv');
 const db = require('./db');
 const hbs = require('hbs');
