@@ -25,7 +25,7 @@ router.get('/indexloggedin', (req, res) => {
     // Render de indexloggedin view
     res.render('indexloggedin', { message: 'main page geladen'},);
 });
-router.get('/product', (req, res) => {
+router.get('/productinfo', (req, res) => {
     res.render('product', { message: 'productinfo geladen'} ,);
 });
 
