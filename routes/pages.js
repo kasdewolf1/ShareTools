@@ -26,7 +26,7 @@ router.get('/indexloggedin', (req, res) => {
     res.render('indexloggedin', { message: 'main page geladen'},);
 });
 router.get('/productinfo', (req, res) => {
-    res.render('product', { message: 'productinfo geladen'} ,);
+    res.render('productinfo', { message: 'productinfo geladen'} ,);
 });
 
 router.get('/Tooltoevoegen', (req, res) => {

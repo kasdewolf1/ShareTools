@@ -37,24 +37,67 @@
         <a class="green-plus" href="/Tooltoevoegen">Nieuwe tool toevoegen</a>
 </div>
 </div>
+        <div style="margin-bottom: 20px;"></div>
 
-<div id="successMessage" style="align-items: center; color: white; justify-content: center; display: flex; background-color: green;">
-    {{ message }}
+       <div class="grid" id="productGrid">
+    {{#each products}}
+    <div class="product" data-product-id="{{id}}" onmouseover="highlightProduct(this)" onmouseleave="removeHighlight(this)">
+        <img src="{{imageURL}}" alt="Tool Image">
+        <h2>{{title}}</h2>
+        <p>Beschikbaarheid: {{status}}</p>
+        <p>{{beschrijving}}</p>
+        <div class="delete-button">
+            
+            </button>
+        </div>
+    </div>
+    {{/each}}
+</div>
 </div>
 
-<div class="grid" id="productGrid">
-        {{#each products}}
-        <div class="product" data-product-id="{{id}}">
-            <h2 class="product-title">{{title}}</h2>
-            <p class="product-status">{{status}}</p>
-            <p class="product-beschrijving" style="color: #333333">{{beschrijving}}</p>
-            <a href="{{id}}" class="edit-button">Bewerk</a>
-        </div>
-        {{/each}}
-    </div>
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="script.js"></script>
-</body>
+<script>
+    $(document).ready(function() {
+        setTimeout(function() {
+            $('#successMessage').fadeOut('slow');
+        }, 3000); // 3000 milliseconden = 3 seconden
+    });
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Select all elements with the class 'product-status'
+        let status = document.querySelectorAll('.product-status');
+
+        // Iterate over each element and change the color based on the content
+        status.forEach(function(element) {
+                var statusText = element.textContent.trim();
+
+            // Apply different colors based on the status text
+            switch (statusText) {
+                case 'Beschikbaar':
+                    element.style.color = '#3FA85C';
+                    element.style.backgroundColor = 'rgb(63, 168, 92, 20%)';
+                    break;
+                case 'Niet beschikbaar':
+                    element.style.color = '#5980BC';
+                    element.style.backgroundColor = 'rgb(89, 128, 188, 20%)';
+                    break;
+                case 'Huidige status':
+                    element.style.color = '#613FA8';
+                    element.style.backgroundColor = 'rgb(97, 63, 168, 20%)';
+                    break;
+                default:
+                    element.style.color = '#333333';
+                    element.style.backgroundColor = 'rgb(55, 55, 55, 20%)';
+                    break;
+                }
+            });
+        });
+
+</script>
+<script src="/script.js"></script>
+
+  </body>
 </html>
