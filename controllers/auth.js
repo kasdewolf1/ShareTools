@@ -49,7 +49,7 @@ exports.login = async (req, res) => {
     console.log(req.body);
     const { name, email, password } = req.body;
 
-    db.query('SELECT * FROM users WHERE name = ? OR email = ?', [name, name], async (error, results) => {
+    db.query('SELECT * FROM users WHERE name = ? OR email = ?', [name, email], async (error, results) => {
         if (error) {
             console.log(error);
             return res.render('login', {
@@ -63,20 +63,15 @@ exports.login = async (req, res) => {
             });
         }
 
-        // Controleer of de gevonden gebruiker het ingevoerde wachtwoord overeenkomt
-        const user = results.find(user => user.name === name || user.email === name); // Zoek naar gebruiker met overeenkomende naam of e-mail
+        // Neem de eerste gebruiker uit de resultaten
+        const user = results[0];
 
-        if (!user) {
-            return res.render('login', {
-                message: 'Invalid name or password'
-            });
-        }
-
+        // Controleer of het ingevoerde wachtwoord overeenkomt met het wachtwoord van de gebruiker
         const isPasswordMatch = await bcrypt.compare(password, user.password);
 
         if (!isPasswordMatch) {
             return res.render('login', {
-                message: 'Invalid email or password'
+                message: 'Invalid name or password'
             });
         }
 
@@ -94,12 +89,11 @@ exports.login = async (req, res) => {
         // Stel JWT-cookie in
         res.cookie('jwt', token, cookieOptions);
 
-        // Stuur een redirect naar /products na succesvol inloggen
-        return res.redirect('/tools/products' , 
-        
-        );
+        // Stuur een redirect naar /indexloggedin na succesvol inloggen
+        return res.redirect('/indexloggedin');
     });
 };
+
 
 exports.logout = (req, res) => {
     // Verwijder de JWT-cookie bij uitloggen
