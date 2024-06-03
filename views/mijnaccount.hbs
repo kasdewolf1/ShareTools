@@ -19,7 +19,6 @@
 
     <div class="account-container">
       <section class="buttons-up">
-        <button class="btn-terug" id="terugknop">🞀</button>
         <script src="script.js"></script>
         <button class="btn-dark">Uitloggen</button>
       </section>
@@ -29,16 +28,16 @@
         <img src="/img/Mijn account.png" class="account-photo">
         <section class="account-info">
             <p1 class="info-label">Gebruikersnaam</p1>
-            <p class="info-actual">{{name}}</p>
+            <p class="info-actual">{{user.name}}</p>
 
             <p1 class="info-label">Geboortedatum</p1>
-            <p class="info-actual">{{birthdate}}</p>
+            <p class="info-actual">{{user.birthdate}}</p>
 
             <p1 class="info-label">Email</p1>
-            <p class="info-actual">{{email}}</p>
+            <p class="info-actual">{{user.email}}</p>
 
             <p1 class="info-label">Woonplaats</p1>
-            <p class="info-actual">{{woonplaats}}</p>
+            <p class="info-actual">{{user.woonplaats}}</p>
         </section>
       </section>
       <a href="./mijnaccountbewerken" class="btn-dark" onclick="redirect">Wijzigen</a>
