@@ -22,8 +22,8 @@ router.get('/login', (req, res) => {
 router.get('/indexloggedin', (req, res) => {
     toolsController.getAllProducts((error, products) => {
         if (error) {
-            console.error('Fout bij het ophalen van producten:', error);
-            return res.status(500).send('Er is een interne serverfout opgetreden');
+            console.error('Error fetching products:', error);
+            return res.status(500).send('Internal server error');
         }
         res.render('indexloggedin', { products: products });
     });

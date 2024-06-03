@@ -63,8 +63,7 @@ exports.login = async (req, res) => {
             });
         }
 
-        // Controleer of de gevonden gebruiker het ingevoerde wachtwoord overeenkomt
-        const user = results.find(user => user.name === name || user.email === name); // Zoek naar gebruiker met overeenkomende naam of e-mail
+        const user = results.find(user => user.name === name || user.email === name);
 
         if (!user) {
             return res.render('login', {
@@ -80,33 +79,21 @@ exports.login = async (req, res) => {
             });
         }
 
-        // Genereer JWT-token voor de gebruiker
         const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
             expiresIn: process.env.JWT_EXPIRES_IN
         });
 
-        // Configureer cookie-opties
         const cookieOptions = {
-            expires: new Date(Date.now() + parseInt(process.env.JWT_EXPIRES_IN) * 24 * 60 * 60 * 1000), // Zorg ervoor dat expiresIn een numerieke waarde is
+            expires: new Date(Date.now() + parseInt(process.env.JWT_EXPIRES_IN) * 24 * 60 * 60 * 1000),
             httpOnly: true
         };
 
-        // Stel JWT-cookie in
         res.cookie('jwt', token, cookieOptions);
 
-        // Stuur een redirect naar /products na succesvol inloggen
-        return res.redirect('indexloggedin' , 
-        
-        );
+        // Redirect to the correct path
+        return res.redirect('/indexloggedin');
     });
 };
-
-exports.logout = (req, res) => {
-    // Verwijder de JWT-cookie bij uitloggen
-    res.clearCookie('jwt');
-    res.redirect('/login');
-};
-// Compare this snippet from controllers/auth.js:
 
 exports.updateUser = (req, res) => {
     const { name, email, password, passwordConfirm, woonplaats, birthdate } = req.body;
