@@ -4,6 +4,7 @@ const hbs = require('hbs');
 const multer = require('multer');
 const db = require('./db');
 const app = express();
+const session = require('express-session');
 
 const pagesRouter = require('./routes/pages');
 const authRouter = require('./routes/auth');
@@ -18,6 +19,23 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 hbs.registerPartials(path.join(__dirname, 'views/partials'));
 
+
+
+
+
+app.use(session({
+  secret: process.env.SESSION_SECRET, // Replace with a strong secret string
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false } // Set to true if using https
+}));
+
+app.use((req, res, next) => {
+  if (req.session && req.session.user) { // Check if session exists and has a 'user' property
+    req.user = req.session.user;
+  }
+  next(); // Allow request to proceed
+});
 
 
 // Define routes

@@ -112,3 +112,20 @@ exports.updateUser = async (req, res) => {
         res.status(500).json({ message: 'An error occurred while updating user' });
     }
 };
+
+exports.Getuserbyid = async (req, res) => {
+    const userId = req.params.userId;
+
+    db.query('SELECT * FROM users WHERE id = ?', [userId], (error, results) => {
+        if (error) {
+            console.error(error);
+            return res.status(500).json({ message: 'An error occurred while fetching user' });
+        }
+
+        if (results.length === 0) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        res.status(200).json(results[0]);
+    });
+}

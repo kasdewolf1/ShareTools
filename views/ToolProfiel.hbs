@@ -7,51 +7,65 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="Toolprofiel.css">
+  <link rel="stylesheet" href="/Toolinfo.css">
   <link rel="stylesheet" href="/header.css">    
   <link rel="icon" type="image/x-icon" href="/img/favicon-32x32.png">
     <title>Share Tools</title>
 </head>
 
 <body>
-  <div class="page-container">
-    {{> header}}
+  <section class="details-container">
+  {{#if product.imageURL}}
+    <img src="{{product.imageURL}}" alt="Tool Image">
+  {{else}}
+    <img src="/img/Tool Filler.png" class="toolfoto">
+  {{/if}}
 
-    <div class="profiel-container">
-      <button class="btn-terug">🞀</button>
-      <h1>{{title}}</h1>
 
-      <section class="details-container">
-        {{#if img}}
-          <img src={{img}} class="toolfoto"> 
+  <section class="tekst-info">            
+      <p class="info-label">Afmeting</p>     
+        {{#if product.afmeting}}         
+          <p class="info">{{product.afmeting}}</p>
         {{else}}
-          <img src="img/Tool Filler.png" class="toolfoto">
+          <p>Niet van toepassing / Niet ingevuld</p>
         {{/if}}
 
 
-          <section class="tekst-info">            
-            <ul>
-              {{#if user}}
-                <li><img src="img/GebruikersnaamLogo.png" class="info-logos">{{user}}</li>              
-              {{/if}}
+      <p class="info-label">Categorie</p>              
+        {{#if product.categorie}}
+          <p class="">{{product.categorie}}</p>
+        {{else}}
+          <p>Niet van toepassing / Niet ingevuld</p>
+        {{/if}}
 
-              {{#if locatie}}
-                <li><img src="img/LocatieLogo.png" class="info-logos">{{locatie}}</li>
-              {{/if}}
 
-              {{#if status}}
-                <li><div class="status">{{status}}</div></li>
-              {{/if}}
-            </ul>
-            <br>
-            <br>
-            <p>{{beschrijving}}</p>
-          </section>
-      </section>      
+      <p class="info-label">Locatie</p>
+        {{#if product.locatie}}
+          <p class="">{{product.locatie}}</p>
+        {{else}}
+          <p>Niet van toepassing / Niet ingevuld</p>
+        {{/if}}
+        
 
-      <button type="btn-dark" class="btn btn-dark">Bewerken</button>
-    </div>
-  </div>
+      <p class="info-label">Status</p>
+        {{#if product.status}}
+          <p class="status">{{product.status}}</p></li>
+        {{else}}
+          <p class="status">Niet van toepassing / Niet ingevuld</p>
+        {{/if}}
+
+        <br>
+        <br>
+        <p>{{product.beschrijving}}</p>
+  </section>
+</section>      
+
+<div class="buttons">
+  <button class="delete-btn" onclick="deleteProduct('{{id}}')">
+    <i class="fas fa-trash-alt"></i>
+  <button type="button" class="btn-dark">LEEN</button>
+  <button type="button" class="btn-dark">BERICHT</button>
+</div>
   
 </body>
 </html>

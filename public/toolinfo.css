@@ -1,73 +1,240 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #F3F0F0;
   }
   
-  .navbar {
-    background-color: #007bff; /* Blauwe kleur voor de navigatiebalk */
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
+  .profiel-container {
+  width: 71.4%;
+  height: 1%;
+  background-color: #fdfcfb;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  margin: 80px 104px 0px 328px;
+  padding: 40px;
+  box-shadow: 0 0 50px rgb(55,55,55,8%);
   }
   
-  .container {
-    max-width: 800px;
-    margin: 20px auto;
+  .btn-dark{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-weight: 600;
+  color: #FDFCFB;
+  background-color: #333333;
+  transition: ease-in-out 0.3s;
   }
   
-  .card {
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 20px;
+  .btn-terug{
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 2px solid #CDCDCD;
+  background-color: #FDFCFB;
+  color: #333333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
   }
   
-  .image-placeholder {
-    width: 100%;
-    height: 200px; /* Aanpassen aan gewenste grootte */
-    background-color: #ddd; /* Grijze achtergrondkleur */
-    border-radius: 5px;
-    display: flex;
-    justify-content: center; /* Plaats het plaatje in het midden */
-    align-items: center; /* Plaats het plaatje in het midden */
+  h1{
+  margin-left: 72px;
+  font-weight: 600;
   }
   
-  .info-caption {
-    margin: 10px 0;
-    font-weight: bold;
+  .details-container{
+  padding: 24px 72px 80px;
+  display: flex;
+  flex-direction: row;
   }
   
-  .product-details {
-    margin-bottom: 20px;
+  .toolfoto{
+  width: 60%;
+  height: 55%;
+  margin: 0 3.7% 0 0;
+  border-radius: 16px;
+  box-shadow: 0 0 20px #33333323;
   }
   
-  .buttons {
-    display: flex;
-    justify-content: space-between;
+  .tekst-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
   }
   
-  button {
-    background-color: #007bff; /* Blauwe kleur voor de knoppen */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  .info-label{
+  font-weight: 600;
+  margin: 0;
   }
   
-  button:hover {
-    background-color: #0056b3; /* Donkerder blauwe kleur bij hover */
+  .info{
+  margin: 0;
+  display: flex;
+  align-items: center;
+  padding: 4px 0;
   }
   
-  a {
-    text-decoration: none;
-    color: white;
+  .info-logos{
+  padding-top: 0;
+  margin: 0 8px 0 0;
+  width: 24px;
   }
   
-  a:hover {
-    text-decoration: underline;
+  .status{
+  background-color: rgb(63, 168, 92, 20%);
+  color: #3FA85C;
+  padding: 2px 8px;
+  border-radius: 4px;
+  }
+  
+  .buttons{
+  display: flex;
+  gap: 40px;
+  position: relative;
+  right: 0;
+  }
+  
+  /*Tool Lenen*/
+  input[type=text]{
+  border-radius: 8px;
+  padding: 12px;
+  width: 100%;
+  border: 2px solid #cdcdcd;
+  }
+  input[type=submit]{
+  width: 100%;
+  background-color: #333333;
+  color: #fdfcfb;
+  font-weight: 600;
+  padding: 10px;
+  border: none;
+  border-radius: 8px
+  }
+  
+  @media screen and (max-width: 1200px){
+  .details-container{
+  padding: 24px 72px 80px;
+  display: flex;
+  flex-direction: column;
+  }
+  .toolfoto{
+  width: 100%;
+  min-width: 300px;
+  margin: 0 3.7% 40px 0;
+  }
+  }
+  
+  @media screen and (max-width: 900px){
+  .navbar-everything{
+  width: 104px;
+  }
+  .logo-normal{
+  display: none;
+  }
+  .logo-responsive{
+  display: block;
+  margin: 32px 0px 72px;
+  width: 40px;
+  height: auto;
+  }
+  .profiel-container{
+  margin: 80px 104px 0px 144px;
+  }
+  .toolfoto{
+  width: 100%;
+  min-width: 100%;
+  margin: 0 3.7% 40px 0;
+  }
+  .links{
+  opacity: 0;
+  display: none;
+  }
+  .nav-link{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+  
+  }
+  
+  @media screen and (max-width: 700px){
+  body{
+  background-color: #fdfcfb;
+  }
+  .page-container{
+  display: flex;
+  flex-direction: column;
+  }
+  
+  .logo-responsive{
+  display: none;
+  }
+  .navbar-everything{
+  background-color: #fdfcfb;
+  box-shadow: 0px 0px 50px #33333377;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100vw;
+  height: 80px;
+  position: fixed;
+  bottom: 0;
+  }
+  .links{
+  display: none;
+  }
+  .d-flex.align-items-start{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  }
+  
+  .nav.flex-column.nav-pills.me-3{
+  width: 100%;
+  display: flex;
+  flex-direction: row !important;
+  justify-content: space-around;
+  }
+  
+  .nav-link{
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+  
+  .profiel-container{
+  width: 100%;
+  margin: 0 0 94px 0;
+  padding: 16px;
+  }
+  
+  h1{
+  margin: 40px 0 24px 0px;
+  }
+  
+  .details-container{
+  padding: 0;
+  flex-direction: column;
+  }
+  .btn-dark{
+  margin: 40px 0 0;
+  }
+  .icons{
+  width: 24px;
+  height: 24px;
+  }
+  
   }

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const toolsController = require('../controllers/tools');
+const authController = require('../controllers/auth');
 
 // Define routes
 router.get('/', (req, res) => {
@@ -52,9 +53,21 @@ router.get('/Tooltoevoegen', (req, res) => {
     res.render('Tooltoevoegen');
 });
 
-router.get('/mijnaccount', (req, res) => {
-    res.render('mijnaccount');
-});
+router.get('/mijnaccount', async (req, res) => {
+    try {
+      const user = await authController.getUserById(req.user.id);
+  
+      // Check if user is found
+      if (!user) {
+        return res.status(404).render('error', { message: 'User not found' });
+      }
+  
+      res.render('mijnaccount', { user });
+    } catch (error) {
+      console.error(error);
+      res.status(500).render('error', { message: 'Error fetching user data' });
+    }
+  });
 
 router.get('/mijnaccountbewerken', (req, res) => {
     res.render('mijnaccountbewerken');
