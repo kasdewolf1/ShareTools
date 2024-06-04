@@ -95,22 +95,6 @@ return res.status(500).send('An internal server error occurred');
 });
 };
 
-exports.getToolById = (req, res) => {
-    const { id } = req.params;
-    const query = 'SELECT * FROM tools WHERE id = ?';
-    db.query(query, [id], (error, results) => {
-        if (error) {
-            console.error('Fout bij het ophalen van producten:', error);
-            return res.status(500).send('Er is een interne serverfout opgetreden');
-        }
-
-   
-
-        // Render de HTML met de toolgegevens en de afbeeldings-URL
-        res.render('productinfo', { product: results[0]});
-    });
-};
-
 exports.deleteTool = (req, res) => {
 const { id } = req.params;
 const query = 'DELETE FROM tools WHERE id = ?';
