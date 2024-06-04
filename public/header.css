@@ -1,0 +1,133 @@
+/*Navbar*/
+.navbar-everything{
+    background-color: #fdfcfb;
+    box-shadow: 0px 0px 50px rgb(55,55,55,24%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 288px;
+    height: 100vh; 
+    position: fixed;
+    top: 0;
+    padding: 40px 24px;
+  }
+  
+  .nav-link{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    padding: 8px;
+    border-radius: 8px;
+  }
+  .nav-link:hover{
+    background-color: #F3F0F0;
+    color: #333333;
+  }
+
+  .links{
+    margin-left: 16px;
+    color: #333333;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    text-decoration: none;
+    list-style: none;
+  }
+  .icons{
+    width: 32px;
+    height: 32px;
+  }
+  
+  
+  
+  .logo-normal {
+    display: flex;
+    height: 56px;
+    width: auto;
+    margin: 0 0 54px;
+
+  }
+  
+  .logo-responsive{
+    display: none;
+  }
+  
+  .page-container{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.nav-link[aria-selected="true"] .links {
+  font-weight: bold; /* Or any other value for thicker font, e.g., 700 */
+}
+
+@media screen and (max-width: 900px){
+    .navbar-everything{
+        width: 104px;
+    }
+    .logo-normal{
+        display: none;
+    }
+    .logo-responsive{
+        display: block;
+        margin: 32px 0px 72px;
+        width: 40px;
+        height: auto;
+    }
+    .links{
+        opacity: 0;
+        display: none;
+    }
+    .nav-link{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+}
+
+
+@media screen and (max-width: 700px){
+    /*Navbar*/
+    .logo-responsive{
+        display: none;
+    }
+    .navbar-everything{
+        background-color: #fdfcfb;
+        box-shadow: 0px 0px 50px #33333377;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100vw;
+        height: 80px;
+        position: fixed;
+        bottom: 0;
+    }   
+     .links{
+        display: none;
+    }
+    .d-flex.align-items-start{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .nav.flex-column.nav-pills.me-3{
+        width: 100%;
+        display: flex;
+        flex-direction: row !important;
+        justify-content: space-around;
+    }
+ 
+    .nav-link{
+        width: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

@@ -18,6 +18,15 @@ body{
     width: 100vw;
 }
 
+.navbar-nav, .ms-auto, .mb-2, .mb-lg-0{
+    margin-right: 40px;
+   }
+   .nav-item{
+    padding: 0 40px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
 .btn-dark, .btn-outline{
     display: flex;
     justify-content: center;
@@ -33,6 +42,10 @@ body{
     font-weight: 600;
     transition: ease-in-out 0.3s;
 }
+.btn-dark:hover{
+    background-color:#5C5C5C;
+}
+
 .btn-outline{
     background-color:#FDFCFB;
     color: #333333;
@@ -42,11 +55,6 @@ body{
 .btn-outline:hover{
     background-color: #E6E6E6;
 }
-
-.btn-dark:hover{
-    background-color:#5C5C5C;
-}
-
 
 
 .d-flex{
@@ -58,6 +66,22 @@ body{
     flex-direction: column;
     align-items: center;
 }
+
+
+/*Footer*/
+.footer{
+    background-color: #333333;
+    color: #FDFCFB;
+    font-weight: 600;    
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    padding: 40px;
+    margin-top: 160px;
+}
+
 
 /*Call To Action*/
 .cta-tekst{
@@ -93,10 +117,11 @@ p{
     background-color: white;
     border-radius: 16px;
     width: 71%;
-    height: 747px;
+    height: 82%;
     position: absolute;
     box-shadow: 0 0 16px rgb(55,55,55,24%);
 }
+
 
 /*Proces*/
 .proces-uitleg{
@@ -121,10 +146,15 @@ p{
     box-shadow: 0 0 10px #33333342;
     border: none;
 }
+.card-body{
+    display: flex;
+    gap: 32px;
+}
 h3{
     font-size: 40px;
     margin-bottom: 40px;
 }
+
 
 /*Functie uitleg*/
 .functies-uitleg{
@@ -147,14 +177,17 @@ h3{
 }
 .functie-white{
     background-color: white;
-    border-radius: 0 16px 0 16px;
+    border-radius: 0 16px 0 14px;
     width: 73%;
     height: 86%;
     position: absolute;
     bottom: 0;
-    box-shadow: 10px 0 16px rgb(55,55,55,24%);
-    outline: 0 0 2px 2px solid rgb(63, 168, 92, 20%);
-    outline-offset: -2px;
+    box-shadow: 10px -10px 16px 1px rgb(55,55,55,8%);
+    margin: 0 0 2px 2px;
+}
+
+.end-break{
+    height: 160px;
 }
 
 

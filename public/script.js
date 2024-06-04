@@ -36,7 +36,8 @@
     }
     
     function highlightProduct(element) {
-        element.style.backgroundColor = "lightgray";
+        element.style.backgroundColor = "#F4F2F1";
+        element.style.transition = "ease-in-out 0.2s";
     }
     
     function removeHighlight(element) {
@@ -66,18 +67,48 @@
         });
     });
 
-    function filterTools() {
-        const searchValue = document.getElementById('searchInput').value.toLowerCase();
-        const products = document.querySelectorAll('.product');
 
-        products.forEach(product => {
-            const title = product.querySelector('h2').innerText.toLowerCase();
-            const description = product.querySelector('p:nth-of-type(2)').innerText.toLowerCase();
+    // ZOEKBALK
+    const searchInput = document.getElementById("search");
 
-            if (title.includes(searchValue) || description.includes(searchValue)) {
-                product.style.display = 'block';
-            } else {
-                product.style.display = 'none';
-            }
-        });
-    }
+    searchInput.addEventListener("input", e => {
+       const value = e.target.value.toLowerCase();
+       const productCards = document.querySelectorAll(".product");
+    
+       productCards.forEach(card => {
+          const name = card.querySelector(".product-title").textContent.toLowerCase();
+          const isVisible = name.includes(value);
+          card.classList.toggle("hide", !isVisible);
+       });
+    });
+
+    // STATUS KLEUREN
+    document.addEventListener("DOMContentLoaded", function() {
+        // Select all elements with the class 'product-status'
+        let status = document.querySelectorAll('.product-status');
+
+        // Iterate over each element and change the color based on the content
+        status.forEach(function(element) {
+                var statusText = element.textContent.trim();
+
+            // Apply different colors based on the status text
+            switch (statusText) {
+                case 'Beschikbaar':
+                    element.style.color = '#3FA85C';
+                    element.style.backgroundColor = 'rgb(63, 168, 92, 20%)';
+                    break;
+                case 'Niet beschikbaar':
+                    element.style.color = '#5980BC';
+                    element.style.backgroundColor = 'rgb(89, 128, 188, 20%)';
+                    break;
+                case 'Huidige status':
+                    element.style.color = '#613FA8';
+                    element.style.backgroundColor = 'rgb(97, 63, 168, 20%)';
+                    break;
+                default:
+                    element.style.color = '#333333';
+                    element.style.backgroundColor = 'rgb(55, 55, 55, 20%)';
+                    break;
+                }
+            });
+});
