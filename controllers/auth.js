@@ -95,26 +95,13 @@ exports.login = async (req, res) => {
     });
 };
 
-exports.updateUser = async (req, res) => {
-    const { name, email, password, woonplaats, birthdate } = req.body;
-    const userId = req.user.id; // Haal het ingelogde gebruikers-ID op vanuit het verzoek
-
-    try {
-        // Controleer of de bewerking wordt uitgevoerd op de gegevens van de ingelogde gebruiker
-        if (req.params.userId !== userId) {
-            return res.status(403).json({ message: 'Unauthorized: You can only update your own data' });
-        }
-
-        // Rest van de code voor het bijwerken van de gebruikersgegevens
-        // ...
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'An error occurred while updating user' });
-    }
-};
-
 exports.Getuserbyid = async (req, res) => {
+    if (!req.params || !req.params.userId) {
+      return res.status(400).json({ message: 'Missing userId parameter' });
+    }
+  
     const userId = req.params.userId;
+    console.log(userId);
 
     db.query('SELECT * FROM users WHERE id = ?', [userId], (error, results) => {
         if (error) {
@@ -129,3 +116,4 @@ exports.Getuserbyid = async (req, res) => {
         res.status(200).json(results[0]);
     });
 }
+

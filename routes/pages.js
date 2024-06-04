@@ -53,24 +53,15 @@ router.get('/Tooltoevoegen', (req, res) => {
     res.render('Tooltoevoegen');
 });
 
-router.get('/mijnaccount', async (req, res) => {
-    try {
-      const user = await authController.getUserById(req.user.id);
-  
-      // Check if user is found
-      if (!user) {
-        return res.status(404).render('error', { message: 'User not found' });
-      }
-  
-      res.render('mijnaccount', { user });
-    } catch (error) {
-      console.error(error);
-      res.status(500).render('error', { message: 'Error fetching user data' });
-    }
-  });
-
-router.get('/mijnaccountbewerken', (req, res) => {
-    res.render('mijnaccountbewerken');
+router.get('/mijnaccount/:id', (req, res) => {
+    const userId = req.params.id;
+    toolsController.getuserById(userId, (error, user) => {
+        if (error) {
+            console.error('Error fetching product:', error);
+            return res.status(500).send('Internal server error');
+        }
+        res.render('mijnaccount', { user: user });
+    });
 });
 
 router.get('/ToolProfiel', (req, res) => {

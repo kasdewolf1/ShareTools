@@ -4,7 +4,8 @@ const router = express.Router();
 
 router.post('/register', authController.register)
 router.post('/login', authController.login)
-router.post('/update-user', authController.updateUser);
+router.get('/user', authController.Getuserbyid);
+
 
 
 
