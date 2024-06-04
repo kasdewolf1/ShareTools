@@ -69,18 +69,7 @@
 
 
     // ZOEKBALK
-    const searchInput = document.getElementById("search");
 
-    searchInput.addEventListener("input", e => {
-       const value = e.target.value.toLowerCase();
-       const productCards = document.querySelectorAll(".product");
-    
-       productCards.forEach(card => {
-          const name = card.querySelector(".product-title").textContent.toLowerCase();
-          const isVisible = name.includes(value);
-          card.classList.toggle("hide", !isVisible);
-       });
-    });
 
     // STATUS KLEUREN
     document.addEventListener("DOMContentLoaded", function() {
