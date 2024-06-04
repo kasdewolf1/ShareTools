@@ -33,6 +33,17 @@ router.get('/indexloggedin', (req, res) => {
     });
 });
 
+router.get('/ToolBewerken/:id', (req, res) => {
+    const productId = req.params.id;
+    toolsController.getToolById(productId, (error, product) => {
+        if (error) {
+            console.error('Error fetching product:', error);
+            return res.status(500).send('Internal server error');
+        }
+        res.render('Toolbewerken', { product: product });
+    });
+});
+
 router.get('/productinfo', (req, res) => {
     res.render('productinfo', { message: 'productinfo geladen' });
 });

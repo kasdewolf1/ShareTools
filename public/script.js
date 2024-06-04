@@ -41,38 +41,7 @@
         });
     });
 
-    function filterTools() {
-        const searchValue = document.getElementById('searchInput').value.toLowerCase();
-        const products = document.querySelectorAll('.product');
-
-        products.forEach(product => {
-            const title = product.querySelector('h2').innerText.toLowerCase();
-            const description = product.querySelector('p:nth-of-type(2)').innerText.toLowerCase();
-
-            if (title.includes(searchValue) || description.includes(searchValue)) {
-                product.style.display = 'block';
-            } else {
-                product.style.display = 'none';
-            }
-        });
-    }
-
-    function filterTools() {
-        const searchValue = document.getElementById('searchInput').value.toLowerCase();
-        const products = document.querySelectorAll('.product');
-
-        products.forEach(product => {
-            const title = product.querySelector('h2').innerText.toLowerCase();
-            const description = product.querySelector('p:nth-of-type(2)').innerText.toLowerCase();
-
-            if (title.includes(searchValue) || description.includes(searchValue)) {
-                product.style.display = 'block';
-            } else {
-                product.style.display = 'none';
-            }
-        });
-    }
-
+   
     document.getElementById('imageUpload').onchange = function(e) {
         const file = e.target.files[0];
         const imagePreview = document.getElementById('imagePreview');
@@ -138,18 +107,7 @@
             });
         });
         
-    const searchInput = document.getElementById("search");
-    
-    searchInput.addEventListener("input", e => {
-        const value = e.target.value.toLowerCase();
-        const productCards = document.querySelectorAll(".product");
-
-        productCards.forEach(card => {
-            const name = card.querySelector(".product-title").textContent.toLowerCase();
-            const isVisible = name.includes(value);
-            card.classList.toggle("hide", !isVisible); // Corrected to hide cards that do not match
-        });
-    });
+   
 
     document.getElementById('imageUpload').onchange = function(e) {
         const file = e.target.files[0];
@@ -198,4 +156,12 @@
             let productId = this.getAttribute('data-product-id');
             goToProductPage(productId);
         });
+            item.addEventListener('click', function() {
+                let productId = this.getAttribute('bewerk-product-id');
+                goToProductPage(productId);
+            });
     });
+
+    
+
+ 

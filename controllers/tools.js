@@ -88,10 +88,15 @@ exports.getAllProducts = (callback) => {
 exports.getToolById = (req, res) => {
   const { id } = req.params;
   const query = 'SELECT * FROM tools WHERE id = ?';
+
   db.query(query, [id], (error, results) => {
       if (error) {
           console.error('Error fetching tool:', error);
           return res.status(500).send('An internal server error occurred');
+      }
+
+      if (results.length === 0) {
+          return res.status(404).send('Tool not found');
       }
 
       const imageURL = `/uploads/${results[0].image}`;
