@@ -11,15 +11,10 @@
   <link rel="stylesheet" href="/header.css">
   <link rel="icon" type="image/x-icon" href="/img/favicon-32x32.png">
     <title>Share Tools</title>
-  <style>
-    .hide{
-        display: none;
-    }
-  </style>
 </head>
 
 <body>
-{{> header}}
+    {{> header}}
 
 <div class="everything">
    <div class="container mt-5">
@@ -58,9 +53,20 @@
         {{/each}}
     </div>
 </div>
+<script>
+    const searchInput = document.getElementById("search");
 
-
-
+    searchInput.addEventListener("input", e => {
+       const value = e.target.value.toLowerCase();
+       const productCards = document.querySelectorAll(".product");
+    
+       productCards.forEach(card => {
+          const name = card.querySelector(".product-title").textContent.toLowerCase();
+          const isVisible = name.includes(value);
+          card.classList.toggle("hide", !isVisible);
+       });
+    });
+</script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
@@ -70,6 +76,5 @@
     });
 </script>
 <script src="/script.js"></script>
-
   </body>
 </html>

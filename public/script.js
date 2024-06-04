@@ -19,6 +19,22 @@
         });
     });
 
+    function deleteProduct(id) {
+        if (confirm('Weet je zeker dat je dit product wilt verwijderen?')) {
+            $.ajax({
+                url: `/tools/${id}`,
+                type: 'DELETE',
+                success: function(result) {
+                    alert(result.message);
+                    location.reload();
+                },
+                error: function(xhr, status, error) {
+                    alert(xhr.responseText);
+                }
+            });
+        }
+    }
+    
     function highlightProduct(element) {
         element.style.backgroundColor = "#F4F2F1";
         element.style.transition = "ease-in-out 0.2s";
@@ -27,35 +43,33 @@
     function removeHighlight(element) {
         element.style.backgroundColor = "";
     }
-
+    
     function goToProductPage(id) {
         window.location.href = "/tools/product/" + id;
     }
-
+    
     // Voeg klikgebeurtenis toe aan elk product in de grid
     document.querySelectorAll('.product').forEach(item => {
         item.addEventListener('click', function() {
-            // Haal het ID van het product op uit de data-attribuut
+            // Haal het ID van het product op uit het data-attribuut
             let productId = this.getAttribute('data-product-id');
             // Navigeer naar de productpagina
             goToProductPage(productId);
+        });
+    
+        // Voeg mouseover en mouseout events toe voor highlight
+        item.addEventListener('mouseover', function() {
+            highlightProduct(this);
+        });
+    
+        item.addEventListener('mouseout', function() {
+            removeHighlight(this);
         });
     });
 
 
     // ZOEKBALK
-    const searchInput = document.getElementById("search");
 
-    searchInput.addEventListener("input", e => {
-       const value = e.target.value.toLowerCase();
-       const productCards = document.querySelectorAll(".product");
-    
-       productCards.forEach(card => {
-          const name = card.querySelector(".product-title").textContent.toLowerCase();
-          const isVisible = name.includes(value);
-          card.classList.toggle("hide", !isVisible);
-       });
-    });
 
     // STATUS KLEUREN
     document.addEventListener("DOMContentLoaded", function() {

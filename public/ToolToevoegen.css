@@ -129,12 +129,13 @@ input[type="text"], .form-select{
   color: #fff;
   font-weight: 600;
   border: none;
-  padding: 16px 0;
+  padding: 16px 10px;
   font-size: 16px;
   border-radius: 8px;
   cursor: pointer;
-  width: 100%;
-  margin-top: 40px;
+  width: (50%); 
+  position: absolute;
+  left: 70%;
 }
 
 .custom-btn-green:hover {
