@@ -69,7 +69,18 @@
 
 
     // ZOEKBALK
+    const searchInput = document.getElementById("search");
 
+    searchInput.addEventListener("input", e => {
+       const value = e.target.value.toLowerCase();
+       const productCards = document.querySelectorAll(".product");
+    
+       productCards.forEach(card => {
+          const name = card.querySelector(".product-title").textContent.toLowerCase();
+          const isVisible = name.includes(value);
+          card.classList.toggle("hide", !isVisible);
+       });
+    });
 
     // STATUS KLEUREN
     document.addEventListener("DOMContentLoaded", function() {
@@ -100,4 +111,20 @@
                     break;
                 }
             });
+});
+
+
+document.querySelectorAll('.expand-btn').forEach(function(button) {
+  button.addEventListener('click', function() {
+    var listCombined = this.nextElementSibling;
+    if (listCombined.style.visibility === 'visible') {
+        listCombined.style.visibility = 'hidden';
+        listCombined.style.maxHeight = '0'
+        listCombined.style.opacity = '0'
+    } else {
+        listCombined.style.visibility = 'visible';
+        listCombined.style.maxHeight = '100%';
+        listCombined.style.opacity = '1'
+    }
+  });
 });

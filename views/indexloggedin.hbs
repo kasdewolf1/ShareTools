@@ -11,10 +11,88 @@
   <link rel="stylesheet" href="/header.css">
   <link rel="icon" type="image/x-icon" href="/img/favicon-32x32.png">
     <title>Share Tools</title>
+<style>
+    .hide{
+        display: none;
+    }
+</style>
 </head>
 
 <body>
     {{> header}}
+
+    <div class="filterbar" id="filterBar">
+        <button class="close-btn"></button>
+        <div class="filter-options">
+        <h2>Filteropties</h2>
+          <div class="dropdown-content">    
+            <button class="expand-btn" id="expandBtn">Afmetingen</button>      
+                <ul class="list-combined">
+                  <li class="list-option">
+                    <input type="checkbox" id="groot" name="groot" value="Groot">
+                    <label for="groot">Groot</label>
+                  </li> 
+
+                  <li class="list-option">      
+                    <input type="checkbox" id="klein" name="klein" value="Klein">
+                    <label for="klein">Klein</label>
+                  </li>   
+                </ul>
+          </div>
+        
+          <div class="dropdown-content">    
+            <button class="expand-btn" id="expandBtn">Favoriet</button>      
+                <ul class="list-combined" id="listCombined">
+                  <li class="list-option">
+                    <input type="checkbox" id="favoriet" name="favoriet" value="Favoriet">
+                    <label for="favoriet">Favoriet</label>
+                  </li>  
+
+                  <li class="list-option">      
+                    <input type="checkbox" id="niet-favoriet" name="niet-favoriet" value="Niet Favoriet">
+                    <label for="niet-favoriet">Niet Favoriet</label>
+                  </li>   
+                </ul>
+          </div>
+
+           <div class="dropdown-content">    
+            <button class="expand-btn" id="expandBtn">Publiek</button>      
+                <ul class="list-combined" id="listCombined">
+                  <li class="list-option">
+                    <input type="checkbox" id="publiek" name="publiek" value="Publiek">
+                    <label for="publiek">Publiek</label>
+                  </li>  
+
+                  <li class="list-option">      
+                    <input type="checkbox" id="niet-publiek" name="niet-publiek" value="Niet Publiek">
+                    <label for="niet-publiek">Niet publiek</label>
+                  </li>   
+                </ul>
+          </div>
+
+           <div class="dropdown-content">    
+            <button class="expand-btn" id="expandBtn">Status</button>      
+                <ul class="list-combined" id="listCombined">
+                  <li class="list-option">
+                    <input type="checkbox" id="beschikbaar" name="beschikbaar" value="beschikbaar">
+                    <label for="beschikbaar">Beschikbaar</label>
+                  </li>  
+
+                  <li class="list-option">      
+                    <input type="checkbox" id="niet-beschikbaar" name="niet-beschikbaar" value="Niet Beschikbaar">
+                    <label for="niet-beschikbaar">Niet beschikbaar</label>
+                  </li>   
+
+                  <li class="list-option">      
+                    <input type="checkbox" id="huidige-status" name="huidige-status" value="Huidige status">
+                    <label for="huidige-status">Huidige status</label>
+                  </li>   
+                </ul>
+          </div>
+        </div>
+    </div>
+
+
 
 <div class="everything">
    <div class="container mt-5">
@@ -29,6 +107,7 @@
                 <input type="text" id="search" placeholder="Zoeken in jouw inventaris">
             </section>        
             <a class="filter-btn" onclick="">Filteren</a>
+            
             <a class="green-plus" href="/Tooltoevoegen">Nieuwe tool toevoegen</a>
         </div>
     </div>
@@ -53,21 +132,9 @@
         {{/each}}
     </div>
 </div>
-<script>
-    const searchInput = document.getElementById("search");
 
-    searchInput.addEventListener("input", e => {
-       const value = e.target.value.toLowerCase();
-       const productCards = document.querySelectorAll(".product");
-    
-       productCards.forEach(card => {
-          const name = card.querySelector(".product-title").textContent.toLowerCase();
-          const isVisible = name.includes(value);
-          card.classList.toggle("hide", !isVisible);
-       });
-    });
-</script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="/script.js"></script>
 <script>
     $(document).ready(function() {
         setTimeout(function() {
@@ -75,6 +142,7 @@
         }, 3000); // 3000 milliseconden = 3 seconden
     });
 </script>
-<script src="/script.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </body>
 </html>

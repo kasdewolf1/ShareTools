@@ -16,22 +16,6 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
 }
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-  background-color: #566d95;
-  color: white;
-  }
-  .navbar a {
-    color: white;
-    text-decoration: none;
-    padding: 0 10px;
-    }      
-  .navbar a:hover {
-    text-decoration: underline;
-}
   
 .container {
   padding: 0;
@@ -125,6 +109,9 @@ input {
 }
 
 
+
+
+
 .everything{
   width: 71.4%;
   height: 1%;
@@ -181,4 +168,90 @@ input {
   .product-beschrijving{
     color: #333333;
     margin-bottom: 0;
+}
+
+
+.filterbar{
+  border: 2px solid red;  
+  position: absolute;
+  position: fixed;
+  background-color: #FDFCFB;
+  height: 100vh;
+  width: 26%;
+  left: auto; 
+  right: 0; 
+  top: 0;
+  margin: auto;
+  padding: 24px 24px;
+  gap: 16px;
+  box-shadow: 0 0 30px rgb(55,55,55,40%)
+}
+.filter-options{
+  margin: 16px 0;
+}
+
+h2{
+  color: #333333;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.close-btn{
+  background-image: url(img/x-lg.svg);  
+  background-repeat: no-repeat;
+  background-color:#FDFCFB;
+  height: 19px;
+  width: 19px;
+  border: none;
+  float: right;
+}
+
+.dropdown-content{
+  border: 1px solid #CDCDCD;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: auto;
+  padding: 0;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+
+.list-combined{
+  list-style: none;
+  padding: 0 0 16px 16px;
+  visibility: hidden;
+  max-height: 0;
+  overflow-y: hidden;
+  margin: 0;
+  opacity: 0;
+  line-height: 40px;
+}
+
+.list-option{
+  display: flex;
+  align-items: center;
+}
+
+input[type="checkbox"] {
+  accent-color: #333333;
+  height: 20px;
+  width: 20px;
+}
+
+label{
+  color: #333333;
+  padding-left: 16px;
+}
+.expand-btn{
+  background-color: #FDFCFB;
+  width: 100%;
+  display: flex;
+  border-radius: 8px;
+  padding: 16px 16px 0;
+  border: none;
+}
+.expand-btn{
+  font-weight: 600;
 }
