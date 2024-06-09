@@ -95,25 +95,4 @@ exports.login = async (req, res) => {
     });
 };
 
-exports.Getuserbyid = async (req, res) => {
-    if (!req.params || !req.params.userId) {
-      return res.status(400).json({ message: 'Missing userId parameter' });
-    }
-  
-    const userId = req.params.userId;
-    console.log(userId);
-
-    db.query('SELECT * FROM users WHERE id = ?', [userId], (error, results) => {
-        if (error) {
-            console.error(error);
-            return res.status(500).json({ message: 'An error occurred while fetching user' });
-        }
-
-        if (results.length === 0) {
-            return res.status(404).json({ message: 'User not found' });
-        }
-
-        res.status(200).json(results[0]);
-    });
-}
 

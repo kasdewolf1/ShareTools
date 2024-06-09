@@ -109,7 +109,7 @@
         
    
 
-    document.getElementById('imageUpload').onchange = function(e) {
+   document.getElementById('imageUpload').onchange = function(e) {
         const file = e.target.files[0];
         const imagePreview = document.getElementById('imagePreview');
         const imagePreviewContainer = document.getElementById('imagePreviewContainer');

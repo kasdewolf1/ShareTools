@@ -14,7 +14,7 @@ const toolsRouter = require('./routes/tools');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(multer({ dest: './uploads/' }).single('image'));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 hbs.registerPartials(path.join(__dirname, 'views/partials'));

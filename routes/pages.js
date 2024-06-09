@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const toolsController = require('../controllers/tools');
-const authController = require('../controllers/auth');
 
 // Define routes
 router.get('/', (req, res) => {
@@ -24,14 +23,8 @@ router.get('/wachtwoordvergeten', (req, res) => {
     res.render('wachtwoordvergeten');
 });
 
-router.get('/indexloggedin', (req, res) => {
-    toolsController.getAllProducts((error, products) => {
-        if (error) {
-            console.error('Error fetching products:', error);
-            return res.status(500).send('Internal server error');
-        }
-        res.render('indexloggedin', { products: products });
-    });
+router.get('/indexloggedin', toolsController.getAllProducts, (req, res) => {
+    res.render('indexloggedin', { products: res.locals.products });
 });
 
 router.get('/ToolBewerken/:id', (req, res) => {
@@ -53,15 +46,8 @@ router.get('/Tooltoevoegen', (req, res) => {
     res.render('Tooltoevoegen');
 });
 
-router.get('/mijnaccount/:id', (req, res) => {
-    const userId = req.params.id;
-    toolsController.getuserById(userId, (error, user) => {
-        if (error) {
-            console.error('Error fetching product:', error);
-            return res.status(500).send('Internal server error');
-        }
-        res.render('mijnaccount', { user: user });
-    });
+router.get('/mijnaccount', (req, res) => {
+    res.render('mijnaccount');
 });
 
 router.get('/ToolProfiel', (req, res) => {

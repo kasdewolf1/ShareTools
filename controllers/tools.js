@@ -1,149 +1,99 @@
-const db = require('../db'); // Path to db.js
-const multer = require('multer');
-const path = require('path');
-
-
-// Multer configuratie om bestanden op te slaan met de originele bestandsnaam
-const storage = multer.diskStorage({
-  destination: './uploads/', // map waarin bestanden worden opgeslagen
-  filename: function(req, file, cb) {
-    // Behoud de originele bestandsnaam
-    const filename = file.originalname;
-    cb(null, filename);
-  }
-});
-
-// Init upload
-const upload = multer({
-  storage: storage,
-  limits: { fileSize: 1000000 }, // 1MB limiet
-  fileFilter: function(req, file, cb) {
-    checkFileType(file, cb);
-  }
-}).single('image');
-
-// Check bestandstype
-function checkFileType(file, cb) {
-  const filetypes = /jpeg|jpg|png|gif/;
-  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-  const mimetype = filetypes.test(file.mimetype);
-
-  if (mimetype && extname) {
-    return cb(null, true);
-  } else {
-    cb('Fout: Alleen afbeeldingen!');
-  }
-}
+const db = require('../db');
 
 exports.addTool = (req, res) => {
-  upload(req, res, (err) => {
+  const { title, beschikbaarheid, afmetingen, location, category, description } = req.body;
+  const image = req.file ? req.file.filename : null;
+
+  if (!title || !beschikbaarheid || !afmetingen || !location || !category || !description) {
+    return res.status(400).send('All fields are required');
+  }
+
+  const sql = 'INSERT INTO tools (title, beschikbaarheid, afmeting, locatie, categorie, beschrijving, image) VALUES (?, ?, ?, ?, ?, ?, ?)';
+  const values = [title, beschikbaarheid, afmetingen, location, category, description, image];
+
+  db.query(sql, values, (err, result) => {
     if (err) {
-      console.error('Error during file upload:', err);
-      return res.status(400).send(err);
-    } else {
-      const { title, beschikbaarheid, afmetingen, location, category, description } = req.body;
-      const image = req.file ? req.file.filename : null; // Get filename if file uploaded, otherwise null
-
-      // Check if required fields are present
-      if (!title || !beschikbaarheid || !afmetingen || !location || !category || !description) {
-        return res.status(400).send('All fields are required');
-      }
-
-      // Execute the rest of the function
-      const sql = 'INSERT INTO tools (title, status, afmeting, locatie, categorie, beschrijving, image) VALUES (?, ?, ?, ?, ?, ?, ?)';
-      const values = [title, beschikbaarheid, afmetingen, location, category, description, image];
-
-      db.query(sql, values, (err, result) => {
-        if (err) {
-          console.error('Error adding the tool:', err);
-          return res.status(500).send('An internal server error occurred while adding the tool');
-        }
-        
-        console.log('Tool successfully added, redirecting to /tools/products');
-        return res.redirect('/tools/products');
-      });
+      console.error('Error adding the tool:', err);
+      return res.status(500).send('An internal server error occurred while adding the tool');
     }
+
+    console.log('Tool successfully added, redirecting to /tools/products');
+    return res.redirect('/indexloggedin');
   });
 };
 
-// Fetch all products from the database
-exports.getAllProducts = (callback) => {
-  const query = 'SELECT title, status, beschrijving, id, image FROM tools';
+exports.getAllProducts = (req, res, next) => {
+  const query = 'SELECT title, beschikbaarheid, beschrijving, id, image FROM tools';
+  
   db.query(query, (error, results) => {
-      if (error) {
-          console.error('Error fetching products:', error);
-          return callback(error, null);
+    if (error) {
+      console.error('Error fetching products:', error);
+      return res.status(500).send('An internal server error occurred');
+    }
+
+    console.log('Get all products query results:', results);
+
+    if (!results || results.length === 0) {
+      return res.status(404).send('No products found');
+    }
+
+    const products = results.map(product => {
+      let imageURL = null;
+      if (product.image) {
+        imageURL = `/uploads/${product.image.toString('utf-8')}`;
       }
-      
-      const products = results.map(product => ({
-          ...product,
-          imageURL: `/uploads/${product.image}`
-      }));
-      
-      callback(null, products);
+      return {
+        ...product,
+        imageURL: imageURL
+      };
+    });
+
+    res.locals.products = products;
+    next(); // Proceed to the next middleware to render the page
   });
 };
 
-// Fetch a specific tool by ID from the database
 exports.getToolById = (req, res) => {
   const { id } = req.params;
   const query = 'SELECT * FROM tools WHERE id = ?';
 
   db.query(query, [id], (error, results) => {
-      if (error) {
-          console.error('Error fetching tool:', error);
-          return res.status(500).send('An internal server error occurred');
-      }
+    if (error) {
+      console.error('Error fetching tool:', error);
+      return res.status(500).send('An internal server error occurred');
+    }
 
-      if (results.length === 0) {
-          return res.status(404).send('Tool not found');
-      }
+    console.log('Get tool by ID query results:', results);
 
-      const imageURL = `/uploads/${results[0].image}`;
-      res.render('productinfo', { product: results[0], imageURL: imageURL });
+    if (!results || results.length === 0) {
+      return res.status(404).send('Tool not found');
+    }
+
+    let imageURL = null;
+    if (results[0].image) {
+      imageURL = `/uploads/${results[0].image.toString('utf-8')}`;
+    }
+
+    res.render('productinfo', { product: results[0], imageURL: imageURL });
   });
 };
 
-// Delete a tool from the database
 exports.deleteTool = (req, res) => {
   const { id } = req.params;
   const query = 'DELETE FROM tools WHERE id = ?';
 
   db.query(query, [id], (error, results) => {
-      if (error) {
-          console.error('Error deleting tool:', error);
-          return res.status(500).send('An internal server error occurred');
-      }
+    if (error) {
+      console.error('Error deleting tool:', error);
+      return res.status(500).send('An internal server error occurred');
+    }
 
-      if (results.affectedRows === 0) {
-          return res.status(404).send('No tool found with the specified ID');
-      }
+    console.log('Delete query results:', results);
 
-      res.status(200).send({ message: 'Tool successfully deleted' });
-  });
-};
+    if (!results || results.affectedRows === 0) {
+      return res.status(404).send('No tool found with the specified ID');
+    }
 
-// Search for products in the database
-exports.searchProducts = (req, res) => {
-  const searchQuery = req.query.q ? req.query.q.toLowerCase() : '';
-
-  const query = 'SELECT title, status, beschrijving, id, image FROM tools';
-  db.query(query, (error, results) => {
-      if (error) {
-          console.error('Error fetching products:', error);
-          return res.status(500).send('An internal server error occurred');
-      }
-
-      const filteredResults = results.filter(product => {
-          return product.title.toLowerCase().includes(searchQuery) ||
-                 product.beschrijving.toLowerCase().includes(searchQuery);
-      });
-
-      const products = filteredResults.map(product => ({
-          ...product,
-          imageURL: `/uploads/${product.image}`
-      }));
-
-      res.render('indexloggedin', { products });
+    res.status(200).send({ message: 'Tool successfully deleted' });
   });
 };
