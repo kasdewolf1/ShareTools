@@ -22,11 +22,15 @@
     {{> header}}
 
     <div class="filterbar" id="filterBar">
-        <button class="close-btn"></button>
+        <button class="close-btn" id="closeBtn"></button>
         <div class="filter-options">
         <h2>Filteropties</h2>
           <div class="dropdown-content">    
-            <button class="expand-btn" id="expandBtn">Afmetingen</button>      
+            <button class="expand-btn" id="expandBtn">
+              <div class="expand-btn-title">Afmetingen</div>
+              <img src="img/dropdown-closed.svg" id="dropdownIcon" class="dropdown-icon">
+              </button>
+            
                 <ul class="list-combined">
                   <li class="list-option">
                     <input type="checkbox" id="groot" name="groot" value="Groot">
@@ -41,7 +45,10 @@
           </div>
         
           <div class="dropdown-content">    
-            <button class="expand-btn" id="expandBtn">Favoriet</button>      
+            <button class="expand-btn" id="expandBtn">
+              <div class="expand-btn-title">Favoriet</div>
+              <img src="img/dropdown-closed.svg" id="dropdownIcon" class="dropdown-icon">
+            </button>      
                 <ul class="list-combined" id="listCombined">
                   <li class="list-option">
                     <input type="checkbox" id="favoriet" name="favoriet" value="Favoriet">
@@ -56,7 +63,10 @@
           </div>
 
            <div class="dropdown-content">    
-            <button class="expand-btn" id="expandBtn">Publiek</button>      
+            <button class="expand-btn" id="expandBtn">
+              <div class="expand-btn-title">Publiek</div>
+              <img src="img/dropdown-closed.svg" id="dropdownIcon" class="dropdown-icon">
+            </button>      
                 <ul class="list-combined" id="listCombined">
                   <li class="list-option">
                     <input type="checkbox" id="publiek" name="publiek" value="Publiek">
@@ -71,7 +81,10 @@
           </div>
 
            <div class="dropdown-content">    
-            <button class="expand-btn" id="expandBtn">Status</button>      
+            <button class="expand-btn" id="expandBtn">
+              <div class="expand-btn-title">Status</div>
+              <img src="img/dropdown-closed.svg" id="dropdownIcon" class="dropdown-icon">
+            </button>      
                 <ul class="list-combined" id="listCombined">
                   <li class="list-option">
                     <input type="checkbox" id="beschikbaar" name="beschikbaar" value="beschikbaar">
@@ -89,6 +102,8 @@
                   </li>   
                 </ul>
           </div>
+
+          <button class="green-plus" style="width: 100%; margin-top: 40px">Filters toevoegen</button>
         </div>
     </div>
 
@@ -106,7 +121,7 @@
                 <img src="img/ICON - Zoeken.svg" class="search-icon">
                 <input type="text" id="search" placeholder="Zoeken in jouw inventaris">
             </section>        
-            <a class="filter-btn" onclick="">Filteren</a>
+            <a class="filter-btn" id="filterBtn">Filteren</a>
             
             <a class="green-plus" href="/Tooltoevoegen">Nieuwe tool toevoegen</a>
         </div>

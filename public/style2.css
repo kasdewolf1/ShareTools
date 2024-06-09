@@ -184,8 +184,17 @@ input {
   margin: auto;
   padding: 24px 24px;
   gap: 16px;
-  box-shadow: 0 0 30px rgb(55,55,55,40%)
+  box-shadow: 0 0 30px rgb(55,55,55,40%);
+  transform: translateX(150%);
+  transition: 0.5s;
 }
+
+.filterbar.show {
+  display: block;
+  transform: translateX(0%);
+  /* Add more styling as needed */
+}
+
 .filter-options{
   margin: 16px 0;
 }
@@ -194,6 +203,7 @@ h2{
   color: #333333;
   font-size: 24px;
   font-weight: 600;
+  margin-bottom: 16px;
 }
 
 .close-btn{
@@ -254,4 +264,8 @@ label{
 }
 .expand-btn{
   font-weight: 600;
+}
+.expand-btn-title{
+  width: 100%;
+  text-align:left;
 }

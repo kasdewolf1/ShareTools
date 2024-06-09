@@ -117,14 +117,26 @@
 document.querySelectorAll('.expand-btn').forEach(function(button) {
   button.addEventListener('click', function() {
     var listCombined = this.nextElementSibling;
+    var dropdownIcon = this.querySelector('img');
+
     if (listCombined.style.visibility === 'visible') {
         listCombined.style.visibility = 'hidden';
         listCombined.style.maxHeight = '0'
-        listCombined.style.opacity = '0'
+        dropdownIcon.src = 'img/dropdown-closed.svg';
     } else {
         listCombined.style.visibility = 'visible';
         listCombined.style.maxHeight = '100%';
         listCombined.style.opacity = '1'
+        dropdownIcon.src = 'img/dropdown-open.svg';
     }
   });
+});
+
+document.getElementById('filterBtn').addEventListener('click', function() {
+    document.getElementById('filterBar').classList.add('show');
+
+});
+
+document.getElementById('closeBtn').addEventListener('click', function() {
+    document.getElementById('filterBar').classList.remove('show');
 });
