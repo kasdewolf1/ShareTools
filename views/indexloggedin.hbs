@@ -22,26 +22,26 @@
     {{> header}}
 
     <div class="filterbar" id="filterBar">
-        <button class="close-btn" id="closeBtn"></button>
-        <div class="filter-options">
+      <button class="close-btn" id="closeBtn"></button>
+      <div class="filter-options">
         <h2>Filteropties</h2>
           <div class="dropdown-content">    
             <button class="expand-btn" id="expandBtn">
               <div class="expand-btn-title">Afmetingen</div>
               <img src="img/dropdown-closed.svg" id="dropdownIcon" class="dropdown-icon">
-              </button>
+            </button>
             
-                <ul class="list-combined">
-                  <li class="list-option">
-                    <input type="checkbox" id="groot" name="groot" value="Groot">
-                    <label for="groot">Groot</label>
-                  </li> 
+            <ul class="list-combined">
+              <li class="list-option">
+                <input type="checkbox" id="groot" name="groot" value="Groot">
+                <label for="groot">Groot</label>
+              </li> 
 
-                  <li class="list-option">      
-                    <input type="checkbox" id="klein" name="klein" value="Klein">
-                    <label for="klein">Klein</label>
-                  </li>   
-                </ul>
+              <li class="list-option">      
+                <input type="checkbox" id="klein" name="klein" value="Klein">
+                <label for="klein">Klein</label>
+              </li>   
+            </ul>
           </div>
         
           <div class="dropdown-content">    
@@ -49,17 +49,18 @@
               <div class="expand-btn-title">Favoriet</div>
               <img src="img/dropdown-closed.svg" id="dropdownIcon" class="dropdown-icon">
             </button>      
-                <ul class="list-combined" id="listCombined">
-                  <li class="list-option">
-                    <input type="checkbox" id="favoriet" name="favoriet" value="Favoriet">
-                    <label for="favoriet">Favoriet</label>
-                  </li>  
 
-                  <li class="list-option">      
-                    <input type="checkbox" id="niet-favoriet" name="niet-favoriet" value="Niet Favoriet">
-                    <label for="niet-favoriet">Niet Favoriet</label>
-                  </li>   
-                </ul>
+            <ul class="list-combined" id="listCombined">
+              <li class="list-option">
+                <input type="checkbox" id="favoriet" name="favoriet" value="Favoriet">
+                <label for="favoriet">Favoriet</label>
+              </li>  
+
+              <li class="list-option">      
+                <input type="checkbox" id="niet-favoriet" name="niet-favoriet" value="Niet Favoriet">
+                <label for="niet-favoriet">Niet Favoriet</label>
+              </li>   
+            </ul>
           </div>
 
            <div class="dropdown-content">    
@@ -67,44 +68,46 @@
               <div class="expand-btn-title">Publiek</div>
               <img src="img/dropdown-closed.svg" id="dropdownIcon" class="dropdown-icon">
             </button>      
-                <ul class="list-combined" id="listCombined">
-                  <li class="list-option">
-                    <input type="checkbox" id="publiek" name="publiek" value="Publiek">
-                    <label for="publiek">Publiek</label>
-                  </li>  
+                
+            <ul class="list-combined" id="listCombined">
+              <li class="list-option">
+                <input type="checkbox" id="publiek" name="publiek" value="Publiek">
+                <label for="publiek">Publiek</label>
+              </li>  
 
-                  <li class="list-option">      
-                    <input type="checkbox" id="niet-publiek" name="niet-publiek" value="Niet Publiek">
-                    <label for="niet-publiek">Niet publiek</label>
-                  </li>   
-                </ul>
+              <li class="list-option">      
+                <input type="checkbox" id="niet-publiek" name="niet-publiek" value="Niet Publiek">
+                <label for="niet-publiek">Niet publiek</label>
+              </li>   
+            </ul>
           </div>
 
            <div class="dropdown-content">    
             <button class="expand-btn" id="expandBtn">
               <div class="expand-btn-title">Status</div>
               <img src="img/dropdown-closed.svg" id="dropdownIcon" class="dropdown-icon">
-            </button>      
-                <ul class="list-combined" id="listCombined">
-                  <li class="list-option">
-                    <input type="checkbox" id="beschikbaar" name="beschikbaar" value="beschikbaar">
-                    <label for="beschikbaar">Beschikbaar</label>
-                  </li>  
+            </button>   
 
-                  <li class="list-option">      
-                    <input type="checkbox" id="niet-beschikbaar" name="niet-beschikbaar" value="Niet Beschikbaar">
-                    <label for="niet-beschikbaar">Niet beschikbaar</label>
-                  </li>   
+            <ul class="list-combined" id="listCombined">
+              <li class="list-option">
+                <input type="checkbox" id="beschikbaar" name="beschikbaar" value="beschikbaar">
+                <label for="beschikbaar">Beschikbaar</label>
+              </li>  
 
-                  <li class="list-option">      
-                    <input type="checkbox" id="huidige-status" name="huidige-status" value="Huidige status">
-                    <label for="huidige-status">Huidige status</label>
-                  </li>   
-                </ul>
+              <li class="list-option">      
+                <input type="checkbox" id="niet-beschikbaar" name="niet-beschikbaar" value="Niet Beschikbaar">
+                <label for="niet-beschikbaar">Niet beschikbaar</label>
+              </li>   
+
+              <li class="list-option">      
+                <input type="checkbox" id="huidige-status" name="huidige-status" value="Huidige status">
+                <label for="huidige-status">Huidige status</label>
+              </li>   
+            </ul>
           </div>
 
-          <button class="green-plus" style="width: 100%; margin-top: 40px">Filters toevoegen</button>
-        </div>
+        <button class="green-plus" style="width: 100%; margin-top: 40px" id="filtersToevoegen">Filters toevoegen</button>
+      </div>
     </div>
 
 
@@ -131,7 +134,7 @@
 
     <div class="grid" id="productGrid">
         {{#each products}}
-            <div class="product" data-product-id="{{id}}" onmouseover="highlightProduct(this)" onmouseleave="removeHighlight(this)">
+             <div class="product" data-product-id="{{id}}" data-afmetingen="{{afmetingen}}" data-favoriet="{{favoriet}}" data-publiek="{{publiek}}" data-status="{{status}}" onmouseover="highlightProduct(this)" onmouseleave="removeHighlight(this)">
                 {{#if img}}
                    <img src="{{imageURL}}" alt="Tool Image" class="product-image">
                 {{else}}

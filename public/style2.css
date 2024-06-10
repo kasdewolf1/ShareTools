@@ -192,7 +192,6 @@ input {
 .filterbar.show {
   display: block;
   transform: translateX(0%);
-  /* Add more styling as needed */
 }
 
 .filter-options{
