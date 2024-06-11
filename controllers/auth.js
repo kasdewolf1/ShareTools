@@ -90,6 +90,34 @@ exports.logout = (req, res) => {
     res.redirect('/login');
 };
 
+exports.getuserID = async (req, res) => {
+    const token = req.cookies.jwt;
+
+    if (token) {
+        jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
+            if (err) {
+                console.log(err.message);
+                res.locals.user = null;
+                next();
+            } else {
+                console.log(decoded);
+                let id = decoded.id;
+                db.query('SELECT * FROM users WHERE id = ?', [id], (error, results) => {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log(results[0].id);
+                        return results[0].id;
+                    }
+                });
+            }
+        });
+    } else {
+        res.locals.user = null;
+        next();
+    }
+}
+
 exports.updateUser = async (req, res) => {
     try {
         const { name, email, password, passwordConfirm, woonplaats, birthdate } = req.body;
