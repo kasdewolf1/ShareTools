@@ -82,7 +82,7 @@
        });
     });
 
-    
+
     // STATUS KLEUREN
     document.addEventListener("DOMContentLoaded", function() {
         // Select all elements with the class 'product-status'
@@ -99,8 +99,8 @@
                     element.style.backgroundColor = 'rgb(63, 168, 92, 20%)';
                     break;
                 case 'Niet beschikbaar':
-                    element.style.color = '#5980BC';
-                    element.style.backgroundColor = 'rgb(89, 128, 188, 20%)';
+                    element.style.color = '#BC3030';
+                    element.style.backgroundColor = 'rgb(188, 48, 48, 20%)';
                     break;
                 case 'Huidige status':
                     element.style.color = '#613FA8';
@@ -119,10 +119,16 @@
 
 document.getElementById('filterBtn').addEventListener('click', function() {
     document.getElementById('filterBar').classList.add('show');
+    document.getElementById('filterBackground').style.display = 'block';
 });
 
 document.getElementById('closeBtn').addEventListener('click', function() {
     document.getElementById('filterBar').classList.remove('show');
+    document.getElementById('filterBackground').style.display = 'none';
+});
+document.getElementById('filtersToevoegen').addEventListener('click', function() {
+  document.getElementById('filterBar').classList.remove('show');
+  document.getElementById('filterBackground').style.display = 'none';
 });
 
 
@@ -144,3 +150,52 @@ document.querySelectorAll('.expand-btn').forEach(function(button) {
   });
 });
 
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const filtersToevoegenBtn = document.getElementById("filtersToevoegen");
+
+  let selectedFilters = {
+    afmetingen: [],
+    favoriet: [],
+    publiek: [],
+    status: []
+  };
+
+  const filterOptions = document.querySelectorAll('.dropdown-content input[type="checkbox"]');
+
+  filterOptions.forEach(checkbox => {
+    checkbox.addEventListener("change", (event) => {
+      const category = event.target.name;
+      if (event.target.checked) {
+        selectedFilters[category].push(event.target.value);
+      } else {
+        selectedFilters[category] = selectedFilters[category].filter(value => value !== event.target.value);
+      }
+    });
+  });
+
+  filtersToevoegenBtn.addEventListener("click", function() {
+    applyFilters();
+  });
+
+  function applyFilters() {
+    const products = document.querySelectorAll(".product");
+    products.forEach(product => {
+      const productAfmeting = product.querySelector(".product-afmeting")?.innerText.toLowerCase() || '';
+      const productStatus = product.querySelector(".product-status").innerText.toLowerCase();
+      const productBeschrijving = product.querySelector(".product-beschrijving").innerText.toLowerCase();
+
+      const afmetingenMatch = selectedFilters.afmetingen.length === 0 || selectedFilters.afmetingen.some(filter => productAfmeting.includes(filter.toLowerCase()));
+      const favorietMatch = selectedFilters.favoriet.length === 0 || selectedFilters.favoriet.some(filter => productStatus.includes(filter.toLowerCase()));
+      const publiekMatch = selectedFilters.publiek.length === 0 || selectedFilters.publiek.some(filter => productBeschrijving.includes(filter.toLowerCase()));
+      const statusMatch = selectedFilters.status.length === 0 || selectedFilters.status.some(filter => productStatus === filter.toLowerCase());
+
+      if (afmetingenMatch && favorietMatch && publiekMatch && statusMatch) {
+        product.style.display = "block";
+      } else {
+        product.style.display = "none";
+      }
+    });
+  }
+});

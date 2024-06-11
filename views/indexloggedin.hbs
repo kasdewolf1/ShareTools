@@ -33,12 +33,12 @@
             
             <ul class="list-combined">
               <li class="list-option">
-                <input type="checkbox" id="groot" name="groot" value="Groot">
+                <input type="checkbox" id="groot" name="afmetingen" value="Groot">
                 <label for="groot">Groot</label>
               </li> 
 
               <li class="list-option">      
-                <input type="checkbox" id="klein" name="klein" value="Klein">
+                <input type="checkbox" id="klein" name="afmetingen" value="Klein">
                 <label for="klein">Klein</label>
               </li>   
             </ul>
@@ -57,7 +57,7 @@
               </li>  
 
               <li class="list-option">      
-                <input type="checkbox" id="niet-favoriet" name="niet-favoriet" value="Niet Favoriet">
+                <input type="checkbox" id="niet-favoriet" name="favoriet" value="Niet Favoriet">
                 <label for="niet-favoriet">Niet Favoriet</label>
               </li>   
             </ul>
@@ -76,7 +76,7 @@
               </li>  
 
               <li class="list-option">      
-                <input type="checkbox" id="niet-publiek" name="niet-publiek" value="Niet Publiek">
+                <input type="checkbox" id="niet-publiek" name="publiek" value="Niet Publiek">
                 <label for="niet-publiek">Niet publiek</label>
               </li>   
             </ul>
@@ -90,17 +90,17 @@
 
             <ul class="list-combined" id="listCombined">
               <li class="list-option">
-                <input type="checkbox" id="beschikbaar" name="beschikbaar" value="beschikbaar">
+                <input type="checkbox" id="beschikbaar" name="status" value="beschikbaar">
                 <label for="beschikbaar">Beschikbaar</label>
               </li>  
 
               <li class="list-option">      
-                <input type="checkbox" id="niet-beschikbaar" name="niet-beschikbaar" value="Niet Beschikbaar">
+                <input type="checkbox" id="niet-beschikbaar" name="status" value="Niet Beschikbaar">
                 <label for="niet-beschikbaar">Niet beschikbaar</label>
               </li>   
 
               <li class="list-option">      
-                <input type="checkbox" id="huidige-status" name="huidige-status" value="Huidige status">
+                <input type="checkbox" id="huidige-status" name="status" value="Huidige status">
                 <label for="huidige-status">Huidige status</label>
               </li>   
             </ul>
@@ -109,6 +109,8 @@
         <button class="green-plus" style="width: 100%; margin-top: 40px" id="filtersToevoegen">Filters toevoegen</button>
       </div>
     </div>
+
+  <div class="filter-background" id="filterBackground"></div>
 
 
 
@@ -143,6 +145,9 @@
 
                 <div class="product-info">
                     <h2 class="product-title">{{title}}</h2>
+                    {{#if afmeting}}
+                      <p class="product-afmeting">{{afmeting}}</p>
+                    {{/if}}
                     <p class="product-status">{{status}}</p>
                     <p class="product-beschrijving">{{beschrijving}}</p>
                 </div>
