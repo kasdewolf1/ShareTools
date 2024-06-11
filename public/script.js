@@ -82,6 +82,7 @@
        });
     });
 
+    
     // STATUS KLEUREN
     document.addEventListener("DOMContentLoaded", function() {
         // Select all elements with the class 'product-status'
@@ -143,81 +144,3 @@ document.querySelectorAll('.expand-btn').forEach(function(button) {
   });
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Elements
-    const filterBar = document.getElementById("filterBar");
-    const filtersToevoegenBtn = document.getElementById("filtersToevoegen");
-    const selectedFiltersList = document.getElementById("selectedFiltersList");
-  
-    // Filter logic
-    let selectedFilters = {
-      groot: [],
-      klein: [],
-      favoriet: [],
-      nietfavoriet: [],
-      publiek: [],
-      nietpubliek: [],
-      beschikbaar: [],
-      nietbeschikbaar: [],
-      huidigestatus: []
-    };
-  
-    const filterOptions = document.querySelectorAll('.dropdown-content input[type="checkbox"]');
-  
-    filterOptions.forEach(option => {
-      option.addEventListener("change", function() {
-        const filterCategory = option.name.replace("-", "");
-        if (selectedFilters[filterCategory]) {
-          if (this.checked) {
-            selectedFilters[filterCategory].push(this.value);
-          } else {
-            selectedFilters[filterCategory] = selectedFilters[filterCategory].filter(val => val !== this.value);
-          }
-        } else {
-          console.error(`Unknown filter category: ${filterCategory}`);
-        }
-      });
-    });
-  
-    filtersToevoegenBtn.addEventListener("click", function() {
-      applyFilters();
-      displaySelectedFilters();
-    });
-  
-    function applyFilters() {
-      const products = document.querySelectorAll(".product");
-      products.forEach(product => {
-        const productTitle = product.querySelector(".product-title").innerText.toLowerCase();
-        const productStatus = product.querySelector(".product-status").innerText.toLowerCase();
-        const productBeschrijving = product.querySelector(".product-beschrijving").innerText.toLowerCase();
-  
-        const grootMatch = selectedFilters.groot.length === 0 || selectedFilters.groot.some(filter => productTitle.includes(filter.toLowerCase()));
-        const kleinMatch = selectedFilters.klein.length === 0 || selectedFilters.klein.some(filter => productTitle.includes(filter.toLowerCase()));
-        const favorietMatch = selectedFilters.favoriet.length === 0 || selectedFilters.favoriet.some(filter => productStatus.includes(filter.toLowerCase()));
-        const nietFavorietMatch = selectedFilters.nietfavoriet.length === 0 || selectedFilters.nietfavoriet.some(filter => productStatus.includes(filter.toLowerCase()));
-        const publiekMatch = selectedFilters.publiek.length === 0 || selectedFilters.publiek.some(filter => productBeschrijving.includes(filter.toLowerCase()));
-        const nietPubliekMatch = selectedFilters.nietpubliek.length === 0 || selectedFilters.nietpubliek.some(filter => productBeschrijving.includes(filter.toLowerCase()));
-        const beschikbaarMatch = selectedFilters.beschikbaar.length === 0 || selectedFilters.beschikbaar.some(filter => productStatus.includes(filter.toLowerCase()));
-        const nietBeschikbaarMatch = selectedFilters.nietbeschikbaar.length === 0 || selectedFilters.nietbeschikbaar.some(filter => productStatus.includes(filter.toLowerCase()));
-        const huidigestatusMatch = selectedFilters.huidigestatus.length === 0 || selectedFilters.huidigestatus.some(filter => productStatus.includes(filter.toLowerCase()));
-  
-        if (grootMatch && kleinMatch && favorietMatch && nietFavorietMatch && publiekMatch && nietPubliekMatch && beschikbaarMatch && nietBeschikbaarMatch && huidigestatusMatch) {
-          product.style.display = "block";
-        } else {
-          product.style.display = "none";
-        }
-      });
-    }
-  
-    function displaySelectedFilters() {
-      selectedFiltersList.innerHTML = "";
-      for (const category in selectedFilters) {
-        selectedFilters[category].forEach(filter => {
-          const li = document.createElement("li");
-          li.innerText = `${category}: ${filter}`;
-          selectedFiltersList.appendChild(li);
-        });
-      }
-    }
-  });
-  
