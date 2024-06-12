@@ -32,7 +32,7 @@ function checkFileType(file, cb) {
 
 // Function to get all products
 exports.getAllProducts = (req, res) => {
-  const query = 'SELECT title, status, beschrijving, afmeting, id, image FROM tools';
+  const query = 'SELECT title, status, beschrijving, afmeting, publiek, favoriet, id, image FROM tools';
   db.query(query, (error, results) => {
     if (error) {
       console.error('Error fetching products:', error);

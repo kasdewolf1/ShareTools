@@ -143,8 +143,16 @@
                     <img src="img/Card-filler.png" class="product-image">
                 {{/if}}
 
+                {{#if favoriet}}
+                  <img src="img/favoriet-icon.png" class="favoriet-icon">
+                {{/if}}
+
                 <div class="product-info">
-                    <h2 class="product-title">{{title}}</h2>
+                    <h2 class="product-title">{{title}}</h2>                   
+                    {{#if publiek}}
+                      <p class="product-publiek">{{publiek}}</p>
+                    {{/if}}
+
                     {{#if afmeting}}
                       <p class="product-afmeting">{{afmeting}}</p>
                     {{/if}}

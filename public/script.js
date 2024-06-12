@@ -83,40 +83,36 @@
     });
 
 
-    // STATUS KLEUREN
-    document.addEventListener("DOMContentLoaded", function() {
-        // Select all elements with the class 'product-status'
-        let status = document.querySelectorAll('.product-status');
+// STATUS KLEUREN
+  document.addEventListener("DOMContentLoaded", function() {
+    let status = document.querySelectorAll('.product-status');
 
-        // Iterate over each element and change the color based on the content
-        status.forEach(function(element) {
-                var statusText = element.textContent.trim();
+    status.forEach(function(element) {
+      var statusText = element.textContent.trim();
 
-            // Apply different colors based on the status text
-            switch (statusText) {
-                case 'Beschikbaar':
-                    element.style.color = '#3FA85C';
-                    element.style.backgroundColor = 'rgb(63, 168, 92, 20%)';
-                    break;
-                case 'Niet beschikbaar':
-                    element.style.color = '#BC3030';
-                    element.style.backgroundColor = 'rgb(188, 48, 48, 20%)';
-                    break;
-                case 'Huidige status':
-                    element.style.color = '#613FA8';
-                    element.style.backgroundColor = 'rgb(97, 63, 168, 20%)';
-                    break;
-                default:
-                    element.style.color = '#333333';
-                    element.style.backgroundColor = 'rgb(55, 55, 55, 20%)';
-                    break;
-                }
-            });
+        switch (statusText) {
+          case 'Beschikbaar':
+              element.style.color = '#3FA85C';
+              element.style.backgroundColor = 'rgb(63, 168, 92, 20%)';
+              break;
+          case 'Niet beschikbaar':
+              element.style.color = '#BC3030';
+              element.style.backgroundColor = 'rgb(188, 48, 48, 20%)';
+              break;
+          case 'Huidige status':
+              element.style.color = '#613FA8';
+              element.style.backgroundColor = 'rgb(97, 63, 168, 20%)';
+              break;
+          default:
+              element.style.color = '#333333';
+              element.style.backgroundColor = 'rgb(55, 55, 55, 20%)';
+              break;
+          }
+    });
 });
 
 
 // FILTERBAR
-
 document.getElementById('filterBtn').addEventListener('click', function() {
     document.getElementById('filterBar').classList.add('show');
     document.getElementById('filterBackground').style.display = 'block';
@@ -151,7 +147,6 @@ document.querySelectorAll('.expand-btn').forEach(function(button) {
 });
 
 
-
 document.addEventListener("DOMContentLoaded", function() {
   const filtersToevoegenBtn = document.getElementById("filtersToevoegen");
 
@@ -183,12 +178,13 @@ document.addEventListener("DOMContentLoaded", function() {
     const products = document.querySelectorAll(".product");
     products.forEach(product => {
       const productAfmeting = product.querySelector(".product-afmeting")?.innerText.toLowerCase() || '';
-      const productStatus = product.querySelector(".product-status").innerText.toLowerCase();
-      const productBeschrijving = product.querySelector(".product-beschrijving").innerText.toLowerCase();
+      const productFavoriet = product.querySelector(".favoriet-icon") ?'favoriet' : '';
+      const productStatus = product.querySelector(".product-status")?.innerText.toLowerCase() || '';
+      const productPubliek = product.querySelector(".product-publiek")?.innerText.toLowerCase() || '';
 
       const afmetingenMatch = selectedFilters.afmetingen.length === 0 || selectedFilters.afmetingen.some(filter => productAfmeting.includes(filter.toLowerCase()));
-      const favorietMatch = selectedFilters.favoriet.length === 0 || selectedFilters.favoriet.some(filter => productStatus.includes(filter.toLowerCase()));
-      const publiekMatch = selectedFilters.publiek.length === 0 || selectedFilters.publiek.some(filter => productBeschrijving.includes(filter.toLowerCase()));
+      const favorietMatch = selectedFilters.favoriet.length === 0 || (selectedFilters.favoriet.includes("favoriet") && productFavoriet);
+      const publiekMatch = selectedFilters.publiek.length === 0 || selectedFilters.publiek.some(filter => productPubliek === filter.toLowerCase());
       const statusMatch = selectedFilters.status.length === 0 || selectedFilters.status.some(filter => productStatus === filter.toLowerCase());
 
       if (afmetingenMatch && favorietMatch && publiekMatch && statusMatch) {
@@ -199,3 +195,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 });
+
+
+
