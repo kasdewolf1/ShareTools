@@ -178,12 +178,12 @@ document.addEventListener("DOMContentLoaded", function() {
     const products = document.querySelectorAll(".product");
     products.forEach(product => {
       const productAfmeting = product.querySelector(".product-afmeting")?.innerText.toLowerCase() || '';
-      const productFavoriet = product.querySelector(".favoriet-icon") ?'favoriet' : '';
+      const productFavoriet = product.querySelector(".favoriet-icon") ? 'favoriet' : '';
       const productStatus = product.querySelector(".product-status")?.innerText.toLowerCase() || '';
       const productPubliek = product.querySelector(".product-publiek")?.innerText.toLowerCase() || '';
 
       const afmetingenMatch = selectedFilters.afmetingen.length === 0 || selectedFilters.afmetingen.some(filter => productAfmeting.includes(filter.toLowerCase()));
-      const favorietMatch = selectedFilters.favoriet.length === 0 || (selectedFilters.favoriet.includes("favoriet") && productFavoriet);
+      const favorietMatch = selectedFilters.favoriet.length === 0 || (selectedFilters.favoriet.includes("Favoriet") && productFavoriet === 'favoriet') || (selectedFilters.favoriet.includes("Niet Favoriet") && productFavoriet === '');
       const publiekMatch = selectedFilters.publiek.length === 0 || selectedFilters.publiek.some(filter => productPubliek === filter.toLowerCase());
       const statusMatch = selectedFilters.status.length === 0 || selectedFilters.status.some(filter => productStatus === filter.toLowerCase());
 

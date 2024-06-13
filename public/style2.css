@@ -137,8 +137,7 @@ input {
   text-align: left;
   font-size: 16px;
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
+  position: relative;
 }
         
   .product-image {
@@ -191,15 +190,17 @@ input {
   }
   
   .favoriet-icon{
-    width: 16px;
-    height: 16px;
-    margin: 16px 16px 0;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 16px;
 }
 
 
 
 .filterbar{
-  border: 2px solid red;  
   position: absolute;
   position: fixed;
   background-color: #FDFCFB;
