@@ -48,7 +48,6 @@ exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        // Voer één enkele query uit om de gebruiker op te halen
         db.query('SELECT * FROM users WHERE email = ?', [email], async (error, results) => {
             if (error) {
                 console.error(error);
@@ -84,30 +83,30 @@ exports.login = async (req, res) => {
     }
 };
 
-
 exports.logout = (req, res) => {
     res.clearCookie('jwt');
     res.redirect('/login');
 };
 
-exports.getuserID = async (req, res) => {
+exports.getUserID = (req, res, next) => {
     const token = req.cookies.jwt;
 
     if (token) {
-        jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
+        jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
             if (err) {
                 console.log(err.message);
                 res.locals.user = null;
-                next();
+                return next();
             } else {
-                console.log(decoded);
-                let id = decoded.id;
+                const id = decoded.id;
                 db.query('SELECT * FROM users WHERE id = ?', [id], (error, results) => {
                     if (error) {
                         console.log(error);
+                        res.locals.user = null;
+                        return next();
                     } else {
-                        console.log(results[0].id);
-                        return results[0].id;
+                        res.locals.user = results[0];
+                        return next();
                     }
                 });
             }
@@ -116,7 +115,7 @@ exports.getuserID = async (req, res) => {
         res.locals.user = null;
         next();
     }
-}
+};
 
 exports.updateUser = async (req, res) => {
     try {
