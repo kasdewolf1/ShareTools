@@ -11,10 +11,108 @@
   <link rel="stylesheet" href="/header.css">
   <link rel="icon" type="image/x-icon" href="/img/favicon-32x32.png">
     <title>Share Tools</title>
+<style>
+    .hide{
+        display: none;
+    }
+</style>
 </head>
 
 <body>
     {{> header}}
+
+    <div class="filterbar" id="filterBar">
+      <button class="close-btn" id="closeBtn"></button>
+      <div class="filter-options">
+        <h2>Filteropties</h2>
+          <div class="dropdown-content">    
+            <button class="expand-btn" id="expandBtn">
+              <div class="expand-btn-title">Afmetingen</div>
+              <img src="img/dropdown-closed.svg" id="dropdownIcon" class="dropdown-icon">
+            </button>
+            
+            <ul class="list-combined">
+              <li class="list-option">
+                <input type="checkbox" id="groot" name="afmetingen" value="Groot">
+                <label for="groot">Groot</label>
+              </li> 
+
+              <li class="list-option">      
+                <input type="checkbox" id="klein" name="afmetingen" value="Klein">
+                <label for="klein">Klein</label>
+              </li>   
+            </ul>
+          </div>
+        
+          <div class="dropdown-content">    
+            <button class="expand-btn" id="expandBtn">
+              <div class="expand-btn-title">Favoriet</div>
+              <img src="img/dropdown-closed.svg" id="dropdownIcon" class="dropdown-icon">
+            </button>      
+
+            <ul class="list-combined" id="listCombined">
+              <li class="list-option">
+                <input type="checkbox" id="favoriet" name="favoriet" value="Favoriet">
+                <label for="favoriet">Favoriet</label>
+              </li>  
+
+              <li class="list-option">      
+                <input type="checkbox" id="niet-favoriet" name="favoriet" value="Niet Favoriet">
+                <label for="niet-favoriet">Niet Favoriet</label>
+              </li>   
+            </ul>
+          </div>
+
+           <div class="dropdown-content">    
+            <button class="expand-btn" id="expandBtn">
+              <div class="expand-btn-title">Publiek</div>
+              <img src="img/dropdown-closed.svg" id="dropdownIcon" class="dropdown-icon">
+            </button>      
+                
+            <ul class="list-combined" id="listCombined">
+              <li class="list-option">
+                <input type="checkbox" id="publiek" name="publiek" value="Publiek">
+                <label for="publiek">Publiek</label>
+              </li>  
+
+              <li class="list-option">      
+                <input type="checkbox" id="niet-publiek" name="publiek" value="Niet Publiek">
+                <label for="niet-publiek">Niet publiek</label>
+              </li>   
+            </ul>
+          </div>
+
+           <div class="dropdown-content">    
+            <button class="expand-btn" id="expandBtn">
+              <div class="expand-btn-title">Status</div>
+              <img src="img/dropdown-closed.svg" id="dropdownIcon" class="dropdown-icon">
+            </button>   
+
+            <ul class="list-combined" id="listCombined">
+              <li class="list-option">
+                <input type="checkbox" id="beschikbaar" name="status" value="beschikbaar">
+                <label for="beschikbaar">Beschikbaar</label>
+              </li>  
+
+              <li class="list-option">      
+                <input type="checkbox" id="niet-beschikbaar" name="status" value="Niet Beschikbaar">
+                <label for="niet-beschikbaar">Niet beschikbaar</label>
+              </li>   
+
+              <li class="list-option">      
+                <input type="checkbox" id="huidige-status" name="status" value="Huidige status">
+                <label for="huidige-status">Huidige status</label>
+              </li>   
+            </ul>
+          </div>
+
+        <button class="green-plus" style="width: 100%; margin-top: 40px" id="filtersToevoegen">Filters toevoegen</button>
+      </div>
+    </div>
+
+  <div class="filter-background" id="filterBackground"></div>
+
+
 
 <div class="everything">
    <div class="container mt-5">
@@ -28,7 +126,8 @@
                 <img src="img/ICON - Zoeken.svg" class="search-icon">
                 <input type="text" id="search" placeholder="Zoeken in jouw inventaris">
             </section>        
-            <a class="filter-btn" onclick="">Filteren</a>
+            <a class="filter-btn" id="filterBtn">Filteren</a>
+            
             <a class="green-plus" href="/Tooltoevoegen">Nieuwe tool toevoegen</a>
         </div>
     </div>
@@ -37,15 +136,26 @@
 
     <div class="grid" id="productGrid">
         {{#each products}}
-            <div class="product" data-product-id="{{id}}" onmouseover="highlightProduct(this)" onmouseleave="removeHighlight(this)">
+             <div class="product" data-product-id="{{id}}" data-afmetingen="{{afmetingen}}" data-favoriet="{{favoriet}}" data-publiek="{{publiek}}" data-status="{{status}}" onmouseover="highlightProduct(this)" onmouseleave="removeHighlight(this)">
                 {{#if img}}
                    <img src="{{imageURL}}" alt="Tool Image" class="product-image">
                 {{else}}
                     <img src="img/Card-filler.png" class="product-image">
                 {{/if}}
 
+                {{#if favoriet}}
+                  <img src="img/favoriet-icon.png" class="favoriet-icon">
+                {{/if}}
+
                 <div class="product-info">
-                    <h2 class="product-title">{{title}}</h2>
+                    <h2 class="product-title">{{title}}</h2>                   
+                    {{#if publiek}}
+                      <p class="product-publiek">{{publiek}}</p>
+                    {{/if}}
+
+                    {{#if afmeting}}
+                      <p class="product-afmeting">{{afmeting}}</p>
+                    {{/if}}
                     <p class="product-status">{{status}}</p>
                     <p class="product-beschrijving">{{beschrijving}}</p>
                 </div>
@@ -53,21 +163,9 @@
         {{/each}}
     </div>
 </div>
-<script>
-    const searchInput = document.getElementById("search");
 
-    searchInput.addEventListener("input", e => {
-       const value = e.target.value.toLowerCase();
-       const productCards = document.querySelectorAll(".product");
-    
-       productCards.forEach(card => {
-          const name = card.querySelector(".product-title").textContent.toLowerCase();
-          const isVisible = name.includes(value);
-          card.classList.toggle("hide", !isVisible);
-       });
-    });
-</script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="/script.js"></script>
 <script>
     $(document).ready(function() {
         setTimeout(function() {
@@ -75,6 +173,7 @@
         }, 3000); // 3000 milliseconden = 3 seconden
     });
 </script>
-<script src="/script.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </body>
 </html>

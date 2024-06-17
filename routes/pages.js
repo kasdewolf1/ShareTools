@@ -48,4 +48,8 @@ router.get('/meldingen', (req, res) => {
   res.render('meldingen');
 });
 
+router.get('/toolbewerken', (req, res) => {
+  res.render('toolbewerken');
+});
+
 module.exports = router;

@@ -69,35 +69,132 @@
 
 
     // ZOEKBALK
+    const searchInput = document.getElementById("search");
+
+    searchInput.addEventListener("input", e => {
+       const value = e.target.value.toLowerCase();
+       const productCards = document.querySelectorAll(".product");
+    
+       productCards.forEach(card => {
+          const name = card.querySelector(".product-title").textContent.toLowerCase();
+          const isVisible = name.includes(value);
+          card.classList.toggle("hide", !isVisible);
+       });
+    });
 
 
-    // STATUS KLEUREN
-    document.addEventListener("DOMContentLoaded", function() {
-        // Select all elements with the class 'product-status'
-        let status = document.querySelectorAll('.product-status');
+// STATUS KLEUREN
+  document.addEventListener("DOMContentLoaded", function() {
+    let status = document.querySelectorAll('.product-status');
 
-        // Iterate over each element and change the color based on the content
-        status.forEach(function(element) {
-                var statusText = element.textContent.trim();
+    status.forEach(function(element) {
+      var statusText = element.textContent.trim();
 
-            // Apply different colors based on the status text
-            switch (statusText) {
-                case 'Beschikbaar':
-                    element.style.color = '#3FA85C';
-                    element.style.backgroundColor = 'rgb(63, 168, 92, 20%)';
-                    break;
-                case 'Niet beschikbaar':
-                    element.style.color = '#5980BC';
-                    element.style.backgroundColor = 'rgb(89, 128, 188, 20%)';
-                    break;
-                case 'Huidige status':
-                    element.style.color = '#613FA8';
-                    element.style.backgroundColor = 'rgb(97, 63, 168, 20%)';
-                    break;
-                default:
-                    element.style.color = '#333333';
-                    element.style.backgroundColor = 'rgb(55, 55, 55, 20%)';
-                    break;
-                }
-            });
+        switch (statusText) {
+          case 'Beschikbaar':
+              element.style.color = '#3FA85C';
+              element.style.backgroundColor = 'rgb(63, 168, 92, 20%)';
+              break;
+          case 'Niet beschikbaar':
+              element.style.color = '#BC3030';
+              element.style.backgroundColor = 'rgb(188, 48, 48, 20%)';
+              break;
+          case 'Huidige status':
+              element.style.color = '#613FA8';
+              element.style.backgroundColor = 'rgb(97, 63, 168, 20%)';
+              break;
+          default:
+              element.style.color = '#333333';
+              element.style.backgroundColor = 'rgb(55, 55, 55, 20%)';
+              break;
+          }
+    });
 });
+
+
+// FILTERBAR
+document.getElementById('filterBtn').addEventListener('click', function() {
+    document.getElementById('filterBar').classList.add('show');
+    document.getElementById('filterBackground').style.display = 'block';
+});
+
+document.getElementById('closeBtn').addEventListener('click', function() {
+    document.getElementById('filterBar').classList.remove('show');
+    document.getElementById('filterBackground').style.display = 'none';
+});
+document.getElementById('filtersToevoegen').addEventListener('click', function() {
+  document.getElementById('filterBar').classList.remove('show');
+  document.getElementById('filterBackground').style.display = 'none';
+});
+
+
+document.querySelectorAll('.expand-btn').forEach(function(button) {
+  button.addEventListener('click', function() {
+    var listCombined = this.nextElementSibling;
+    var dropdownIcon = this.querySelector('img');
+
+    if (listCombined.style.visibility === 'visible') {
+        listCombined.style.visibility = 'hidden';
+        listCombined.style.maxHeight = '0'
+        dropdownIcon.src = 'img/dropdown-closed.svg';
+    } else {
+        listCombined.style.visibility = 'visible';
+        listCombined.style.maxHeight = '100%';
+        listCombined.style.opacity = '1'
+        dropdownIcon.src = 'img/dropdown-open.svg';
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const filtersToevoegenBtn = document.getElementById("filtersToevoegen");
+
+  let selectedFilters = {
+    afmetingen: [],
+    favoriet: [],
+    publiek: [],
+    status: []
+  };
+
+  const filterOptions = document.querySelectorAll('.dropdown-content input[type="checkbox"]');
+
+  filterOptions.forEach(checkbox => {
+    checkbox.addEventListener("change", (event) => {
+      const category = event.target.name;
+      if (event.target.checked) {
+        selectedFilters[category].push(event.target.value);
+      } else {
+        selectedFilters[category] = selectedFilters[category].filter(value => value !== event.target.value);
+      }
+    });
+  });
+
+  filtersToevoegenBtn.addEventListener("click", function() {
+    applyFilters();
+  });
+
+  function applyFilters() {
+    const products = document.querySelectorAll(".product");
+    products.forEach(product => {
+      const productAfmeting = product.querySelector(".product-afmeting")?.innerText.toLowerCase() || '';
+      const productFavoriet = product.querySelector(".favoriet-icon") ? 'favoriet' : '';
+      const productStatus = product.querySelector(".product-status")?.innerText.toLowerCase() || '';
+      const productPubliek = product.querySelector(".product-publiek")?.innerText.toLowerCase() || '';
+
+      const afmetingenMatch = selectedFilters.afmetingen.length === 0 || selectedFilters.afmetingen.some(filter => productAfmeting.includes(filter.toLowerCase()));
+      const favorietMatch = selectedFilters.favoriet.length === 0 || (selectedFilters.favoriet.includes("Favoriet") && productFavoriet === 'favoriet') || (selectedFilters.favoriet.includes("Niet Favoriet") && productFavoriet === '');
+      const publiekMatch = selectedFilters.publiek.length === 0 || selectedFilters.publiek.some(filter => productPubliek === filter.toLowerCase());
+      const statusMatch = selectedFilters.status.length === 0 || selectedFilters.status.some(filter => productStatus === filter.toLowerCase());
+
+      if (afmetingenMatch && favorietMatch && publiekMatch && statusMatch) {
+        product.style.display = "block";
+      } else {
+        product.style.display = "none";
+      }
+    });
+  }
+});
+
+
+

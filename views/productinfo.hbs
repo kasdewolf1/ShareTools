@@ -57,9 +57,9 @@
 
           <p class="info-label">Status</p>
             {{#if product.status}}
-              <p class="status">{{product.status}}</p></li>
+              <p class="product-status">{{product.status}}</p>
             {{else}}
-              <p class="status">Niet van toepassing / Niet ingevuld</p>
+              <p class="product-status">Niet van toepassing / Niet ingevuld</p>
             {{/if}}
 
             <br>
@@ -68,55 +68,48 @@
       </section>
     </section>      
 
-    <div class="buttons">
-      <button class="delete-btn" onclick="deleteProduct('{{id}}')">
-        <i class="fas fa-trash-alt"></i>
-      <button type="button" class="btn-dark">LEEN</button>
-      <button type="button" class="btn-dark">BERICHT</button>
+    <div class="buttons">      
+      <button type="button" class="btn-dark"><a href="/toolbewerken">Bewerken</a></button>       
+      <button class="delete-btn" onclick="deleteProduct('{{id}}')">Verwijderen</button>
+      <i class="fas fa-trash-alt"></i>
     </div>
   </div>
 </div>
-  <!-- Voeg een div toe om de gegevens weer te geven -->
-  <div class="container" id="tool-info"></div>
 
 
-    <section class="card">
-       <img src="{{imageURL}}" alt="Tool Image">
-    </section>
-    <aside class="details">
-        <div class="product-details">
-            <h2>{{product.title}}</h2>
-            <p>Beschrijving: {{product.beschrijving}}</p>
-            <p>Afmeting: {{product.afmeting}}</p>
-            <p>Locatie: {{product.locatie}}</p>
-            <p>Categorie: {{product.categorie}}</p>
-        </div>
-        <div class="buttons">
-          <button class="delete-btn" onclick="deleteProduct('{{id}}')">
-                <i class="fas fa-trash-alt"></i>
-            <button type="button">LEEN</button>
-            <button type="button">BERICHT</button>
-        </div>
-    </aside>
-</script>
 
-  <script>
-    // Haal de toolgegevens op uit de database (bijvoorbeeld via een API)
-    const toolData = {
-      title: "{{tool_title}}",
-      beschrijving: "{{beschrijving}}",
-      afmeting: "{{afmeting}}",
-      locatie: "{{locatie}}",
-      categorie: "{{categorie}}",
-      imageURL: "{{imageURL}}"
-    };
-
-    // Compileer het Handlebars-sjabloon
-    const toolTemplate = Handlebars.compile(document.getElementById("tool-template").innerHTML);
-
-    // Voeg de toolgegevens toe aan de HTML
-    document.getElementById("tool-info").innerHTML = toolTemplate(toolData);
-  </script>
 <script src="/script.js"></script>
+<script>
+      // STATUS KLEUREN
+    document.addEventListener("DOMContentLoaded", function() {
+        // Select all elements with the class 'product-status'
+        let status = document.querySelectorAll('.product-status');
+
+        // Iterate over each element and change the color based on the content
+        status.forEach(function(element) {
+                var statusText = element.textContent.trim();
+
+            // Apply different colors based on the status text
+            switch (statusText) {
+                case 'Beschikbaar':
+                    element.style.color = '#3FA85C';
+                    element.style.backgroundColor = 'rgb(63, 168, 92, 20%)';
+                    break;
+                case 'Niet beschikbaar':
+                    element.style.color = '#BC3030';
+                    element.style.backgroundColor = 'rgb(188, 48, 48, 20%)';
+                    break;
+                case 'Huidige status':
+                    element.style.color = '#613FA8';
+                    element.style.backgroundColor = 'rgb(97, 63, 168, 20%)';
+                    break;
+                default:
+                    element.style.color = '#333333';
+                    element.style.backgroundColor = 'rgb(55, 55, 55, 20%)';
+                    break;
+                }
+            });
+});
+</script>
 </body>
 </html>

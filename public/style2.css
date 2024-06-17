@@ -16,22 +16,6 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
 }
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-  background-color: #566d95;
-  color: white;
-  }
-  .navbar a {
-    color: white;
-    text-decoration: none;
-    padding: 0 10px;
-    }      
-  .navbar a:hover {
-    text-decoration: underline;
-}
   
 .container {
   padding: 0;
@@ -125,6 +109,9 @@ input {
 }
 
 
+
+
+
 .everything{
   width: 71.4%;
   height: 1%;
@@ -150,13 +137,15 @@ input {
   text-align: left;
   font-size: 16px;
   cursor: pointer;
+  position: relative;
 }
         
   .product-image {
-    width: 100%;
-    height: 62%;
+    width: 100%;    
+    max-height: 62%;
     border-radius: 7px 7px 0 0;
     background-color: #FDFCFB;
+    object-fit: cover;
 }
   .product-info{
     padding: 16px;
@@ -169,6 +158,22 @@ input {
     word-break: keep-all;
   }
   
+  .product-afmeting, .product-publiek{
+    color: #898989;
+    background-color: rgb(137,137,137,20%);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    display: inline-block;
+    width: auto;
+    font-size: 14px;
+  }
+
+  .product-publiek{
+    color: #333333;
+    background-color: rgb(51,51,51,20%);
+  }
+
   .product-status{
     padding: 2px 8px;
     border-radius: 4px;
@@ -176,9 +181,131 @@ input {
     display: inline-block;
     width: auto;
     white-space: nowrap;
+    font-size: 14px;
   }
     
   .product-beschrijving{
     color: #333333;
-    margin-bottom: 0;
+    margin-bottom: 0;  
+  }
+  
+  .favoriet-icon{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 16px;
+}
+
+
+
+.filterbar{
+  position: absolute;
+  position: fixed;
+  background-color: #FDFCFB;
+  height: 100vh;
+  width: 26%;
+  left: auto; 
+  right: 0; 
+  top: 0;
+  margin: auto;
+  padding: 24px 24px;
+  gap: 16px;
+  box-shadow: 0 0 30px rgb(55,55,55,40%);
+  transform: translateX(150%);
+  transition: 0.5s;
+  z-index: 10;
+}
+
+.filterbar.show {
+  display: block;
+  transform: translateX(0%);
+}
+
+.filter-options{
+  margin: 16px 0;
+}
+
+h2{
+  color: #333333;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.close-btn{
+  background-image: url(img/x-lg.svg);  
+  background-repeat: no-repeat;
+  background-color:#FDFCFB;
+  height: 19px;
+  width: 19px;
+  border: none;
+  float: right;
+}
+
+.dropdown-content{
+  border: 1px solid #CDCDCD;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: auto;
+  padding: 0;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+
+.list-combined{
+  list-style: none;
+  padding: 0 0 16px 16px;
+  visibility: hidden;
+  max-height: 0;
+  overflow-y: hidden;
+  margin: 0;
+  opacity: 0;
+  line-height: 40px;
+}
+
+.list-option{
+  display: flex;
+  align-items: center;
+}
+
+input[type="checkbox"] {
+  accent-color: #333333;
+  height: 20px;
+  width: 20px;
+}
+
+label{
+  color: #333333;
+  padding-left: 16px;
+}
+.expand-btn{
+  background-color: #FDFCFB;
+  width: 100%;
+  display: flex;
+  border-radius: 8px;
+  padding: 16px 16px 0;
+  border: none;
+}
+.expand-btn{
+  font-weight: 600;
+}
+.expand-btn-title{
+  width: 100%;
+  text-align:left;
+}
+
+
+.filter-background{
+  background-color: rgb(33,33,33,20%);
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 1; /* Make sure it's above other content */
+  display: none; /* Hide by default */
 }
