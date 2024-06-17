@@ -70,15 +70,15 @@ exports.addTool = (req, res) => {
       console.error('Error during file upload:', err);
       return res.status(400).send(err);
     } else {
-      const { title, beschikbaarheid, afmetingen, location, category, description } = req.body;
+      const { title, beschikbaarheid, afmetingen, location, category, description, favoriet, publiek } = req.body;
       const image = req.file ? req.file.filename : null;
 
-      if (!title || !beschikbaarheid || !afmetingen || !location || !category || !description) {
+      if (!title || !beschikbaarheid || !afmetingen || !location || !category || !description || !favoriet || !publiek) {
         return res.status(400).send('All fields are required');
       }
 
-      const sql = 'INSERT INTO tools (title, status, afmeting, locatie, categorie, beschrijving, image) VALUES (?, ?, ?, ?, ?, ?, ?)';
-      const values = [title, beschikbaarheid, afmetingen, location, category, description, image];
+      const sql = 'INSERT INTO tools (title, status, afmeting, locatie, categorie, beschrijving, image, favoriet, publiek) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+      const values = [title, beschikbaarheid, afmetingen, location, category, description, image, favoriet, publiek];
 
       db.query(sql, values, (err, result) => {
         if (err) {
