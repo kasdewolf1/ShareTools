@@ -77,6 +77,8 @@ exports.addTool = (req, res) => {
         return res.status(400).send('All fields are required');
       }
 
+      const favorietInt = parseInt(favoriet, 10);
+      
       const sql = 'INSERT INTO tools (title, status, afmeting, locatie, categorie, beschrijving, image, favoriet, publiek) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
       const values = [title, beschikbaarheid, afmetingen, location, category, description, image, favoriet, publiek];
 
