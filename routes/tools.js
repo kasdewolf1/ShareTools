@@ -7,5 +7,7 @@ router.get('/products', toolsController.getAllProducts);
 router.get('/product/:id', toolsController.getToolById);
 router.delete('/:id', toolsController.deleteTool);
 router.post('/addTool', toolsController.addTool);
+router.get('/tools/:id/edit', toolsController.editToolGet);
+router.post('/tool/:id/edit' , toolsController.editToolPost)
 
 module.exports = router;

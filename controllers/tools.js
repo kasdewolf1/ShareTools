@@ -2,6 +2,7 @@ const db = require('../db'); // Path to db.js
 const multer = require('multer');
 const path = require('path');
 
+
 const storage = multer.diskStorage({
   destination: './uploads/',
   filename: function(req, file, cb) {
@@ -9,7 +10,8 @@ const storage = multer.diskStorage({
   }
 });
 
-// Initialize upload middleware
+
+// INITIALIZE UPLOAD MIDDLEWARE
 const upload = multer({
   storage: storage,
   fileFilter: function(req, file, cb) {
@@ -17,7 +19,8 @@ const upload = multer({
   }
 }).single('image');
 
-// Check file type
+
+// CHECK FILE TYPE
 function checkFileType(file, cb) {
   const filetypes = /jpeg|jpg|png|gif/;
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
@@ -30,7 +33,8 @@ function checkFileType(file, cb) {
   }
 }
 
-// Function to get all products
+
+// FUNCTION TO GET ALL PRODUCTS
 exports.getAllProducts = (req, res) => {
   const query = 'SELECT title, status, beschrijving, afmeting, publiek, favoriet, id, image FROM tools';
   db.query(query, (error, results) => {
@@ -48,7 +52,8 @@ exports.getAllProducts = (req, res) => {
   });
 };
 
-// Function to get a tool by ID
+
+// FUNCTION TO GET A TOOL BY ID
 exports.getToolById = (req, res) => {
   const { id } = req.params;
   const query = 'SELECT * FROM tools WHERE id = ?';
@@ -63,7 +68,8 @@ exports.getToolById = (req, res) => {
   });
 };
 
-// Function to add a tool
+
+// FUNCTION TO ADD A TOOL
 exports.addTool = (req, res) => {
   upload(req, res, (err) => {
     if (err) {
@@ -78,7 +84,7 @@ exports.addTool = (req, res) => {
       }
 
       const favorietInt = parseInt(favoriet, 10);
-      
+
       const sql = 'INSERT INTO tools (title, status, afmeting, locatie, categorie, beschrijving, image, favoriet, publiek) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
       const values = [title, beschikbaarheid, afmetingen, location, category, description, image, favoriet, publiek];
 
@@ -95,7 +101,8 @@ exports.addTool = (req, res) => {
   });
 };
 
-// Function to delete a tool
+
+// FUNCTION TO DELETE A TOOL
 exports.deleteTool = (req, res) => {
   const { id } = req.params;
   const query = 'DELETE FROM tools WHERE id = ?';
@@ -112,4 +119,34 @@ exports.deleteTool = (req, res) => {
 
     res.status(200).send({ message: 'Tool deleted successfully' });
   });
+};
+
+
+// FUNCTION TO EDIT A TOOL
+exports.editToolGet = (req, res) => {
+  const toolId = req.params.id;
+
+  db.query('SELECT * FROM tools WHERE id = ?', [toolId], (err, results) => {
+      if (err) {
+          console.error('Error fetching tool details:', err);
+          return res.status(500).send('Internal server error');
+      }
+      res.render('toolbewerken', { product: results[0] });
+  });
+};
+
+exports.editToolPost = (req, res) => {
+  const toolId = req.params.id;
+  const { title, category, afmetingen, /* other fields */ } = req.body;
+
+  db.query('UPDATE tools SET title = ?, category = ?, afmetingen = ?, /* other fields */ WHERE id = ?', 
+      [title, category, afmetingen, /* other field values */, toolId], 
+      (err, result) => {
+          if (err) {
+              console.error('Error updating tool:', err);
+              return res.status(500).send('Internal server error');
+          }
+          res.redirect(`/tools/${toolId}`);
+      }
+  );
 };
