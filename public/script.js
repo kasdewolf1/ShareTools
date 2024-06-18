@@ -68,21 +68,6 @@
     });
 
 
-    // ZOEKBALK
-    const searchInput = document.getElementById("search");
-
-    searchInput.addEventListener("input", e => {
-       const value = e.target.value.toLowerCase();
-       const productCards = document.querySelectorAll(".product");
-    
-       productCards.forEach(card => {
-          const name = card.querySelector(".product-title").textContent.toLowerCase();
-          const isVisible = name.includes(value);
-          card.classList.toggle("hide", !isVisible);
-       });
-    });
-
-
 // STATUS KLEUREN
   document.addEventListener("DOMContentLoaded", function() {
     let status = document.querySelectorAll('.product-status');
@@ -111,6 +96,32 @@
     });
 });
 
+
+
+    // ZOEKBALK
+    const searchInput = document.getElementById("search");
+
+    function toggleProductVisibility(products, isVisible) {
+      products.forEach(product => {
+          if (isVisible) {
+              product.style.display = "block";
+          } else {
+              product.style.display = "none";
+          }
+      });
+    }
+
+    searchInput.addEventListener("input", e => {
+      const value = e.target.value.toLowerCase().trim();
+      const productCards = document.querySelectorAll(".product");
+  
+      productCards.forEach(card => {
+          const name = card.querySelector(".product-title").textContent.toLowerCase();
+          const isVisible = name.includes(value);
+          card.style.display = isVisible ? "block" : "none";
+      });
+  });
+  
 
 // FILTERBAR
 document.getElementById('filterBtn').addEventListener('click', function() {
@@ -161,17 +172,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
   filterOptions.forEach(checkbox => {
     checkbox.addEventListener("change", (event) => {
-      const category = event.target.name;
-      if (event.target.checked) {
-        selectedFilters[category].push(event.target.value);
-      } else {
-        selectedFilters[category] = selectedFilters[category].filter(value => value !== event.target.value);
-      }
+        const category = event.target.name;
+        if (event.target.checked) {
+            selectedFilters[category].push(event.target.value);
+        } else {
+            selectedFilters[category] = selectedFilters[category].filter(value => value !== event.target.value);
+        }
+        applyFilters(); // Roep applyFilters aan na elke filterwijziging
     });
-  });
+});
 
-  filtersToevoegenBtn.addEventListener("click", function() {
-    applyFilters();
+  document.getElementById('closeBtn').addEventListener('click', function() {
+    document.getElementById('filterBar').classList.remove('show');
+    document.getElementById('filterBackground').style.display = 'none';
+    applyFilters(); // Roep applyFilters aan na het sluiten van de filterbalk
   });
 
   function applyFilters() {
