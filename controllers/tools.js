@@ -123,30 +123,50 @@ exports.deleteTool = (req, res) => {
 
 
 // FUNCTION TO EDIT A TOOL
-exports.editToolGet = (req, res) => {
+exports.getToolByIdForEdit = (req, res) => {
   const toolId = req.params.id;
+  const sql = 'SELECT * FROM tools WHERE id = ?';
 
-  db.query('SELECT * FROM tools WHERE id = ?', [toolId], (err, results) => {
-      if (err) {
-          console.error('Error fetching tool details:', err);
-          return res.status(500).send('Internal server error');
-      }
-      res.render('toolbewerken', { product: results[0] });
+  db.query(sql, [toolId], (err, results) => {
+    if (err) {
+      console.error('Error fetching tool by ID for edit:', err);
+      return res.status(500).send('Internal server error');
+    }
+    if (results.length === 0) {
+      return res.status(404).send('Tool not found');
+    }
+    const tool = results[0];
+    res.render('toolBewerken', { product: tool });
   });
 };
 
-exports.editToolPost = (req, res) => {
+exports.updateTool = (req, res) => {
   const toolId = req.params.id;
-  const { title, category, afmetingen, /* other fields */ } = req.body;
+  upload(req, res, (err) => {
+    if (err) {
+      console.error('Error during file upload:', err);
+      return res.status(400).send(err);
+    } else {
+      const { title, beschikbaarheid, afmetingen, location, category, description, favoriet, publiek } = req.body;
+      const image = req.file ? req.file.filename : null;
 
-  db.query('UPDATE tools SET title = ?, category = ?, afmetingen = ?, /* other fields */ WHERE id = ?', 
-      [title, category, afmetingen, /* other field values */, toolId], 
-      (err, result) => {
-          if (err) {
-              console.error('Error updating tool:', err);
-              return res.status(500).send('Internal server error');
-          }
-          res.redirect(`/tools/${toolId}`);
+      if (!title || !beschikbaarheid || !afmetingen || !location || !category || !description || !favoriet || !publiek) {
+        return res.status(400).send('All fields are required');
       }
-  );
+
+      const favorietInt = parseInt(favoriet, 10);
+      const sql = 'UPDATE tools SET title = ?, status = ?, afmeting = ?, locatie = ?, categorie = ?, beschrijving = ?, image = ?, favoriet = ?, publiek = ? WHERE id = ?';
+      const values = [title, beschikbaarheid, afmetingen, location, category, description, image, favoriet, publiek, toolId];
+
+      db.query(sql, values, (err, result) => {
+        if (err) {
+          console.error('Error updating tool:', err);
+          return res.status(500).send('Internal server error while updating tool');
+        }
+        
+        console.log('Tool updated successfully, redirecting to /tools/products');
+        return res.redirect('/indexloggedin');
+      });
+    }
+  });
 };
