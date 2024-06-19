@@ -124,21 +124,20 @@ exports.deleteTool = (req, res) => {
 
 // FUNCTION TO EDIT A TOOL
 exports.getToolByIdForEdit = (req, res) => {
-  const toolId = req.params.id;
-  const sql = 'SELECT * FROM tools WHERE id = ?';
-
-  db.query(sql, [toolId], (err, results) => {
-    if (err) {
-      console.error('Error fetching tool by ID for edit:', err);
-      return res.status(500).send('Internal server error');
-    }
-    if (results.length === 0) {
-      return res.status(404).send('Tool not found');
-    }
-    const tool = results[0];
-    res.render('toolBewerken', { product: tool });
-  });
+    const { id } = req.params;
+    const query = 'SELECT * FROM tools WHERE id = ?';
+    db.query(query, [id], (error, results) => {
+      if (error) {
+        console.error('Error fetching tool:', error);
+        return res.status(500).send('Internal server error');
+      }
+  
+      const imageURL = `/uploads/${results[0].image}`;
+      res.render('toolbewerken', { product: results[0], imageURL: imageURL });
+    });
 };
+
+
 
 exports.updateTool = (req, res) => {
   const toolId = req.params.id;

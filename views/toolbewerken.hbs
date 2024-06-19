@@ -17,9 +17,9 @@
 {{> header}}
 
 <div class="toevoegen-container">
-    <a href="/productinfo"><button class="btn-terug">🞀</button></a>
+    <a href="/product/{{product.id}}"><button class="btn-terug">🞀</button></a>
 
-<form action="/tools/{{id}}/edit" method="POST">
+<form action="/tools/updateTool/{{product.id}}" method="POST">
     <div class="left">
         <input type="file" id="imageUpload" name="image" accept="image/*">
         <img src="/img/GereedschapToevoegenAchtergrond.png" class="toevoegen-image">
@@ -60,24 +60,24 @@
          <label for="floatingSelectStatus">Kies een status</label>
         </div>
 
-        <label for="floatingSelect" style="font-weight: 600">Afmetingen</label>
+        <label for="floatingSelect" style="font-weight: 600">Favoriet</label>
       <div class="form-floating">
             <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="favoriet">
                 <option value="Klein/Groot">Favoriet / Niet favoriet</option>
                 <option value="Klein">Favoriet</option>
                 <option value="Groot">Niet Favoriet</option>
             </select>
-        <label for="floatingSelect">Kies een afmeting</label>
+        <label for="floatingSelect">Kies of je deze tool als favoriet wilt hebben</label>
       </div> 
 
-      <label for="floatingSelect" style="font-weight: 600">Afmetingen</label>
+      <label for="floatingSelect" style="font-weight: 600">Publiek</label>
       <div class="form-floating">
             <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="publiek">
                 <option value="Klein/Groot">Publiek / Niet publiek</option>
                 <option value="Klein">Publiek</option>
                 <option value="Groot">Niet publiek</option>
             </select>
-        <label for="floatingSelect">Kies een afmeting</label>
+        <label for="floatingSelect">Kies of je deze tool publiek wilt maken</label>
       </div> 
 
       <label for="floatingInputLocation" style="font-weight: 600">Locatie</label>
@@ -93,9 +93,7 @@
         </div>
 
         <!-- Submit button -->
-        <button type="submit" class="btn custom-btn-green">Toevoegen</button>
-    <!-- Submit button -->
-    <button type="submit" class="btn custom-btn-green">Verzenden</button>
+        <button type="submit" class="btn-dark">Opslaan</button>
     </div>
     
 </form>      
