@@ -211,4 +211,32 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
+// TO EDIT A PAGE
+function goToEditPage(id) {
+    window.location.href = "/tools/bewerken/" + id;
+  }
 
+  document.addEventListener('DOMContentLoaded', function() {
+    const editButton = document.querySelector('.btn-bewerken');
+    if (editButton) {
+      editButton.addEventListener('click', function() {
+        const productIdForEdit = this.getAttribute('data-product-id');
+        goToEditPage(productIdForEdit);
+      });
+    }
+  });
+
+    
+  function goToProductPage(id) {
+    window.location.href = "/tools/product/" + id;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const editButton = document.querySelector('.btn-terug');
+    if (editButton) {
+      editButton.addEventListener('click', function() {
+        const productIdForEdit = this.getAttribute('data-product-id');
+        goToProductPage(productIdForEdit);
+      });
+    }
+  });

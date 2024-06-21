@@ -18,11 +18,13 @@
 <div class="page-container">
   {{> header}}
 
-  <div class="profiel-container">
+  <div class="profiel-container" >
     <a href="/indexloggedin" class="btn-terug">🞀</a>
+
+    <div class="product-information">
     <h1>{{product.title}}</h1>
 
-    <section class="details-container">
+    <section class="details-container" >
       {{#if product.imageURL}}
         <img src="{{product.imageURL}}" alt="Tool Image">
       {{else}}
@@ -30,10 +32,17 @@
       {{/if}}
 
 
-      <section class="tekst-info">            
+      <section class="tekst-info">     
+          <p class="info-label">Favoriet</p>     
+            {{#if product.favoriet}}         
+              <p class="">Favoriet</p>
+            {{else}}
+              <p>Niet favoriet</p>
+            {{/if}} 
+
           <p class="info-label">Afmeting</p>     
             {{#if product.afmeting}}         
-              <p class="info">{{product.afmeting}}</p>
+              <p class="">{{product.afmeting}}</p>
             {{else}}
               <p>Niet van toepassing / Niet ingevuld</p>
             {{/if}}
@@ -67,9 +76,10 @@
             <p>{{product.beschrijving}}</p>
       </section>
     </section>      
+    </div>
 
     <div class="buttons">      
-      <a href="/toolbewerken" type="button" class="btn-dark">Bewerken</a>      
+      <button type="button" class="btn-bewerken" data-product-id="{{product.ID}}">Bewerken</button>
       <button class="delete-btn" onclick="deleteProduct('{{id}}')">Verwijderen</button>
       <i class="fas fa-trash-alt"></i>
     </div>
@@ -80,6 +90,21 @@
 
 <script src="/script.js"></script>
 <script>
+
+  function goToEditPage(id) {
+    window.location.href = "/tools/bewerken/" + id;
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const editButton = document.querySelector('.btn-bewerken');
+    if (editButton) {
+      editButton.addEventListener('click', function() {
+        const productId = this.getAttribute('data-product-id');
+        goToEditPage(productId);
+      });
+    }
+  });
+
       // STATUS KLEUREN
     document.addEventListener("DOMContentLoaded", function() {
         // Select all elements with the class 'product-status'
