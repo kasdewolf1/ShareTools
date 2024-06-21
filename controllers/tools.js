@@ -137,35 +137,26 @@ exports.getToolByIdForEdit = (req, res) => {
   });
 };
 
-exports.editTool = (req, res) => {
-  upload(req, res, (err) => {
-    if (err) {
-      console.error('Error during file upload:', err);
-      return res.status(400).send(err);
-    } else {
-      const { id, title, beschikbaarheid, afmetingen, location, category, description, favoriet, publiek } = req.body;
-      const image = req.file ? req.file.filename : null;
+exports.editToolById = (req, res) => {
+  const { id } = req.params;
+  const { title, category, afmetingen, beschikbaarheid, favoriet, publiek, location, description } = req.body;
 
-      if (!id || !title || !beschikbaarheid || !afmetingen || !location || !category || !description || !favoriet || !publiek) {
-        return res.status(400).send('All fields are required');
-      }
+  // Update query
+  const query = 'UPDATE tools SET title=?, categorie=?, afmeting=?, status=?, favoriet=?, publiek=?, locatie=?, beschrijving=? WHERE id=?';
+  
 
-      const favorietInt = parseInt(favoriet, 10);
+  const favorietInt = parseInt(favoriet, 10);
 
-      const sql = 'UPDATE tools SET title=?, status=?, afmeting=?, locatie=?, categorie=?, beschrijving=?, image=?, favoriet=?, publiek=? WHERE id=?';
-      const values = [title, beschikbaarheid, afmetingen, location, category, description, image, favoriet, publiek, id];
-
-      db.query(sql, values, (err, result) => {
-        if (err) {
-          console.error('Error updating tool:', err);
-          return res.status(500).send('Internal server error while updating tool');
-        }
-        
-        console.log('Tool updated successfully, redirecting to /indexloggedin');
-        return res.redirect('/indexloggedin');
-      });
+  // Execute de update query
+  db.query(query, [title, category, afmetingen, beschikbaarheid, favoriet, publiek, location, description, id], (error, results) => {
+    if (error) {
+      console.error('Error updating tool:', error);
+      return res.status(500).send('Internal server error');
     }
+    
+    res.redirect('/indexloggedin'); // Na succesvolle update, terugkeren naar overzicht van tools of een andere gewenste bestemming
   });
 };
+
 
 
