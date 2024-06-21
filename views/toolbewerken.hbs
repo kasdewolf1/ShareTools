@@ -64,6 +64,7 @@
         <label for="floatingSelect" style="font-weight: 600">Favoriet</label>
       <div class="form-floating">
             <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="favoriet">
+                <option value="0" {{#ifEquals product.favoriet "0"}}selected{{/ifEquals}}>Favoriet / Niet favoriet</option>
                 <option value="1" {{#ifEquals product.favoriet "1"}}selected{{/ifEquals}}>Favoriet</option>
                 <option value="0" {{#ifEquals product.favoriet "0"}}selected{{/ifEquals}}>Niet favoriet</option>
             </select>
@@ -73,6 +74,7 @@
       <label for="floatingSelect" style="font-weight: 600">Publiek</label>
       <div class="form-floating">
             <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="publiek">
+                <option value="Publiek/Nietpubliek" {{#ifEquals product.publiek "Publiek/Nietpubliek"}}selected{{/ifEquals}}>Publiek / Niet publiek</option>
                 <option value="Publiek" {{#ifEquals product.publiek "Publiek"}}selected{{/ifEquals}}>Publiek</option>
                 <option value="Niet publiek" {{#ifEquals product.publiek "Niet publiek"}}selected{{/ifEquals}}>Niet publiek</option>
             </select>
