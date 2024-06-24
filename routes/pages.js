@@ -52,4 +52,8 @@ router.get('/toolbewerken', (req, res) => {
   res.render('toolbewerken');
 });
 
+router.get('/toollenen', (req, res) => {
+  res.render('toollenen');
+});
+
 module.exports = router;
