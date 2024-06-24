@@ -28,6 +28,26 @@
             <input type="file" id="fileInput" style="display: none;">
         </section>
 
+        <form action="/update-profile" method="POST">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{user.name}}" required>
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="{{user.email}}" required>
+    </div>
+    <div>
+        <label for="woonplaats">Woonplaats:</label>
+        <input type="text" id="woonplaats" name="woonplaats" value="{{user.woonplaats}}" required>
+    </div>
+    <div>
+        <label for="birthdate">Birthdate:</label>
+        <input type="date" id="birthdate" name="birthdate" value="{{user.birthdate}}" required>
+    </div>
+    <button type="submit">Update Profile</button>
+</form>
+
         <section class="account-info-change">
             <div class="form-floating">
                 <textarea

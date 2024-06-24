@@ -159,3 +159,33 @@ exports.updateUser = async (req, res) => {
         res.render('mijnaccountbewerken', { message: 'An error occurred' });
     }
 };
+
+exports.verifyToken = (req, res, next) => {
+    const token = req.cookies.jwt;
+
+    if (token) {
+        jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+            if (err) {
+                console.log(err.message);
+                res.locals.user = null;
+                return res.redirect('/login');
+            } else {
+                const id = decoded.id;
+                db.query('SELECT * FROM users WHERE id = ?', [id], (error, results) => {
+                    if (error || results.length === 0) {
+                        console.log(error);
+                        res.locals.user = null;
+                        return res.redirect('/login');
+                    } else {
+                        res.locals.user = results[0];
+                        req.user = results[0]; // Voeg de gebruiker toe aan het request object
+                        return next();
+                    }
+                });
+            }
+        });
+    } else {
+        res.locals.user = null;
+        return res.redirect('/login');
+    }
+};

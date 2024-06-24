@@ -26,18 +26,12 @@
 
 <section class="details-container">
         <img src="/img/Mijn account.png" class="account-photo" alt="Account Photo">
-        <section class="account-info">
-            <p class="info-label">Gebruikersnaam</p>
-            <p class="info-actual">{{user.name}}</p>
-
-            <p class="info-label">Geboortedatum</p>
-            <p class="info-actual">{{user.birthdate}}</p>
-
-            <p class="info-label">Email</p>
-            <p class="info-actual">{{user.email}}</p>
-
-            <p class="info-label">Woonplaats</p>
-            <p class="info-actual">{{user.woonplaats}}</p>
+        <section>
+    <h2>Profile Updated</h2>
+    <p><strong>Name:</strong> {{user.name}}</p>
+    <p><strong>Email:</strong> {{user.email}}</p>
+    <p><strong>Woonplaats:</strong> {{user.woonplaats}}</p>
+    <p><strong>Birthdate:</strong> {{user.birthdate}}</p>
         </section>
     </section>
     <a href="./mijnaccountbewerken" class="btn-dark">Wijzigen</a>
