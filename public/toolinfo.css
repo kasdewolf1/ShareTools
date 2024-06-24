@@ -104,7 +104,7 @@ body {
   right: 0;
   }
   
-  /*Tool Lenen*/
+
   input[type=text]{
   border-radius: 8px;
   padding: 12px;
@@ -128,12 +128,15 @@ body {
   flex-direction: column;
   }
   .toolfoto{
-  width: 100%;
+  width: 10%;
   min-width: 300px;
   margin: 0 3.7% 40px 0;
   }
   }
-  
+  .tool-image {
+    width: 600px;
+    height: 400px;
+  }
   @media screen and (max-width: 900px){
   .navbar-everything{
   width: 104px;
@@ -177,6 +180,7 @@ body {
   flex-direction: column;
   }
   
+
   .logo-responsive{
   display: none;
   }
@@ -207,24 +211,25 @@ body {
   flex-direction: row !important;
   justify-content: space-around;
   }
-  
+
   .nav-link{
   width: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
   }
-  
+
+
   .profiel-container{
   width: 100%;
   margin: 0 0 94px 0;
   padding: 16px;
   }
-  
+
   h1{
   margin: 40px 0 24px 0px;
   }
-  
+
   .details-container{
   padding: 0;
   flex-direction: column;

@@ -17,7 +17,7 @@ exports.addTool = (req, res) => {
       return res.status(500).send('An internal server error occurred while adding the tool');
     }
 
-    console.log('Tool successfully added, redirecting to /tools/products');
+    console.log('Tool successfully added, redirecting to /indexloggedin');
     return res.redirect('/indexloggedin');
   });
 };
@@ -52,9 +52,12 @@ exports.getAllProducts = (req, res, next) => {
     next(); // Proceed to the next middleware to render the page
   });
 };
+exports.getToolById = (req, res, next) => {
+  const id = req.params.id || req.query.id; // Corrected destructuring
+  if (!id) {
+    return res.status(400).send('Tool ID is required');
+  }
 
-exports.getToolById = (req, res) => {
-  const { id } = req.params;
   const query = 'SELECT * FROM tools WHERE id = ?';
 
   db.query(query, [id], (error, results) => {
@@ -69,15 +72,21 @@ exports.getToolById = (req, res) => {
       return res.status(404).send('Tool not found');
     }
 
+    const tool = results[0];
     let imageURL = null;
-    if (results[0].image) {
-      imageURL = `/uploads/${results[0].image.toString('utf-8')}`;
+    if (tool.image) {
+      imageURL = `/uploads/${tool.image}`;
     }
 
-    res.render('productinfo', { product: results[0], imageURL: imageURL });
+    // Set the retrieved tool in res.locals to be accessed by the route handler
+    res.locals.product = {
+      ...tool,
+      imageURL: imageURL
+    };
+
+    next(); // Proceed to the route handler
   });
 };
-
 exports.deleteTool = (req, res) => {
   const { id } = req.params;
   const query = 'DELETE FROM tools WHERE id = ?';

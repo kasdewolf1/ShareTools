@@ -5,12 +5,13 @@ const multer = require('multer');
 const db = require('./db');
 const app = express();
 const session = require('express-session');
+const cookieParser = require('cookie-parser');
 
 const pagesRouter = require('./routes/pages');
 const authRouter = require('./routes/auth');
 const toolsRouter = require('./routes/tools');
 
-
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -19,29 +20,26 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 hbs.registerPartials(path.join(__dirname, 'views/partials'));
 
-
-
-
-
+// Middleware voor sessie
 app.use(session({
-  secret: process.env.SESSION_SECRET, // Replace with a strong secret string
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false } // Set to true if using https
+  cookie: { secure: false }
 }));
 
+// Middleware om gebruikersinformatie in te stellen
 app.use((req, res, next) => {
-  if (req.session && req.session.user) { // Check if session exists and has a 'user' property
+  if (req.session && req.session.user) {
     req.user = req.session.user;
   }
-  next(); // Allow request to proceed
+  next();
 });
 
-
-// Define routes
+// Definieer routes
 app.use('/', pagesRouter); // Zorg ervoor dat dit voor '/tools' komt
 app.use('/auth', authRouter);
-app.use('/tools', toolsRouter);
+app.use('/tools', toolsRouter); // Zorg ervoor dat dit na '/' komt
 
 app.listen(5001, () => {
   console.log("Server started on Port 5001");

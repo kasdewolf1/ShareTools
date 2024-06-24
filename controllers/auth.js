@@ -49,7 +49,7 @@ exports.login = async (req, res) => {
     console.log(req.body);
     const { name, email, password } = req.body;
 
-    db.query('SELECT * FROM users WHERE name = ? OR email = ?', [name, name], async (error, results) => {
+    db.query('SELECT * FROM users WHERE name = ? OR email = ?', [name, email], async (error, results) => {
         if (error) {
             console.log(error);
             return res.render('login', {
@@ -63,7 +63,7 @@ exports.login = async (req, res) => {
             });
         }
 
-        const user = results.find(user => user.name === name || user.email === name);
+        const user = results.find(user => user.name === name || user.email === email);
 
         if (!user) {
             return res.render('login', {
@@ -79,7 +79,13 @@ exports.login = async (req, res) => {
             });
         }
 
-        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+        const token = jwt.sign({ 
+            id: user.id, 
+            name: user.name, 
+            email: user.email,
+            woonplaats: user.woonplaats, // Add woonplaats to the token payload
+            birthdate: user.birthdate // Add birthdate to the token payload
+        }, process.env.JWT_SECRET, {
             expiresIn: process.env.JWT_EXPIRES_IN
         });
 
@@ -94,5 +100,3 @@ exports.login = async (req, res) => {
         return res.redirect('/indexloggedin');
     });
 };
-
-
