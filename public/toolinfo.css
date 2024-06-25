@@ -160,18 +160,6 @@ input[type=submit]{
 
 
 @media screen and (max-width: 900px){
-  .navbar-everything{
-      width: 104px;
-  }
-  .logo-normal{
-      display: none;
-  }
-  .logo-responsive{
-      display: block;
-      margin: 32px 0px 72px;
-      width: 40px;
-      height: auto;
-  }
   .profiel-container{
       margin: 80px 104px 0px 144px;
   }
@@ -179,16 +167,6 @@ input[type=submit]{
       width: 100%;
       min-width: 100%;
       margin: 0 3.7% 40px 0;
-  }
-  .links{
-      opacity: 0;
-      display: none;
-  }
-  .nav-link{
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
   }
 
 }
@@ -203,50 +181,11 @@ input[type=submit]{
       flex-direction: column;
   }
 
-  /*Navbar*/
-  .logo-responsive{
-      display: none;
-  }
-  .navbar-everything{
-      background-color: #fdfcfb;
-      box-shadow: 0px 0px 50px #33333377;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      width: 100vw;
-      height: 80px;
-      position: fixed;
-      bottom: 0;
-  }   
-   .links{
-      display: none;
-  }
-  .d-flex.align-items-start{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-  }
-
-  .nav.flex-column.nav-pills.me-3{
-      width: 100%;
-      display: flex;
-      flex-direction: row !important;
-      justify-content: space-around;
-  }
-
-  .nav-link{
-      width: 10%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-  }
-
   /*Profiel*/
   .profiel-container{
-      width: 100%;
-      margin: 0 0 94px 0;
-      padding: 16px;
+    width: 100%;
+    margin: 0 0 94px 0;
+    padding: 40px;
   }
 
   h1{

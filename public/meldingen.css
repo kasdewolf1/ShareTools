@@ -39,3 +39,31 @@ h2{
     font-size: 24px;
     font-weight: 600;
 }
+
+
+
+
+@media screen and (max-width: 900px) {
+.page-container{
+    width: 100%;
+    margin: 0 0 94px 0;
+    padding: 40px;
+    box-shadow: none;
+  }
+}
+
+@media screen and (max-width:700px) {
+  body{
+    background-color: #FDFCFB;
+  }
+  .everything{
+    width: 100%;
+    margin: 0 0 94px 0;
+    padding: 40px;
+    box-shadow: none;
+    border-radius: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+}
