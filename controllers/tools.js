@@ -105,71 +105,43 @@ exports.addTool = (req, res) => {
   });
 };
 
-exports.getAllProducts = (req, res, next) => {
-  const query = 'SELECT title, status, beschrijving, id, image FROM tools';
-  
+
+exports.getAllProducts = (req, res) => {
+  const query = 'SELECT title, status, beschrijving, afmeting, publiek, favoriet, id, image FROM tools';
   db.query(query, (error, results) => {
     if (error) {
       console.error('Error fetching products:', error);
-      return res.status(500).send('An internal server error occurred');
+      return res.status(500).send('Internal server error while fetching products');
     }
 
-    console.log('Get all products query results:', results);
+    const products = results.map(product => ({
+      ...product,
+      imageURL: product.image ? `/uploads/${product.image}` : null
+    }));
 
-    if (!results || results.length === 0) {
-      return res.status(404).send('No products found');
-    }
-
-    const products = results.map(product => {
-      let imageURL = null;
-      if (product.image) {
-        imageURL = `/uploads/${product.image.toString('utf-8')}`;
-      }
-      return {
-        ...product,
-        imageURL: imageURL
-      };
-    });
-
-    res.locals.products = products;
-    next(); // Proceed to the next middleware to render the page
+    res.render('indexloggedin', { products: products });
   });
 };
-exports.getToolById = (req, res, next) => {
-  const id = req.params.id || req.query.id; // Corrected destructuring
-  if (!id) {
-    return res.status(400).send('Tool ID is required');
-  }
 
+exports.getToolById = (req, res) => {
+  const { id } = req.params;
   const query = 'SELECT * FROM tools WHERE id = ?';
-
   db.query(query, [id], (error, results) => {
     if (error) {
       console.error('Error fetching tool:', error);
-      return res.status(500).send('An internal server error occurred');
+      return res.status(500).send('Internal server error');
     }
-
-    console.log('Get tool by ID query results:', results);
 
     if (!results || results.length === 0) {
       return res.status(404).send('Tool not found');
     }
 
-    const tool = results[0];
-    let imageURL = null;
-    if (tool.image) {
-      imageURL = `/uploads/${tool.image}`;
-    }
+    const imageURL = results[0].image ? `/uploads/${results[0].image}` : null;
 
-    // Set the retrieved tool in res.locals to be accessed by the route handler
-    res.locals.product = {
-      ...tool,
-      imageURL: imageURL
-    };
-
-    next(); // Proceed to the route handler
+    res.render('productinfo', { product: results[0], imageURL: imageURL });
   });
 };
+
 exports.deleteTool = (req, res) => {
   const { id } = req.params;
   const query = 'DELETE FROM tools WHERE id = ?';
