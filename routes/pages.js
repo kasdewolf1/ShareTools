@@ -45,8 +45,8 @@ router.get('/indexloggedin', verifyToken, toolsController.getAllProducts, (req, 
     res.render('indexloggedin', { products: res.locals.products, user: req.user }); // Gebruikersgegevens toegevoegd
   });
   
-  router.get('/ToolBewerken/:id', toolsController.getToolById, (req, res) => {
-      res.render('Toolbewerken', { product: res.locals.product, user: req.user }); // Gebruikersgegevens toegevoegd
+  router.get('/toolbewerken', (req, res) => { 
+      res.render('toolbewerken'); // Gebruikersgegevens toegevoegd
   });
   
   router.get('/productinfo', verifyToken, (req, res) => {
@@ -77,7 +77,7 @@ router.get('/indexloggedin', verifyToken, toolsController.getAllProducts, (req, 
   router.get('/mijnaccount', verifyToken, (req, res) => {
     res.render('mijnaccount', { user: req.user }); // Gebruikersgegevens toegevoegd
   });
-  
+
   router.get('/ToolProfiel', verifyToken, (req, res) => {
     res.render('ToolProfiel', { 
         title: 'Hamer', 
@@ -91,6 +91,8 @@ router.get('/indexloggedin', verifyToken, toolsController.getAllProducts, (req, 
 router.get('/meldingen', verifyToken, (req, res) => {
     res.render('meldingen', { user: req.user }); // Gebruikersgegevens toegevoegd
 });
+
+
 
 router.get('/mijnaccountbewerken', (req, res) => {
     res.render('mijnaccountbewerken');
