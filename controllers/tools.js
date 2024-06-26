@@ -106,7 +106,7 @@ exports.addTool = (req, res) => {
 };
 
 exports.getAllProducts = (req, res, next) => {
-  const query = 'SELECT title, beschikbaarheid, beschrijving, id, image FROM tools';
+  const query = 'SELECT title, status, beschrijving, id, image FROM tools';
   
   db.query(query, (error, results) => {
     if (error) {

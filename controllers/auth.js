@@ -51,7 +51,7 @@ exports.login = async (req, res) => {
         // Fetch the user from the database
         db.query('SELECT * FROM users WHERE email = ?', [email], async (error, results) => {
             if (error) {
-                console.error(error);
+                console.error("Database query error:", error);
                 return res.render('login', { message: 'An error occurred' });
             }
 
@@ -66,12 +66,12 @@ exports.login = async (req, res) => {
                 return res.render('login', { message: 'Invalid email or password' });
             }
 
-            const token = jwt.sign({ 
-                id: user.id, 
-                name: user.name, 
+            const token = jwt.sign({
+                id: user.id,
+                name: user.name,
                 email: user.email,
-                woonplaats: user.woonplaats, 
-                birthdate: user.birthdate 
+                woonplaats: user.woonplaats,
+                birthdate: user.birthdate
             }, process.env.JWT_SECRET, {
                 expiresIn: process.env.JWT_EXPIRES_IN
             });
@@ -83,11 +83,15 @@ exports.login = async (req, res) => {
 
             res.cookie('jwt', token, cookieOptions);
 
+            // Debugging info
+            console.log("User logged in successfully:", user);
+            console.log("JWT Token:", token);
+
             // Redirect to the correct path
             return res.redirect('/indexloggedin');
         });
     } catch (error) {
-        console.error(error);
+        console.error("Login error:", error);
         res.render('login', { message: 'An error occurred' });
     }
 };

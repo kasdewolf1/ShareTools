@@ -124,24 +124,8 @@
             
             <a class="green-plus" href="/Tooltoevoegen">Nieuwe tool toevoegen</a>
         </div>
-        <a class="green-plus" href="/Tooltoevoegen">Nieuwe tool toevoegen</a>
-      </div>
       
       <div style="margin-bottom: 20px;"></div>
-
-      <div class="grid" id="productGrid">
-        {{#each products}}
-          <div class="product" data-product-id="{{id}}">
-            <h2 class="product-title">{{title}}</h2>
-            <p class="product-status">{{beschikbaarheid}}</p>
-            <p class="product-beschrijving" style="color: #333333">{{beschrijving}}</p>
-            <img src="{{imageURL}}" alt="{{title}} afbeelding" class="product-image">
-            <a href="/ToolBewerken/{{id}}" class="edit-button">Bewerk</a>
-          </div>
-        {{/each}}
-      </div>
-    </div>
-    <div style="margin-bottom: 20px;"></div>
 
 
     <div class="grid" id="productGrid">
