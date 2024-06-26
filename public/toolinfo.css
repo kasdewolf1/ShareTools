@@ -1,39 +1,57 @@
 body {
-  font-family: "Inter", sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #F3F0F0;
-  }
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F3F0F0;
+
+}
   
-  .profiel-container {
+.profiel-container {
   width: 71.4%;
   height: 1%;
   background-color: #fdfcfb;
   border-radius: 16px;
   display: flex;
   flex-direction: column;
-  margin: 80px 104px 0px 328px;
+  margin: 80px 104px 80px 328px;
   padding: 40px;
   box-shadow: 0 0 50px rgb(55,55,55,8%);
-  }
+}
   
-  .btn-dark{
+
+.buttons{
+  margin-left: auto;
+  margin-right: 0;
+
+}
+
+.btn-bewerken, .delete-btn{
   display: flex;
-  align-items: center;
   justify-content: center;
-  text-decoration: none;
+  align-items: center;
   cursor: pointer;
-  border: none;
-  font-size: 16px;
-  border-radius: 8px;
-  padding: 12px 16px;
-  font-weight: 600;
-  color: #FDFCFB;
   background-color: #333333;
+  color: #FDFCFB;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
   transition: ease-in-out 0.3s;
-  }
-  
-  .btn-terug{
+  border: none;
+}
+.btn-bewerken:hover{
+  background-color:#5C5C5C;
+}
+
+.delete-btn{
+  background-color: #BC3030;
+}
+.delete-btn:hover{
+  background-color: rgb(188, 48, 48, 80%);
+}
+
+.btn-terug{
   width: 40px;
   height: 40px;
   border-radius: 8px;
@@ -44,74 +62,76 @@ body {
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  }
-  
-  h1{
+}
+
+h1{
   margin-left: 72px;
   font-weight: 600;
-  }
-  
-  .details-container{
+}
+
+.details-container{
   padding: 24px 72px 80px;
   display: flex;
   flex-direction: row;
-  }
-  
-  .toolfoto{
+}
+
+.toolfoto{
   width: 60%;
   height: 55%;
   margin: 0 3.7% 0 0;
   border-radius: 16px;
   box-shadow: 0 0 20px #33333323;
-  }
-  
-  .tekst-info{
+}
+
+
+.tekst-info{
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
-  }
-  
-  .info-label{
+}
+
+.info-label{
   font-weight: 600;
   margin: 0;
-  }
-  
-  .info{
+}
+
+.info{
   margin: 0;
   display: flex;
   align-items: center;
   padding: 4px 0;
-  }
-  
-  .info-logos{
+}
+
+.info-logos{
   padding-top: 0;
   margin: 0 8px 0 0;
   width: 24px;
-  }
-  
-  .status{
-  background-color: rgb(63, 168, 92, 20%);
-  color: #3FA85C;
+}
+
+.product-status{
   padding: 2px 8px;
   border-radius: 4px;
-  }
-  
-  .buttons{
+}
+
+
+.buttons{
   display: flex;
   gap: 40px;
   position: relative;
   right: 0;
-  }
-  
+}
 
-  input[type=text]{
+
+
+/*Tool Lenen*/
+input[type=text]{
   border-radius: 8px;
   padding: 12px;
   width: 100%;
   border: 2px solid #cdcdcd;
-  }
-  input[type=submit]{
+}
+input[type=submit]{
   width: 100%;
   background-color: #333333;
   color: #fdfcfb;
@@ -119,127 +139,69 @@ body {
   padding: 10px;
   border: none;
   border-radius: 8px
-  }
-  
-  @media screen and (max-width: 1200px){
+}
+
+
+
+
+
+@media screen and (max-width: 1200px){
   .details-container{
-  padding: 24px 72px 80px;
-  display: flex;
-  flex-direction: column;
+      padding: 24px 72px 80px;
+      display: flex;
+      flex-direction: column;
   }
   .toolfoto{
-  width: 10%;
-  min-width: 300px;
-  margin: 0 3.7% 40px 0;
+      width: 100%;
+      min-width: 300px;
+      margin: 0 3.7% 40px 0;
   }
-  }
-  .tool-image {
-    width: 600px;
-    height: 400px;
-  }
-  @media screen and (max-width: 900px){
-  .navbar-everything{
-  width: 104px;
-  }
-  .logo-normal{
-  display: none;
-  }
-  .logo-responsive{
-  display: block;
-  margin: 32px 0px 72px;
-  width: 40px;
-  height: auto;
-  }
+}
+
+
+@media screen and (max-width: 900px){
   .profiel-container{
-  margin: 80px 104px 0px 144px;
+      margin: 80px 104px 0px 144px;
   }
   .toolfoto{
-  width: 100%;
-  min-width: 100%;
-  margin: 0 3.7% 40px 0;
+      width: 100%;
+      min-width: 100%;
+      margin: 0 3.7% 40px 0;
   }
-  .links{
-  opacity: 0;
-  display: none;
-  }
-  .nav-link{
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  }
-  
-  }
-  
-  @media screen and (max-width: 700px){
+
+}
+
+
+@media screen and (max-width: 700px){
   body{
-  background-color: #fdfcfb;
+      background-color: #fdfcfb;
   }
   .page-container{
-  display: flex;
-  flex-direction: column;
-  }
-  
-
-  .logo-responsive{
-  display: none;
-  }
-  .navbar-everything{
-  background-color: #fdfcfb;
-  box-shadow: 0px 0px 50px #33333377;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100vw;
-  height: 80px;
-  position: fixed;
-  bottom: 0;
-  }
-  .links{
-  display: none;
-  }
-  .d-flex.align-items-start{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  }
-  
-  .nav.flex-column.nav-pills.me-3{
-  width: 100%;
-  display: flex;
-  flex-direction: row !important;
-  justify-content: space-around;
+      display: flex;
+      flex-direction: column;
   }
 
-  .nav-link{
-  width: 10%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  }
-
-
+  /*Profiel*/
   .profiel-container{
-  width: 100%;
-  margin: 0 0 94px 0;
-  padding: 16px;
+    width: 100%;
+    margin: 0 0 94px 0;
+    padding: 40px;
   }
 
   h1{
-  margin: 40px 0 24px 0px;
+      margin: 40px 0 24px 0px;
   }
 
   .details-container{
-  padding: 0;
-  flex-direction: column;
+      padding: 0;
+      flex-direction: column;
   }
   .btn-dark{
-  margin: 40px 0 0;
+      margin: 40px 0 0;
   }
   .icons{
-  width: 24px;
-  height: 24px;
+      width: 24px;
+      height: 24px;
   }
-  
-  }
+
+}

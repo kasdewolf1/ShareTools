@@ -3,9 +3,13 @@ const router = express.Router();
 const toolsController = require('../controllers/tools');
 const upload = require('../multerConfig'); // Pas het pad aan indien nodig
 
-router.post('/', upload.single('image'), toolsController.addTool);
+// Routes definities
 router.get('/products', toolsController.getAllProducts);
 router.get('/product/:id', toolsController.getToolById);
 router.delete('/:id', toolsController.deleteTool);
+router.post('/addTool', toolsController.addTool);
+router.get('/bewerken/:id', toolsController.getToolByIdForEdit);
+router.post('/editToolById/:id', toolsController.editToolById);
+
 
 module.exports = router;

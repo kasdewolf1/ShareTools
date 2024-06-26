@@ -12,6 +12,7 @@
   <link rel="icon" type="image/x-icon" href="/img/favicon-32x32.png">
     <title>Share Tools</title>
 </head>
+
 <body>
     {{> header}}
 
@@ -111,81 +112,23 @@
 <div class="everything">
    <div class="container mt-5">
         <div class="header-text">
-            <h1>Mijn tools</h1>
-            <p>Bekijk nu verschillende soorten gereedschappen in uw inventaris.</p>
+            <h1>Tools lenen</h1>
+            <p>Bekijk hier gereedschap van anderen.</p>
         </div>
 
         <div class="col-md-4">
             <section class="search-bar">
                 <img src="img/ICON - Zoeken.svg" class="search-icon">
-                <input type="text" id="search" placeholder="Zoeken in jouw inventaris">
+                <input type="text" id="search" placeholder="Zoeken">
             </section>        
-            <a class="filter-btn" id="filterBtn">Filteren</a>
-            
-            <a class="green-plus" href="/Tooltoevoegen">Nieuwe tool toevoegen</a>
+            <a class="green-plus" id="filterBtn" style="margin-left:0">Filteren</a>
         </div>
-        <a class="green-plus" href="/Tooltoevoegen">Nieuwe tool toevoegen</a>
-      </div>
-      
-      <div style="margin-bottom: 20px;"></div>
-
-      <div class="grid" id="productGrid">
-        {{#each products}}
-          <div class="product" data-product-id="{{id}}">
-            <h2 class="product-title">{{title}}</h2>
-            <p class="product-status">{{beschikbaarheid}}</p>
-            <p class="product-beschrijving" style="color: #333333">{{beschrijving}}</p>
-            <img src="{{imageURL}}" alt="{{title}} afbeelding" class="product-image">
-            <a href="/ToolBewerken/{{id}}" class="edit-button">Bewerk</a>
-          </div>
-        {{/each}}
-      </div>
     </div>
     <div style="margin-bottom: 20px;"></div>
-
-
-    <div class="grid" id="productGrid">
-        {{#each products}}
-             <div class="product" data-product-id="{{id}}" data-afmetingen="{{afmetingen}}" data-favoriet="{{favoriet}}" data-publiek="{{publiek}}" data-status="{{status}}" onmouseover="highlightProduct(this)" onmouseleave="removeHighlight(this)">
-                {{#if img}}
-                   <img src="{{imageURL}}" alt="Tool Image" class="product-image">
-                {{else}}
-                    <img src="img/Card-filler.png" class="product-image">
-                {{/if}}
-
-                {{#if favoriet}}
-                  <img src="img/favoriet-icon.png" class="favoriet-icon">
-                {{/if}}
-
-                <div class="product-info">
-                    <h2 class="product-title">{{title}}</h2>                   
-                    {{#if publiek}}
-                      <p class="product-publiek">{{publiek}}</p>
-                    {{/if}}
-
-                    {{#if afmeting}}
-                      <p class="product-afmeting">{{afmeting}}</p>
-                    {{/if}}
-                    <p class="product-status">{{status}}</p>
-                    <p class="product-beschrijving">{{beschrijving}}</p>
-                </div>
-            </div>
-        {{/each}}
-    </div>
 </div>
 
-      products.forEach(function(product) {
-        let title = product.querySelector('.product-title').textContent.toLowerCase();
-        let beschrijving = product.querySelector('.product-beschrijving').textContent.toLowerCase();
 
 <script src="/script.js"></script>
-<script>
-    $(document).ready(function() {
-        setTimeout(function() {
-            $('#successMessage').fadeOut('slow');
-        }, 3000); // 3000 milliseconden = 3 seconden
-    });
-</script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </body>

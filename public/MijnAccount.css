@@ -6,70 +6,6 @@ body{
     font-family: "Inter", sans-serif;
 }
 
-/*Navbar*/
-.navbar-everything{
-    background-color: #fdfcfb;
-    box-shadow: 0px 0px 50px #33333377;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 288px;
-    height: 100vh; 
-    position: fixed;
-}
-.d-flex.align-items-start{
-    display: flex;
-    justify-content: center !important;
-    width: 90%;
-}
-
-.nav.flex-column.nav-pills.me-3{
-    width: 100%;
-}
-
-
-.nav-link{
-    color: #333333;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    margin-bottom: 16px;
-}
-.nav-link:hover{
-    color: rgb(51, 51, 51, 80%);
-}
-.nav-link.active{
-    background-color: #f3f0f0 !important;
-    color: #333333 !important;
-    font-weight: 600;
-}
-.links{
-    margin-left: 16px;
-}
-
-.icons{
-    width: 24px;
-    height: 24px;
-}
-
-
-.logo-normal {
-    display: flex;
-    width: 150px;
-    margin: 32px 0px 72px;
-}
-
-.logo-responsive{
-    display: none;
-}
-
-.page-container{
-    display: flex;
-    flex-direction: row;
-}
-
-
-
 /*Mijn Account*/
 .account-container{
     margin: 80px 104px 0px 328px;
@@ -79,6 +15,7 @@ body{
     display: flex;
     flex-direction: column;
     padding: 40px;
+    box-shadow: 0 0 50px rgb(55,55,55,8%);
 }
 
 .details-container{
@@ -266,50 +203,13 @@ h1{
         flex-direction: column;
     }
 
-    /*Navbar*/
-    .logo-responsive{
-        display: none;
-    }
-    .navbar-everything{
-        background-color: #fdfcfb;
-        box-shadow: 0px 0px 50px #33333377;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        width: 100vw;
-        height: 80px;
-        position: fixed;
-        bottom: 0;
-    }   
-     .links{
-        display: none;
-    }
-    .d-flex.align-items-start{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-    }
-
-    .nav.flex-column.nav-pills.me-3{
-        width: 100%;
-        display: flex;
-        flex-direction: row !important;
-        justify-content: space-around;
-    }
- 
-    .nav-link{
-        width: 10%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
 
     /*Account*/
     .account-container{
         width: 100%;
         margin: 0 0 94px 0;
-        padding: 16px;
+        padding: 40px;
+        box-shadow: none;
     }
 
     h1{

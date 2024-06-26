@@ -4,37 +4,26 @@
     box-shadow: 0px 0px 50px rgb(55,55,55,24%);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     width: 288px;
     height: 100vh; 
     position: fixed;
     top: 0;
+    padding: 40px 24px;
+    z-index: 100;
   }
-  
-  .d-flex.align-items-start{
-    display: flex;
-    justify-content: center !important;
-    width: 90%;
-  }
-  
-  .nav.flex-column.nav-pills.me-3{
-    width: 100%;
-  }
-  
   
   .nav-link{
+    width: 100%;
     display: flex;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
+    padding: 8px;
+    border-radius: 8px;
   }
-  .nav-link:hover{
+  .nav-link:hover, .nav-link:active{
     background-color: #F3F0F0;
     color: #333333;
-  }
-  .nav-link:active{
-    background-color: blue !important;
-    color: #333333 !important;
-    font-weight: 800;
   }
 
   .links{
@@ -45,7 +34,7 @@
     align-items: center;
     font-weight: 600;
     text-decoration: none;
-  
+    list-style: none;
   }
   .icons{
     width: 32px;
@@ -57,7 +46,9 @@
   .logo-normal {
     display: flex;
     height: 56px;
-    margin: 32px 0px 72px;
+    width: auto;
+    margin: 0 0 54px;
+
   }
   
   .logo-responsive{
@@ -70,7 +61,9 @@
 }
 
 
-
+.nav-link[aria-selected="true"] .links {
+  font-weight: bold; /* Or any other value for thicker font, e.g., 700 */
+}
 
 @media screen and (max-width: 900px){
     .navbar-everything{
@@ -105,15 +98,17 @@
         display: none;
     }
     .navbar-everything{
-        background-color: #fdfcfb;
-        box-shadow: 0px 0px 50px #33333377;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        width: 100vw;
-        height: 80px;
-        position: fixed;
-        bottom: 0;
+      background-color: #fdfcfb;
+      box-shadow: 0px 0px 50px #33333377;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100vw;
+      height: 80px;
+      position: fixed;
+      top: auto;
+      bottom: 0;
     }   
      .links{
         display: none;

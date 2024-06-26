@@ -22,78 +22,57 @@ function verifyToken(req, res, next) {
 }
 
 router.get('/', (req, res) => {
-    res.render('Hoofdpagina');
+  res.render('Hoofdpagina');
 });
 
 router.get('/hoofdpagina', (req, res) => {
-    res.render('hoofdpagina');
+  res.render('hoofdpagina');
 });
 
 router.get('/register', (req, res) => {
-    res.render('register');
+  res.render('register');
 });
 
 router.get('/login', (req, res) => {
-    res.render('login');
+  res.render('login');
 });
 
-router.get('/wachtwoordvergeten', verifyToken, (req, res) => {
-    res.render('wachtwoordvergeten', { user: req.user }); // Gebruikersgegevens toegevoegd
+router.get('/wachtwoordvergeten', (req, res) => {
+  res.render('wachtwoordvergeten');
 });
 
-router.get('/indexloggedin', verifyToken, toolsController.getAllProducts, (req, res) => {
-  res.render('indexloggedin', { products: res.locals.products, user: req.user }); // Gebruikersgegevens toegevoegd
+router.get('/indexloggedin', toolsController.getAllProducts);
+
+router.get('/productinfo', (req, res) => {
+  res.render('productinfo', { message: 'productinfo geladen' });
 });
 
-router.get('/ToolBewerken/:id', toolsController.getToolById, (req, res) => {
-    res.render('Toolbewerken', { product: res.locals.product, user: req.user }); // Gebruikersgegevens toegevoegd
+router.get('/Tooltoevoegen', (req, res) => {
+  res.render('Tooltoevoegen');
 });
 
-router.get('/productinfo', verifyToken, (req, res) => {
-    // Get the product ID from the query parameter
-    const productId = req.query.productId;
-    if (!productId) {
-        return res.status(400).send('Product ID is required');
-    }
-
-    toolsController.getToolById({ params: { id: productId } }, res, () => {
-        res.render('productinfo', { 
-            title: res.locals.product.title, 
-            afmeting: res.locals.product.afmeting,
-            categorie: res.locals.product.categorie,
-            locatie: res.locals.product.locatie,
-            beschikbaarheid: res.locals.product.beschikbaarheid,
-            beschrijving: res.locals.product.beschrijving,
-            imageURL: res.locals.product.imageURL,
-            user: req.user // Gebruikersgegevens toegevoegd
-        });
-    });
-});
-
-router.get('/Tooltoevoegen', verifyToken, (req, res) => {
-    res.render('Tooltoevoegen', { user: req.user }); // Gebruikersgegevens toegevoegd
-});
-
-router.get('/mijnaccount', verifyToken, (req, res) => {
-  res.render('mijnaccount', { user: req.user }); // Gebruikersgegevens toegevoegd
-});
-
-router.get('/ToolProfiel', verifyToken, (req, res) => {
-    res.render('ToolProfiel', { 
-        title: 'Hamer', 
-        user: req.user, // Gebruikersgegevens toegevoegd
-        locatie: 'Kast', 
-        status: 'Beschikbaar', 
-        beschrijving: 'Een beschrijving over de tool.'
-    });
-});
-
-router.get('/meldingen', verifyToken, (req, res) => {
-    res.render('meldingen', { user: req.user }); // Gebruikersgegevens toegevoegd
+router.get('/mijnaccount', (req, res) => {
+  res.render('mijnaccount');
 });
 
 router.get('/mijnaccountbewerken', (req, res) => {
-    res.render('mijnaccountbewerken');
+  res.render('mijnaccountbewerken');
+});
+
+router.get('/ToolProfiel', (req, res) => {
+  res.render('ToolProfiel');
+});
+
+router.get('/meldingen', (req, res) => {
+  res.render('meldingen');
+});
+
+router.get('/toolbewerken', (req, res) => {
+  res.render('toolbewerken');
+});
+
+router.get('/toollenen', (req, res) => {
+  res.render('toollenen');
 });
 
 module.exports = router;
