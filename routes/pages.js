@@ -7,26 +7,27 @@ const jwt = require('jsonwebtoken');
 function verifyToken(req, res, next) {
   const token = req.cookies.jwt;
   if (!token) {
-      return res.redirect('/login'); // Geen token, doorsturen naar inlogpagina
+    return res.redirect('/login'); // Geen token, doorsturen naar inlogpagina
   }
 
   jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
-      if (err) {
-          console.log(err.message);
-          return res.redirect('/login'); // Ongeldig token, doorsturen naar inlogpagina
-      }
-      
-      req.user = decodedToken; // Gebruikersgegevens toevoegen aan het verzoek
-      next(); // Doorgaan naar de volgende middleware/route
+    if (err) {
+      console.log(err.message);
+      return res.redirect('/login'); // Ongeldig token, doorsturen naar inlogpagina
+    }
+    
+    req.user = decodedToken; // Gebruikersgegevens toevoegen aan het verzoek
+    next(); // Doorgaan naar de volgende middleware/route
   });
 }
 
+// Routes
 router.get('/', (req, res) => {
-  res.render('Hoofdpagina');
+  res.render('Hoofdpagina'); // Zorg ervoor dat de naam van je view correct is
 });
 
 router.get('/hoofdpagina', (req, res) => {
-  res.render('hoofdpagina');
+  res.render('hoofdpagina'); // Zorg ervoor dat de naam van je view correct is
 });
 
 router.get('/register', (req, res) => {
@@ -41,7 +42,8 @@ router.get('/wachtwoordvergeten', (req, res) => {
   res.render('wachtwoordvergeten');
 });
 
-router.get('/indexloggedin', toolsController.getAllProducts);
+// Beveiligde route
+router.get('/indexloggedin', verifyToken, toolsController.getAllProducts);
 
 router.get('/productinfo', (req, res) => {
   res.render('productinfo', { message: 'productinfo geladen' });

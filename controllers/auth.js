@@ -48,7 +48,7 @@ exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        // Voer één enkele query uit om de gebruiker op te halen
+        // Fetch the user from the database
         db.query('SELECT * FROM users WHERE email = ?', [email], async (error, results) => {
             if (error) {
                 console.error(error);
@@ -66,7 +66,13 @@ exports.login = async (req, res) => {
                 return res.render('login', { message: 'Invalid email or password' });
             }
 
-            const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+            const token = jwt.sign({ 
+                id: user.id, 
+                name: user.name, 
+                email: user.email,
+                woonplaats: user.woonplaats, 
+                birthdate: user.birthdate 
+            }, process.env.JWT_SECRET, {
                 expiresIn: process.env.JWT_EXPIRES_IN
             });
 
@@ -75,40 +81,13 @@ exports.login = async (req, res) => {
                 httpOnly: true
             };
 
-        const user = results.find(user => user.name === name || user.email === email);
+            res.cookie('jwt', token, cookieOptions);
 
-        if (!user) {
-            return res.render('login', {
-                message: 'Invalid name or password'
-            });
-        }
-
-        const isPasswordMatch = await bcrypt.compare(password, user.password);
-
-        if (!isPasswordMatch) {
-            return res.render('login', {
-                message: 'Invalid email or password'
-            });
-        }
-
-        const token = jwt.sign({ 
-            id: user.id, 
-            name: user.name, 
-            email: user.email,
-            woonplaats: user.woonplaats, // Add woonplaats to the token payload
-            birthdate: user.birthdate // Add birthdate to the token payload
-        }, process.env.JWT_SECRET, {
-            expiresIn: process.env.JWT_EXPIRES_IN
+            // Redirect to the correct path
+            return res.redirect('/indexloggedin');
         });
-
-        const cookieOptions = {
-            expires: new Date(Date.now() + parseInt(process.env.JWT_EXPIRES_IN) * 24 * 60 * 60 * 1000),
-            httpOnly: true
-        };
-
-        res.cookie('jwt', token, cookieOptions);
-
-        // Redirect to the correct path
-        return res.redirect('/indexloggedin');
-    });
+    } catch (error) {
+        console.error(error);
+        res.render('login', { message: 'An error occurred' });
+    }
 };
