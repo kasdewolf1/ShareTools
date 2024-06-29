@@ -92,6 +92,9 @@ router.get('/meldingen', verifyToken, (req, res) => {
     res.render('meldingen', { user: req.user }); // Gebruikersgegevens toegevoegd
 });
 
+router.get('/toollenen', (req, res) => {
+    res.render('toollenen');
+});
 
 
 router.get('/mijnaccountbewerken', (req, res) => {
