@@ -70,15 +70,13 @@ body{
 
 /*Footer*/
 .footer{
-    background-color: #333333;
-    color: #FDFCFB;
-    font-weight: 600;    
+    color: #5C5C5C;
     font-size: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100vw;
-    padding: 40px;
+    padding-bottom: 20px;
     margin-top: 160px;
 }
 
