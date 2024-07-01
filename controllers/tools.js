@@ -1,35 +1,4 @@
 const db = require('../db'); // Pad naar db.js
-const multer = require('multer');
-const path = require('path');
-
-// Multer opslagconfiguratie
-const storage = multer.diskStorage({
-  destination: './uploads/',
-  filename: function(req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-  }
-});
-
-// Initialiseer upload middleware
-const upload = multer({
-  storage: storage,
-  fileFilter: function(req, file, cb) {
-    checkFileType(file, cb);
-  }
-}).single('image');
-
-// Controleer bestandstype functie
-function checkFileType(file, cb) {
-  const filetypes = /jpeg|jpg|png|gif/;
-  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-  const mimetype = filetypes.test(file.mimetype);
-
-  if (mimetype && extname) {
-    return cb(null, true);
-  } else {
-    cb('Fout: Alleen afbeeldingen zijn toegestaan!');
-  }
-}
 
 // Alle producten ophalen
 exports.getAllProducts = (req, res, next) => {
@@ -80,31 +49,26 @@ exports.getToolById = (req, res) => {
 
 // Tool toevoegen
 exports.addTool = (req, res) => {
-  upload(req, res, (err) => {
+  const { title, beschikbaarheid, afmetingen, location, category, description, favoriet, publiek } = req.body;
+  const image = req.file ? req.file.filename : null;
+
+  if (!title || !beschikbaarheid || !afmetingen || !location || !category || !description || !favoriet || !publiek) {
+    return res.status(400).send('All fields are required');
+  }
+
+  const favorietInt = parseInt(favoriet, 10);
+
+  const sql = 'INSERT INTO tools (title, status, afmeting, locatie, categorie, beschrijving, image, favoriet, publiek) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+  const values = [title, beschikbaarheid, afmetingen, location, category, description, image, favoriet, publiek];
+
+  db.query(sql, values, (err, result) => {
     if (err) {
-      console.error('Fout tijdens bestand uploaden:', err);
-      return res.status(400).send(err);
-    } else {
-      const { title, beschikbaarheid, afmetingen, location, category, description, favoriet, publiek } = req.body;
-      const image = req.file ? req.file.filename : null;
-
-      if (!title || !beschikbaarheid || !afmetingen || !location || !category || !description || !favoriet || !publiek) {
-        return res.status(400).send('Alle velden zijn verplicht');
-      }
-
-      const sql = 'INSERT INTO tools (title, status, afmeting, locatie, categorie, beschrijving, image, favoriet, publiek) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
-      const values = [title, beschikbaarheid, afmetingen, location, category, description, image, favoriet, publiek];
-
-      db.query(sql, values, (err, result) => {
-        if (err) {
-          console.error('Fout bij toevoegen tool:', err);
-          return res.status(500).send('Interne serverfout bij het toevoegen van tool');
-        }
-
-        console.log('Tool succesvol toegevoegd, doorverwijzen naar /indexloggedin');
-        return res.redirect('/indexloggedin');
-      });
+      console.error('Error adding the tool:', err);
+      return res.status(500).send('An internal server error occurred while adding the tool');
     }
+
+    console.log('Tool successfully added, redirecting to /indexloggedin');
+    return res.redirect('/indexloggedin');
   });
 };
 
