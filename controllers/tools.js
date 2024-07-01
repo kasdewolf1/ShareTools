@@ -88,9 +88,13 @@ exports.deleteTool = (req, res) => {
       return res.status(404).send('Geen tool gevonden met de opgegeven ID');
     }
 
-    res.status(200).send({ message: 'Tool succesvol verwijderd' });
+    res.status(200).send({ 
+      message: 'Tool succesvol verwijderd',
+      redirectUrl: '/indexloggedin'  // Add the URL to redirect to
+    });
   });
 };
+
 
 // Tool ophalen per ID voor bewerken
 exports.getToolByIdForEdit = (req, res) => {
