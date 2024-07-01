@@ -2,7 +2,7 @@ const db = require('../db'); // Pad naar db.js
 
 // Alle producten ophalen
 exports.getAllProducts = (req, res, next) => {
-  const query = 'SELECT title, status, beschrijving, id, image FROM tools';
+  const query = 'SELECT title, status, beschrijving, id, publiek, favoriet, afmeting, image FROM tools';
   
   db.query(query, (error, results) => {
     if (error) {
