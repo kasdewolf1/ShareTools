@@ -8,7 +8,7 @@ exports.addTool = (req, res) => {
     return res.status(400).send('All fields are required');
   }
 
-  const sql = 'INSERT INTO tools (title, beschikbaarheid, afmeting, locatie, categorie, beschrijving, image) VALUES (?, ?, ?, ?, ?, ?, ?)';
+  const sql = 'INSERT INTO tools (title, status, afmeting, locatie, categorie, beschrijving, image) VALUES (?, ?, ?, ?, ?, ?, ?)';
   const values = [title, beschikbaarheid, afmetingen, location, category, description, image];
 
   db.query(sql, values, (err, result) => {
