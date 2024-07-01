@@ -20,10 +20,15 @@
     <button type="button" class="btn-terug" data-product-id="{{product.ID}}">🞀</button>
 
 
-<form action="/tools/editToolById/{{product.ID}}" method="POST">
+<form action="/tools/editToolById/{{product.ID}}" method="POST" enctype="multipart/form-data">
     <div class="left">
+    {{#if imageURL}}
+    <img src="{{imageURL}}" class="toevoegen-image" id="image">
+    {{else}}
         <img src="/img/GereedschapToevoegenAchtergrond.png" class="toevoegen-image" id="image">
-        
+    {{/if}}
+
+
       <div class="file-input-container">
         <label class="file-label" for="imageUpload" id="chooseFile">Bestand kiezen</label>
         <input type="file" id="imageUpload" name="image" accept="image/*" class="file-input">

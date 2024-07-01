@@ -125,13 +125,17 @@
             <a class="green-plus" href="/Tooltoevoegen">Nieuwe tool toevoegen</a>
         </div>
       
-      <div style="margin-bottom: 20px;"></div>
+      <div style="margin-bottom: 40px"></div>
 
 
     <div class="grid" id="productGrid">
         {{#each products}}
              <div class="product" data-product-id="{{id}}" data-afmetingen="{{afmetingen}}" data-favoriet="{{favoriet}}" data-publiek="{{publiek}}" data-status="{{status}}" onmouseover="highlightProduct(this)" onmouseleave="removeHighlight(this)">
+                {{#if imageURL}} 
                    <img src="{{imageURL}}" alt="Tool Image" class="product-image">
+                  {{else}}
+                  <img src="img/Card-filler.png" class="product-image">
+                  {{/if}}
                   
                 {{#if favoriet}}
                   <img src="img/favoriet-icon.png" class="favoriet-icon">

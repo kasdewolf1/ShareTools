@@ -7,7 +7,7 @@ router.post('/', upload.single('image'), toolsController.addTool);
 router.get('/products', toolsController.getAllProducts);
 router.get('/product/:id', toolsController.getToolById);
 router.delete('/delete/:id', toolsController.deleteTool);
-router.get('/bewerken/:id', toolsController.getToolByIdForEdit);
-router.post('/editToolById/:id', toolsController.editToolById);
+router.get('/bewerken/:id', upload.single('image'), toolsController.getToolByIdForEdit);
+router.post('/editToolById/:id', upload.single('image'), toolsController.editToolById);
 
 module.exports = router;

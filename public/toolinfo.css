@@ -77,7 +77,7 @@ h1{
 
 .toolfoto{
   width: 60%;
-  height: 55%;
+  height: auto;
   margin: 0 3.7% 0 0;
   border-radius: 16px;
   box-shadow: 0 0 20px #33333323;

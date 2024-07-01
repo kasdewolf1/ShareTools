@@ -26,10 +26,10 @@
     <h1>{{product.title}}</h1>
 
     <section class="details-container" >
-      {{#if product.imageURL}}
-        <img src="{{product.imageURL}}" alt="Tool Image">
+      {{#if imageURL}}
+        <img src="{{imageURL}}" alt="Tool Image" class="toolfoto">
       {{else}}
-        <img src="/img/Tool Filler.png" class="toolfoto">
+        <img src="/img/Tool Filler.png" alt="Default Tool Image" class="toolfoto">
       {{/if}}
 
 

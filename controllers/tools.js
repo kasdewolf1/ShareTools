@@ -42,10 +42,12 @@ exports.getToolById = (req, res) => {
       return res.status(500).send('Interne serverfout');
     }
 
-    const imageURL = `/uploads/${results[0].image}`;
-    res.render('productinfo', { product: results[0], imageURL: imageURL });
+      const tool = results[0];
+      const imageURL = tool.image ? `/uploads/${tool.image}` : null;
+      res.render('productinfo', { product: tool, imageURL: imageURL });
   });
 };
+
 
 // Tool toevoegen
 exports.addTool = (req, res) => {
@@ -100,7 +102,9 @@ exports.getToolByIdForEdit = (req, res) => {
       return res.status(500).send('Interne serverfout');
     }
 
-    res.render('toolbewerken', { product: results[0] });
+    const tool = results[0];
+    const imageURL = tool.image ? `/uploads/${tool.image}` : null;
+    res.render('toolbewerken', { product: results[0], imageURL: imageURL });
   });
 };
 
@@ -108,9 +112,10 @@ exports.getToolByIdForEdit = (req, res) => {
 exports.editToolById = (req, res) => {
   const { id } = req.params;
   const { title, category, afmetingen, beschikbaarheid, favoriet, publiek, location, description } = req.body;
+  const image = req.file ? req.file.filename : null;
 
-  const query = 'UPDATE tools SET title=?, categorie=?, afmeting=?, status=?, favoriet=?, publiek=?, locatie=?, beschrijving=? WHERE id=?';
-  const values = [title, category, afmetingen, beschikbaarheid, favoriet, publiek, location, description, id];
+  const query = 'UPDATE tools SET title=?, categorie=?, afmeting=?, status=?, favoriet=?, publiek=?, locatie=?, beschrijving=?, image=? WHERE id=?';
+  const values = [title, category, afmetingen, beschikbaarheid, favoriet, publiek, location, description, image, id];
 
   db.query(query, values, (error, results) => {
     if (error) {
@@ -121,3 +126,4 @@ exports.editToolById = (req, res) => {
     res.redirect('/indexloggedin'); // Na succesvolle update, terugkeren naar overzicht van tools of een andere gewenste bestemming
   });
 };
+
