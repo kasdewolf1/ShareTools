@@ -32,20 +32,34 @@ function checkFileType(file, cb) {
 }
 
 // Alle producten ophalen
-exports.getAllProducts = (req, res) => {
-  const query = 'SELECT title, status, beschrijving, afmeting, publiek, favoriet, id, image FROM tools';
+exports.getAllProducts = (req, res, next) => {
+  const query = 'SELECT title, status, beschrijving, id, image FROM tools';
+  
   db.query(query, (error, results) => {
     if (error) {
-      console.error('Fout bij ophalen producten:', error);
-      return res.status(500).send('Interne serverfout bij het ophalen van producten');
+      console.error('Error fetching products:', error);
+      return res.status(500).send('An internal server error occurred');
     }
 
-    const products = results.map(product => ({
-      ...product,
-      imageURL: `/uploads/${product.image}`
-    }));
+    console.log('Get all products query results:', results);
 
-    res.render('indexloggedin', { products: products });
+    if (!results || results.length === 0) {
+      return res.status(404).send('No products found');
+    }
+
+    const products = results.map(product => {
+      let imageURL = null;
+      if (product.image) {
+        imageURL = `/uploads/${product.image.toString('utf-8')}`;
+      }
+      return {
+        ...product,
+        imageURL: imageURL
+      };
+    });
+
+    res.locals.products = products;
+    next(); // Proceed to the next middleware to render the page
   });
 };
 
