@@ -105,6 +105,14 @@ exports.addTool = (req, res) => {
   });
 };
 
+exports.getAllProducts = (req, res, next) => {
+  const query = 'SELECT title, status, beschrijving, id, image FROM tools';
+  
+  db.query(query, (error, results) => {
+    if (error) {
+      console.error('Error fetching products:', error);
+      return res.status(500).send('An internal server error occurred');
+    }
 
 exports.deleteTool = (req, res) => {
   const { id } = req.params;
